@@ -14,7 +14,9 @@ from improved_diffusion.script_util import (
     add_dict_to_argparser,
 )
 from improved_diffusion.train_util import TrainLoop
-
+from torch.distributed.fsdp import FullyShardedDataParallel as FSDP
+import functools
+from torch.distributed.fsdp.wrap import size_based_auto_wrap_policy
 
 def main():
     args = create_argparser().parse_args()
@@ -27,6 +29,12 @@ def main():
         **args_to_dict(args, model_and_diffusion_defaults().keys())
     )
     model.to(dist_util.dev())
+   
+    my_auto_wrap_policy = functools.partial(
+        size_based_auto_wrap_policy, min_num_params=20000
+    )
+    model = FSDP(model, auto_wrap_policy=my_auto_wrap_policy)
+
     schedule_sampler = create_named_schedule_sampler(args.schedule_sampler, diffusion)
 
     logger.log("creating data loader...")
@@ -59,7 +67,7 @@ def main():
 
 def create_argparser():
     defaults = dict(
-        data_dir="",
+        data_dir="/nfshomes/aranjan2/adi-venv/improved-diffusion/datasets/cifar_data",
         schedule_sampler="uniform",
         lr=1e-4,
         weight_decay=0.0,

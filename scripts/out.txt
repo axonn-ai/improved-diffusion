@@ -1,350 +1,206 @@
-Logging to /tmp/openai-2023-12-13-13-28-06-215937
+[2024-01-03 15:16:40,013] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-01-03 15:16:40,014] [INFO] [real_accelerator.py:161:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-01-03 15:16:42,684] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-01-03 15:16:42,684] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-01-03 15:16:42,684] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-01-03 15:16:42,684] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-01-03 15:16:42,686] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=1, local_rank=1, world_size=2, master_addr=10.70.19.45, master_port=29500
+[2024-01-03 15:16:42,686] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=0, local_rank=0, world_size=2, master_addr=10.70.19.45, master_port=29500
+[2024-01-03 15:16:42,686] [INFO] [comm.py:668:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+Logging to /tmp/openai-2024-01-03-15-16-43-694916
+initialized deepspeed
 creating model and diffusion...
 creating data loader...
+[2024-01-03 15:16:47,118] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed info: version=0.12.6, git-hash=unknown, git-branch=unknown
+[2024-01-03 15:16:47,122] [WARNING] [config_utils.py:69:_process_deprecated_field] Config parameter cpu_offload is deprecated use offload_optimizer instead
+[2024-01-03 15:16:47,138] [WARNING] [config_utils.py:69:_process_deprecated_field] Config parameter cpu_offload is deprecated use offload_optimizer instead
+[2024-01-03 15:16:47,828] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2024-01-03 15:16:47,829] [INFO] [logging.py:96:log_dist] [Rank 0] Using client Optimizer as basic optimizer
+[2024-01-03 15:16:47,829] [INFO] [logging.py:96:log_dist] [Rank 0] Removing param_group that has no 'params' in the basic Optimizer
+[2024-01-03 15:16:47,850] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Basic Optimizer = AdamW
+[2024-01-03 15:16:47,850] [INFO] [utils.py:56:is_zero_supported_optimizer] Checking ZeRO support for optimizer=AdamW type=<class 'torch.optim.adamw.AdamW'>
+[2024-01-03 15:16:47,850] [INFO] [logging.py:96:log_dist] [Rank 0] Creating torch.float32 ZeRO stage 1 optimizer
+[2024-01-03 15:16:47,850] [INFO] [stage_1_and_2.py:148:__init__] Reduce bucket size 50000000
+[2024-01-03 15:16:47,850] [INFO] [stage_1_and_2.py:149:__init__] Allgather bucket size 50000000
+[2024-01-03 15:16:47,850] [INFO] [stage_1_and_2.py:150:__init__] CPU Offload: False
+[2024-01-03 15:16:47,850] [INFO] [stage_1_and_2.py:151:__init__] Round robin gradient partitioning: False
+[2024-01-03 15:16:48,097] [INFO] [utils.py:791:see_memory_usage] Before initializing optimizer states
+[2024-01-03 15:16:48,098] [INFO] [utils.py:792:see_memory_usage] MA 0.52 GB         Max_MA 0.52 GB         CA 0.52 GB         Max_CA 1 GB 
+[2024-01-03 15:16:48,098] [INFO] [utils.py:799:see_memory_usage] CPU Virtual Memory:  used = 4.3 GB, percent = 6.9%
+[2024-01-03 15:16:48,184] [INFO] [utils.py:791:see_memory_usage] After initializing optimizer states
+[2024-01-03 15:16:48,185] [INFO] [utils.py:792:see_memory_usage] MA 0.86 GB         Max_MA 1.2 GB         CA 1.2 GB         Max_CA 1 GB 
+[2024-01-03 15:16:48,185] [INFO] [utils.py:799:see_memory_usage] CPU Virtual Memory:  used = 4.31 GB, percent = 6.9%
+[2024-01-03 15:16:48,185] [INFO] [stage_1_and_2.py:516:__init__] optimizer state initialized
+[2024-01-03 15:16:48,242] [INFO] [utils.py:791:see_memory_usage] After initializing ZeRO optimizer
+[2024-01-03 15:16:48,243] [INFO] [utils.py:792:see_memory_usage] MA 0.86 GB         Max_MA 0.86 GB         CA 1.2 GB         Max_CA 1 GB 
+[2024-01-03 15:16:48,243] [INFO] [utils.py:799:see_memory_usage] CPU Virtual Memory:  used = 4.31 GB, percent = 6.9%
+[2024-01-03 15:16:48,248] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Final Optimizer = AdamW
+[2024-01-03 15:16:48,248] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed using client LR scheduler
+[2024-01-03 15:16:48,248] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed LR Scheduler = None
+[2024-01-03 15:16:48,248] [INFO] [logging.py:96:log_dist] [Rank 0] step=0, skipped=0, lr=[0.0001], mom=[(0.9, 0.999)]
+[2024-01-03 15:16:48,249] [INFO] [config.py:984:print] DeepSpeedEngine configuration:
+[2024-01-03 15:16:48,249] [INFO] [config.py:988:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2024-01-03 15:16:48,249] [INFO] [config.py:988:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2024-01-03 15:16:48,249] [INFO] [config.py:988:print]   amp_enabled .................. False
+[2024-01-03 15:16:48,249] [INFO] [config.py:988:print]   amp_params ................... False
+[2024-01-03 15:16:48,249] [INFO] [config.py:988:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2024-01-03 15:16:48,249] [INFO] [config.py:988:print]   bfloat16_enabled ............. False
+[2024-01-03 15:16:48,249] [INFO] [config.py:988:print]   checkpoint_parallel_write_pipeline  False
+[2024-01-03 15:16:48,249] [INFO] [config.py:988:print]   checkpoint_tag_validation_enabled  True
+[2024-01-03 15:16:48,249] [INFO] [config.py:988:print]   checkpoint_tag_validation_fail  False
+[2024-01-03 15:16:48,249] [INFO] [config.py:988:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7f93a1e4bd60>
+[2024-01-03 15:16:48,249] [INFO] [config.py:988:print]   communication_data_type ...... None
+[2024-01-03 15:16:48,249] [INFO] [config.py:988:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2024-01-03 15:16:48,249] [INFO] [config.py:988:print]   curriculum_enabled_legacy .... False
+[2024-01-03 15:16:48,249] [INFO] [config.py:988:print]   curriculum_params_legacy ..... False
+[2024-01-03 15:16:48,249] [INFO] [config.py:988:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2024-01-03 15:16:48,249] [INFO] [config.py:988:print]   data_efficiency_enabled ...... False
+[2024-01-03 15:16:48,249] [INFO] [config.py:988:print]   dataloader_drop_last ......... False
+[2024-01-03 15:16:48,249] [INFO] [config.py:988:print]   disable_allgather ............ False
+[2024-01-03 15:16:48,249] [INFO] [config.py:988:print]   dump_state ................... False
+[2024-01-03 15:16:48,249] [INFO] [config.py:988:print]   dynamic_loss_scale_args ...... None
+[2024-01-03 15:16:48,249] [INFO] [config.py:988:print]   eigenvalue_enabled ........... False
+[2024-01-03 15:16:48,249] [INFO] [config.py:988:print]   eigenvalue_gas_boundary_resolution  1
+[2024-01-03 15:16:48,249] [INFO] [config.py:988:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2024-01-03 15:16:48,250] [INFO] [config.py:988:print]   eigenvalue_layer_num ......... 0
+[2024-01-03 15:16:48,250] [INFO] [config.py:988:print]   eigenvalue_max_iter .......... 100
+[2024-01-03 15:16:48,250] [INFO] [config.py:988:print]   eigenvalue_stability ......... 1e-06
+[2024-01-03 15:16:48,250] [INFO] [config.py:988:print]   eigenvalue_tol ............... 0.01
+[2024-01-03 15:16:48,250] [INFO] [config.py:988:print]   eigenvalue_verbose ........... False
+[2024-01-03 15:16:48,250] [INFO] [config.py:988:print]   elasticity_enabled ........... False
+[2024-01-03 15:16:48,250] [INFO] [config.py:988:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "recompute_fwd_factor": 0.0, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2024-01-03 15:16:48,250] [INFO] [config.py:988:print]   fp16_auto_cast ............... None
+[2024-01-03 15:16:48,250] [INFO] [config.py:988:print]   fp16_enabled ................. False
+[2024-01-03 15:16:48,250] [INFO] [config.py:988:print]   fp16_master_weights_and_gradients  False
+[2024-01-03 15:16:48,250] [INFO] [config.py:988:print]   global_rank .................. 0
+[2024-01-03 15:16:48,250] [INFO] [config.py:988:print]   grad_accum_dtype ............. None
+[2024-01-03 15:16:48,250] [INFO] [config.py:988:print]   gradient_accumulation_steps .. 1
+[2024-01-03 15:16:48,250] [INFO] [config.py:988:print]   gradient_clipping ............ 0.0
+[2024-01-03 15:16:48,250] [INFO] [config.py:988:print]   gradient_predivide_factor .... 1.0
+[2024-01-03 15:16:48,250] [INFO] [config.py:988:print]   graph_harvesting ............. False
+[2024-01-03 15:16:48,250] [INFO] [config.py:988:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2024-01-03 15:16:48,250] [INFO] [config.py:988:print]   initial_dynamic_scale ........ 65536
+[2024-01-03 15:16:48,250] [INFO] [config.py:988:print]   load_universal_checkpoint .... False
+[2024-01-03 15:16:48,250] [INFO] [config.py:988:print]   loss_scale ................... 0
+[2024-01-03 15:16:48,250] [INFO] [config.py:988:print]   memory_breakdown ............. False
+[2024-01-03 15:16:48,250] [INFO] [config.py:988:print]   mics_hierarchial_params_gather  False
+[2024-01-03 15:16:48,250] [INFO] [config.py:988:print]   mics_shard_size .............. -1
+[2024-01-03 15:16:48,250] [INFO] [config.py:988:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=False
+[2024-01-03 15:16:48,250] [INFO] [config.py:988:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2024-01-03 15:16:48,250] [INFO] [config.py:988:print]   optimizer_legacy_fusion ...... False
+[2024-01-03 15:16:48,250] [INFO] [config.py:988:print]   optimizer_name ............... None
+[2024-01-03 15:16:48,250] [INFO] [config.py:988:print]   optimizer_params ............. None
+[2024-01-03 15:16:48,250] [INFO] [config.py:988:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0, 'pipe_partitioned': True, 'grad_partitioned': True}
+[2024-01-03 15:16:48,250] [INFO] [config.py:988:print]   pld_enabled .................. False
+[2024-01-03 15:16:48,250] [INFO] [config.py:988:print]   pld_params ................... False
+[2024-01-03 15:16:48,250] [INFO] [config.py:988:print]   prescale_gradients ........... False
+[2024-01-03 15:16:48,250] [INFO] [config.py:988:print]   scheduler_name ............... None
+[2024-01-03 15:16:48,250] [INFO] [config.py:988:print]   scheduler_params ............. None
+[2024-01-03 15:16:48,250] [INFO] [config.py:988:print]   seq_parallel_communication_data_type  torch.float32
+[2024-01-03 15:16:48,250] [INFO] [config.py:988:print]   sparse_attention ............. None
+[2024-01-03 15:16:48,250] [INFO] [config.py:988:print]   sparse_gradients_enabled ..... False
+[2024-01-03 15:16:48,250] [INFO] [config.py:988:print]   steps_per_print .............. 10
+[2024-01-03 15:16:48,250] [INFO] [config.py:988:print]   train_batch_size ............. 2
+[2024-01-03 15:16:48,251] [INFO] [config.py:988:print]   train_micro_batch_size_per_gpu  1
+[2024-01-03 15:16:48,251] [INFO] [config.py:988:print]   use_data_before_expert_parallel_  False
+[2024-01-03 15:16:48,251] [INFO] [config.py:988:print]   use_node_local_storage ....... False
+[2024-01-03 15:16:48,251] [INFO] [config.py:988:print]   wall_clock_breakdown ......... False
+[2024-01-03 15:16:48,251] [INFO] [config.py:988:print]   weight_quantization_config ... None
+[2024-01-03 15:16:48,251] [INFO] [config.py:988:print]   world_size ................... 2
+[2024-01-03 15:16:48,251] [INFO] [config.py:988:print]   zero_allow_untested_optimizer  False
+[2024-01-03 15:16:48,251] [INFO] [config.py:988:print]   zero_config .................. stage=1 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=50000000 use_multi_rank_bucket_allreduce=True allgather_partitions=True allgather_bucket_size=50000000 overlap_comm=True load_from_fp32_weights=True elastic_checkpoint=False offload_param=None offload_optimizer=None sub_group_size=1,000,000,000 cpu_offload_param=None cpu_offload_use_pin_memory=None prefetch_bucket_size=50,000,000 param_persistence_threshold=100,000 model_persistence_threshold=sys.maxsize max_live_parameters=1,000,000,000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_nontrainable_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True pipeline_loading_checkpoint=False override_module_apply=True
+[2024-01-03 15:16:48,251] [INFO] [config.py:988:print]   zero_enabled ................. True
+[2024-01-03 15:16:48,251] [INFO] [config.py:988:print]   zero_force_ds_cpu_optimizer .. True
+[2024-01-03 15:16:48,251] [INFO] [config.py:988:print]   zero_optimization_stage ...... 1
+[2024-01-03 15:16:48,251] [INFO] [config.py:974:print_user_config]   json = {
+    "train_batch_size": 2, 
+    "zero_optimization": {
+        "stage": 1, 
+        "allgather_partitions": true, 
+        "reduce_scatter": true, 
+        "allgather_bucket_size": 5.000000e+07, 
+        "reduce_bucket_size": 5.000000e+07, 
+        "overlap_comm": true, 
+        "contiguous_gradients": true, 
+        "cpu_offload": false
+    }
+}
 training...
-------------------------
-| grad_norm | 3.72     |
-| loss      | 1        |
-| loss_q3   | 1        |
-| mse       | 1        |
-| mse_q3    | 1        |
-| samples   | 1        |
-| step      | 0        |
-------------------------
-saving model 0...
-saving model 0.9999...
-------------------------
-| grad_norm | 3.46     |
-| loss      | 0.897    |
-| loss_q0   | 0.888    |
-| loss_q1   | 0.847    |
-| loss_q2   | 0.928    |
-| loss_q3   | 0.906    |
-| mse       | 0.897    |
-| mse_q0    | 0.888    |
-| mse_q1    | 0.847    |
-| mse_q2    | 0.928    |
-| mse_q3    | 0.906    |
-| samples   | 11       |
-| step      | 10       |
-------------------------
-------------------------
-| grad_norm | 3.05     |
-| loss      | 0.724    |
-| loss_q0   | 0.754    |
-| loss_q1   | 0.684    |
-| loss_q2   | 0.712    |
-| loss_q3   | 0.752    |
-| mse       | 0.724    |
-| mse_q0    | 0.754    |
-| mse_q1    | 0.684    |
-| mse_q2    | 0.712    |
-| mse_q3    | 0.752    |
-| samples   | 21       |
-| step      | 20       |
-------------------------
-------------------------
-| grad_norm | 2.91     |
-| loss      | 0.577    |
-| loss_q0   | 0.592    |
-| loss_q3   | 0.562    |
-| mse       | 0.577    |
-| mse_q0    | 0.592    |
-| mse_q3    | 0.562    |
-| samples   | 31       |
-| step      | 30       |
-------------------------
-------------------------
-| grad_norm | 2.52     |
-| loss      | 0.428    |
-| loss_q0   | 0.445    |
-| loss_q1   | 0.448    |
-| loss_q2   | 0.394    |
-| loss_q3   | 0.428    |
-| mse       | 0.428    |
-| mse_q0    | 0.445    |
-| mse_q1    | 0.448    |
-| mse_q2    | 0.394    |
-| mse_q3    | 0.428    |
-| samples   | 41       |
-| step      | 40       |
-------------------------
-------------------------
-| grad_norm | 2.52     |
-| loss      | 0.348    |
-| loss_q0   | 0.399    |
-| loss_q2   | 0.298    |
-| loss_q3   | 0.296    |
-| mse       | 0.348    |
-| mse_q0    | 0.399    |
-| mse_q2    | 0.298    |
-| mse_q3    | 0.296    |
-| samples   | 51       |
-| step      | 50       |
-------------------------
-------------------------
-| grad_norm | 2.05     |
-| loss      | 0.26     |
-| loss_q0   | 0.431    |
-| loss_q1   | 0.217    |
-| loss_q3   | 0.218    |
-| mse       | 0.26     |
-| mse_q0    | 0.431    |
-| mse_q1    | 0.217    |
-| mse_q3    | 0.218    |
-| samples   | 61       |
-| step      | 60       |
-------------------------
-------------------------
-| grad_norm | 1.57     |
-| loss      | 0.188    |
-| loss_q0   | 0.238    |
-| loss_q1   | 0.16     |
-| loss_q2   | 0.151    |
-| loss_q3   | 0.155    |
-| mse       | 0.188    |
-| mse_q0    | 0.238    |
-| mse_q1    | 0.16     |
-| mse_q2    | 0.151    |
-| mse_q3    | 0.155    |
-| samples   | 71       |
-| step      | 70       |
-------------------------
-------------------------
-| grad_norm | 2.33     |
-| loss      | 0.213    |
-| loss_q0   | 0.351    |
-| loss_q1   | 0.126    |
-| loss_q2   | 0.114    |
-| loss_q3   | 0.124    |
-| mse       | 0.213    |
-| mse_q0    | 0.351    |
-| mse_q1    | 0.126    |
-| mse_q2    | 0.114    |
-| mse_q3    | 0.124    |
-| samples   | 81       |
-| step      | 80       |
-------------------------
-------------------------
-| grad_norm | 0.915    |
-| loss      | 0.0971   |
-| loss_q0   | 0.103    |
-| loss_q1   | 0.0943   |
-| loss_q2   | 0.102    |
-| loss_q3   | 0.0878   |
-| mse       | 0.0971   |
-| mse_q0    | 0.103    |
-| mse_q1    | 0.0943   |
-| mse_q2    | 0.102    |
-| mse_q3    | 0.0878   |
-| samples   | 91       |
-| step      | 90       |
-------------------------
-------------------------
-| grad_norm | 1.54     |
-| loss      | 0.118    |
-| loss_q0   | 0.222    |
-| loss_q1   | 0.0765   |
-| loss_q2   | 0.0678   |
-| loss_q3   | 0.0703   |
-| mse       | 0.118    |
-| mse_q0    | 0.222    |
-| mse_q1    | 0.0765   |
-| mse_q2    | 0.0678   |
-| mse_q3    | 0.0703   |
-| samples   | 101      |
-| step      | 100      |
-------------------------
-------------------------
-| grad_norm | 1.4      |
-| loss      | 0.0961   |
-| loss_q0   | 0.24     |
-| loss_q1   | 0.0611   |
-| loss_q3   | 0.0575   |
-| mse       | 0.0961   |
-| mse_q0    | 0.24     |
-| mse_q1    | 0.0611   |
-| mse_q3    | 0.0575   |
-| samples   | 111      |
-| step      | 110      |
-------------------------
-------------------------
-| grad_norm | 0.597    |
-| loss      | 0.0541   |
-| loss_q0   | 0.0697   |
-| loss_q1   | 0.0529   |
-| loss_q2   | 0.0466   |
-| loss_q3   | 0.0512   |
-| mse       | 0.0541   |
-| mse_q0    | 0.0697   |
-| mse_q1    | 0.0529   |
-| mse_q2    | 0.0466   |
-| mse_q3    | 0.0512   |
-| samples   | 121      |
-| step      | 120      |
-------------------------
-------------------------
-| grad_norm | 0.675    |
-| loss      | 0.0566   |
-| loss_q0   | 0.123    |
-| loss_q1   | 0.0417   |
-| loss_q2   | 0.0412   |
-| loss_q3   | 0.0384   |
-| mse       | 0.0566   |
-| mse_q0    | 0.123    |
-| mse_q1    | 0.0417   |
-| mse_q2    | 0.0412   |
-| mse_q3    | 0.0384   |
-| samples   | 131      |
-| step      | 130      |
-------------------------
-------------------------
-| grad_norm | 1.3      |
-| loss      | 0.0746   |
-| loss_q0   | 0.202    |
-| loss_q1   | 0.0492   |
-| loss_q2   | 0.0397   |
-| loss_q3   | 0.0371   |
-| mse       | 0.0746   |
-| mse_q0    | 0.202    |
-| mse_q1    | 0.0492   |
-| mse_q2    | 0.0397   |
-| mse_q3    | 0.0371   |
-| samples   | 141      |
-| step      | 140      |
-------------------------
-------------------------
-| grad_norm | 0.819    |
-| loss      | 0.0665   |
-| loss_q0   | 0.1      |
-| loss_q1   | 0.0496   |
-| loss_q2   | 0.0388   |
-| loss_q3   | 0.037    |
-| mse       | 0.0665   |
-| mse_q0    | 0.1      |
-| mse_q1    | 0.0496   |
-| mse_q2    | 0.0388   |
-| mse_q3    | 0.037    |
-| samples   | 151      |
-| step      | 150      |
-------------------------
-------------------------
-| grad_norm | 0.512    |
-| loss      | 0.0461   |
-| loss_q0   | 0.0846   |
-| loss_q1   | 0.0395   |
-| loss_q2   | 0.0336   |
-| loss_q3   | 0.0326   |
-| mse       | 0.0461   |
-| mse_q0    | 0.0846   |
-| mse_q1    | 0.0395   |
-| mse_q2    | 0.0336   |
-| mse_q3    | 0.0326   |
-| samples   | 161      |
-| step      | 160      |
-------------------------
-------------------------
-| grad_norm | 0.964    |
-| loss      | 0.0656   |
-| loss_q0   | 0.14     |
-| loss_q1   | 0.0342   |
-| loss_q2   | 0.0355   |
-| loss_q3   | 0.0324   |
-| mse       | 0.0656   |
-| mse_q0    | 0.14     |
-| mse_q1    | 0.0342   |
-| mse_q2    | 0.0355   |
-| mse_q3    | 0.0324   |
-| samples   | 171      |
-| step      | 170      |
-------------------------
-------------------------
-| grad_norm | 1.69     |
-| loss      | 0.115    |
-| loss_q0   | 0.238    |
-| loss_q1   | 0.0348   |
-| loss_q2   | 0.0328   |
-| loss_q3   | 0.031    |
-| mse       | 0.115    |
-| mse_q0    | 0.238    |
-| mse_q1    | 0.0348   |
-| mse_q2    | 0.0328   |
-| mse_q3    | 0.031    |
-| samples   | 181      |
-| step      | 180      |
-------------------------
-------------------------
-| grad_norm | 1.3      |
-| loss      | 0.0795   |
-| loss_q0   | 0.179    |
-| loss_q1   | 0.0386   |
-| loss_q2   | 0.0355   |
-| loss_q3   | 0.0352   |
-| mse       | 0.0795   |
-| mse_q0    | 0.179    |
-| mse_q1    | 0.0386   |
-| mse_q2    | 0.0355   |
-| mse_q3    | 0.0352   |
-| samples   | 191      |
-| step      | 190      |
-------------------------
-------------------------
-| grad_norm | 0.721    |
-| loss      | 0.062    |
-| loss_q0   | 0.12     |
-| loss_q1   | 0.0403   |
-| loss_q2   | 0.0404   |
-| loss_q3   | 0.0327   |
-| mse       | 0.062    |
-| mse_q0    | 0.12     |
-| mse_q1    | 0.0403   |
-| mse_q2    | 0.0404   |
-| mse_q3    | 0.0327   |
-| samples   | 201      |
-| step      | 200      |
-------------------------
-------------------------
-| grad_norm | 0.356    |
-| loss      | 0.0372   |
-| loss_q0   | 0.066    |
-| loss_q1   | 0.036    |
-| loss_q2   | 0.0319   |
-| loss_q3   | 0.03     |
-| mse       | 0.0372   |
-| mse_q0    | 0.066    |
-| mse_q1    | 0.036    |
-| mse_q2    | 0.0319   |
-| mse_q3    | 0.03     |
-| samples   | 211      |
-| step      | 210      |
-------------------------
-------------------------
-| grad_norm | 0.539    |
-| loss      | 0.0462   |
-| loss_q0   | 0.0829   |
-| loss_q1   | 0.0385   |
-| loss_q2   | 0.0279   |
-| loss_q3   | 0.027    |
-| mse       | 0.0462   |
-| mse_q0    | 0.0829   |
-| mse_q1    | 0.0385   |
-| mse_q2    | 0.0279   |
-| mse_q3    | 0.027    |
-| samples   | 221      |
-| step      | 220      |
-------------------------
-------------------------
-| grad_norm | 0.483    |
-| loss      | 0.0465   |
-| loss_q0   | 0.0748   |
-| loss_q1   | 0.0289   |
-| loss_q2   | 0.0282   |
-| loss_q3   | 0.026    |
-| mse       | 0.0465   |
-| mse_q0    | 0.0748   |
-| mse_q1    | 0.0289   |
-| mse_q2    | 0.0282   |
-| mse_q3    | 0.026    |
-| samples   | 231      |
-| step      | 230      |
-------------------------
+Traceback (most recent call last):
+  File "/nfshomes/aranjan2/adi-venv/improved-diffusion/scripts/image_train.py", line 115, in <module>
+    main()
+  File "/nfshomes/aranjan2/adi-venv/improved-diffusion/scripts/image_train.py", line 89, in main
+Traceback (most recent call last):
+  File "/nfshomes/aranjan2/adi-venv/improved-diffusion/scripts/image_train.py", line 115, in <module>
+    ).run_loop()
+  File "/nfshomes/aranjan2/adi-venv/improved-diffusion/improved_diffusion/train_util.py", line 179, in run_loop
+    main()
+  File "/nfshomes/aranjan2/adi-venv/improved-diffusion/scripts/image_train.py", line 89, in main
+    self.run_step(batch, cond)
+  File "/nfshomes/aranjan2/adi-venv/improved-diffusion/improved_diffusion/train_util.py", line 197, in run_step
+    ).run_loop()
+  File "/nfshomes/aranjan2/adi-venv/improved-diffusion/improved_diffusion/train_util.py", line 179, in run_loop
+    self.optimize_normal()
+  File "/nfshomes/aranjan2/adi-venv/improved-diffusion/improved_diffusion/train_util.py", line 259, in optimize_normal
+    self.run_step(batch, cond)
+  File "/nfshomes/aranjan2/adi-venv/improved-diffusion/improved_diffusion/train_util.py", line 197, in run_step
+    self.opt.step()
+  File "/nfshomes/aranjan2/adi-venv/lib/python3.10/site-packages/deepspeed/runtime/zero/stage_1_and_2.py", line 1796, in step
+    self.optimize_normal()
+  File "/nfshomes/aranjan2/adi-venv/improved-diffusion/improved_diffusion/train_util.py", line 259, in optimize_normal
+    self.opt.step()
+  File "/nfshomes/aranjan2/adi-venv/lib/python3.10/site-packages/deepspeed/runtime/zero/stage_1_and_2.py", line 1796, in step
+    scaled_global_grad_norm = self.scaled_global_norm()
+  File "/nfshomes/aranjan2/adi-venv/lib/python3.10/site-packages/deepspeed/runtime/zero/stage_1_and_2.py", line 1740, in scaled_global_norm
+    scaled_global_grad_norm = self.scaled_global_norm()
+  File "/nfshomes/aranjan2/adi-venv/lib/python3.10/site-packages/deepspeed/runtime/zero/stage_1_and_2.py", line 1740, in scaled_global_norm
+    norm_groups.append(self.get_grad_norm_direct(self.averaged_gradients[i], self.params_in_partition[i]))
+KeyError: 0
+    norm_groups.append(self.get_grad_norm_direct(self.averaged_gradients[i], self.params_in_partition[i]))
+KeyError: 0

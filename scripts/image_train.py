@@ -20,6 +20,7 @@ import os
 from torch.optim import AdamW
 import torchvision
 from torchvision import transforms
+import torch
 
 
 def main():
@@ -64,7 +65,8 @@ def main():
     model, opt, data, __ = deepspeed.initialize(
         args=args, model=model, optimizer=opt, training_data=data)
 
-    # deepspeed.initialize is inside TrainLoop code
+    torch.cuda.set_device(torch.device('cuda', int(os.getenv("RANK"))))
+
     logger.log("training...")
     TrainLoop(
         args=args,
@@ -93,14 +95,14 @@ def create_argparser():
         schedule_sampler="uniform",
         lr=1e-4,
         weight_decay=0.0,
-        lr_anneal_steps=0,
+        lr_anneal_steps=1000,
         batch_size=2,
         microbatch=1,  # -1 disables microbatches
         ema_rate="0.9999",  # comma-separated list of EMA values
         log_interval=10,
         save_interval=10000,
         resume_checkpoint="",
-        use_fp16=True,
+        use_fp16=False,
         fp16_scale_growth=1e-3
     )
     defaults.update(model_and_diffusion_defaults())

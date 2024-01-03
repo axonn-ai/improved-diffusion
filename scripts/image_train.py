@@ -65,8 +65,6 @@ def main():
     model, opt, data, __ = deepspeed.initialize(
         args=args, model=model, optimizer=opt, training_data=data)
 
-    torch.cuda.set_device(torch.device('cuda', int(os.getenv("RANK"))))
-
     logger.log("training...")
     TrainLoop(
         args=args,

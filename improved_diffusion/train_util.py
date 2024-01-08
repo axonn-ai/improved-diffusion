@@ -25,14 +25,11 @@ from .resample import LossAwareSampler, UniformSampler
 # 20-21 within the first ~1K steps of training.
 INITIAL_LOG_LOSS_SCALE = 20.0
 
-import deepspeed
-
 
 class TrainLoop:
     def __init__(
         self,
         *,
-        args,
         opt,
         model,
         diffusion,
@@ -169,6 +166,7 @@ class TrainLoop:
         self.model.convert_to_fp16()
 
     def run_loop(self):
+        # needed to populate the data loader, otherwise next(self.data) will error
         self.data._create_dataloader()
 
         while (
@@ -192,9 +190,11 @@ class TrainLoop:
     def run_step(self, batch, cond):
         self.forward_backward(batch, cond)
         if self.use_fp16:
+            # not using fp16 rn, but assuming deepspeed takes care of all of that?
             self.optimize_fp16()
         else:
-            self.optimize_normal()
+            # modified this function to do model_engine.step()
+           self.optimize_normal()
         self.log_step()
 
     def forward_backward(self, batch, cond):
@@ -208,6 +208,9 @@ class TrainLoop:
             last_batch = (i + self.microbatch) >= batch.shape[0]
             t, weights = self.schedule_sampler.sample(micro.shape[0], dist_util.dev())
 
+
+            # looks like training_losses method of GaussianDiffusion class takes
+            # care of both the forward pass and calculating the loss
             compute_losses = functools.partial(
                 self.diffusion.training_losses,
                 self.ddp_model,
@@ -231,11 +234,17 @@ class TrainLoop:
             log_loss_dict(
                 self.diffusion, t, {k: v * weights for k, v in losses.items()}
             )
+            """
             if self.use_fp16:
                 loss_scale = 2 ** self.lg_loss_scale
                 (loss * loss_scale).backward()
             else:
                 loss.backward()
+            """
+    
+            # this is just the model_engine
+            # this is a wrapper over loss.backward and should take care of scaling, etc as well if needed
+            self.ddp_model.backward(loss)
 
     def optimize_fp16(self):
         if any(not th.isfinite(p.grad).all() for p in self.model_params):
@@ -254,9 +263,12 @@ class TrainLoop:
         self.lg_loss_scale += self.fp16_scale_growth
 
     def optimize_normal(self):
-        self._log_grad_norm()
+        # .grad attributes not accessible in zero-3 model
+        # self._log_grad_norm()
         self._anneal_lr()
-        self.opt.step()
+        # self.opt.step()
+        # this is just the model_engine
+        self.ddp_model.step()
         for rate, params in zip(self.ema_rate, self.ema_params):
             update_ema(params, self.master_params, rate=rate)
 

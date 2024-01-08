@@ -15,12 +15,9 @@ from improved_diffusion.script_util import (
 )
 from improved_diffusion.train_util import TrainLoop
 
-import deepspeed
 import os
+import deepspeed
 from torch.optim import AdamW
-import torchvision
-from torchvision import transforms
-import torch
 
 
 def main():
@@ -51,34 +48,17 @@ def main():
 
     args.local_rank = int(os.environ.get("LOCAL_RANK"))
 
-    augmentations = transforms.Compose(
-        [
-            transforms.Resize(args.image_size, interpolation=transforms.InterpolationMode.BILINEAR),
-            transforms.CenterCrop(args.image_size), 
-            transforms.RandomHorizontalFlip(),
-            transforms.ToTensor(),
-        ]
-    )
-
     opt = AdamW(list(model.parameters()), lr = args.lr, weight_decay=args.weight_decay)
 
-    model, opt, data, __ = deepspeed.initialize(
+    model_engine, optimizer, data_loader, __ = deepspeed.initialize(
         args=args, model=model, optimizer=opt, training_data=data)
-
-    param_none_count = 0
-    for param in list(model.parameters()):
-        if param is None:
-            param_none_count += 1
-    print("Number of None Params: " + str(param_none_count))
-    print("Total Number of Params: " + str(len(list(model.parameters()))))
 
     logger.log("training...")
     TrainLoop(
-        args=args,
-        opt=opt,
-        model=model,
+        opt=optimizer,
+        model=model_engine,
         diffusion=diffusion,
-        data=data,
+        data=data_loader,
         batch_size=args.batch_size,
         microbatch=args.microbatch,
         lr=args.lr,
@@ -108,7 +88,7 @@ def create_argparser():
         save_interval=10000,
         resume_checkpoint="",
         use_fp16=False,
-        fp16_scale_growth=1e-3
+        fp16_scale_growth=1e-3,
     )
     defaults.update(model_and_diffusion_defaults())
     parser = argparse.ArgumentParser()

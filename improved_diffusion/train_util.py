@@ -175,17 +175,28 @@ class TrainLoop:
         ):
             batch, cond = next(self.data)
             self.run_step(batch, cond)
+            print("THIS IS WHERE LOGGING USUALLY STARTS")
+            """
             if self.step % self.log_interval == 0:
                 logger.dumpkvs()
+            """
+            # Disabled checkpointing for now as it was causing a pickling error
+            # doesn't deepspeed support checkpointing too?
+            
+            """
             if self.step % self.save_interval == 0:
                 self.save()
                 # Run for a finite amount of time in integration tests.
                 if os.environ.get("DIFFUSION_TRAINING_TEST", "") and self.step > 0:
                     return
+            """
             self.step += 1
+            print("Done with " + str(self.step) + " steps")
+        """
         # Save the last checkpoint if it wasn't already saved.
         if (self.step - 1) % self.save_interval != 0:
             self.save()
+        """
 
     def run_step(self, batch, cond):
         self.forward_backward(batch, cond)
@@ -269,8 +280,11 @@ class TrainLoop:
         # self.opt.step()
         # this is just the model_engine
         self.ddp_model.step()
+        # commenting out for now because this was erroring
+        """
         for rate, params in zip(self.ema_rate, self.ema_params):
             update_ema(params, self.master_params, rate=rate)
+        """
 
     def _log_grad_norm(self):
         sqsum = 0.0
@@ -287,10 +301,12 @@ class TrainLoop:
             param_group["lr"] = lr
 
     def log_step(self):
+        print("ENTERED log_step")
         logger.logkv("step", self.step + self.resume_step)
         logger.logkv("samples", (self.step + self.resume_step + 1) * self.global_batch)
         if self.use_fp16:
             logger.logkv("lg_loss_scale", self.lg_loss_scale)
+        print("EXITED log_step")
 
     def save(self):
         def save_checkpoint(rate, params):

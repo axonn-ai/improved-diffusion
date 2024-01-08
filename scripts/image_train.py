@@ -65,6 +65,13 @@ def main():
     model, opt, data, __ = deepspeed.initialize(
         args=args, model=model, optimizer=opt, training_data=data)
 
+    param_none_count = 0
+    for param in list(model.parameters()):
+        if param is None:
+            param_none_count += 1
+    print("Number of None Params: " + str(param_none_count))
+    print("Total Number of Params: " + str(len(list(model.parameters()))))
+
     logger.log("training...")
     TrainLoop(
         args=args,
@@ -94,8 +101,8 @@ def create_argparser():
         lr=1e-4,
         weight_decay=0.0,
         lr_anneal_steps=200,
-        batch_size=2,
-        microbatch=1,  # -1 disables microbatches
+        batch_size=1,  # overriden by run script
+        microbatch=1,  # -1 disables microbatches (microbatch needed for deepspeed)
         ema_rate="0.9999",  # comma-separated list of EMA values
         log_interval=10,
         save_interval=10000,

@@ -27,17 +27,18 @@ def main():
     logger.configure()
 
     logger.log("creating model and diffusion...")
+
+    torch.cuda.set_device(torch.device('cuda', int(os.getenv("RANK"))))
+
     model, diffusion = create_model_and_diffusion(
         **args_to_dict(args, model_and_diffusion_defaults().keys())
     )
     model.to(dist_util.dev())
    
     my_auto_wrap_policy = functools.partial(
-        size_based_auto_wrap_policy, min_num_params=20000
+        size_based_auto_wrap_policy, min_num_params=3000
     )
     model = FSDP(model, auto_wrap_policy=my_auto_wrap_policy)
-
-    torch.cuda.set_device(torch.device('cuda', int(os.getenv("RANK"))))
 
     schedule_sampler = create_named_schedule_sampler(args.schedule_sampler, diffusion)
 

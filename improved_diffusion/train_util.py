@@ -20,6 +20,8 @@ from .fp16_util import (
 from .nn import update_ema
 from .resample import LossAwareSampler, UniformSampler
 
+import matplotlib.pyplot as plt
+
 # For ImageNet experiments, this was a good default value.
 # We found that the lg_loss_scale quickly climbed to
 # 20-21 within the first ~1K steps of training.
@@ -164,12 +166,13 @@ class TrainLoop:
         self.model.convert_to_fp16()
 
     def run_loop(self):
+        losses = []
         while (
             not self.lr_anneal_steps
             or self.step + self.resume_step < self.lr_anneal_steps
         ):
             batch, cond = next(self.data)
-            self.run_step(batch, cond)
+            self.run_step(batch, cond, losses)
             if self.step % self.log_interval == 0:
                 logger.dumpkvs()
             """
@@ -184,15 +187,20 @@ class TrainLoop:
         # if (self.step - 1) % self.save_interval != 0:
         # self.save()
 
-    def run_step(self, batch, cond):
-        self.forward_backward(batch, cond)
+        plt.plot([i for i in range(len(losses))], losses)
+        plt.xlabel("Step")
+        plt.ylabel("Loss")
+        plt.savefig('out.png')
+
+    def run_step(self, batch, cond, losses):
+        self.forward_backward(batch, cond, losses)
         if self.use_fp16:
             self.optimize_fp16()
         else:
             self.optimize_normal()
         self.log_step()
 
-    def forward_backward(self, batch, cond):
+    def forward_backward(self, batch, cond, loss_list):
         zero_grad(self.model_params)
         for i in range(0, batch.shape[0], self.microbatch):
             micro = batch[i : i + self.microbatch].to(dist_util.dev())
@@ -223,6 +231,9 @@ class TrainLoop:
                 )
 
             loss = (losses["loss"] * weights).mean()
+
+            loss_list.append(loss.item())
+
             log_loss_dict(
                 self.diffusion, t, {k: v * weights for k, v in losses.items()}
             )

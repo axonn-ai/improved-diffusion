@@ -82,7 +82,7 @@ def create_argparser():
         weight_decay=0.0,
         lr_anneal_steps=200,
         batch_size=1,  # overriden by run script
-        microbatch=1,  # -1 disables microbatches (microbatch needed for deepspeed)
+        microbatch=-1,  # -1 disables microbatches
         ema_rate="0.9999",  # comma-separated list of EMA values
         log_interval=10,
         save_interval=10000,

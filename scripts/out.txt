@@ -1,410 +1,810 @@
 WORLD SIZE: 1
 CUDA AVAILABLE: True
-Logging to /tmp/openai-2024-01-05-12-30-47-452686
+Logging to /tmp/openai-2024-01-10-10-49-12-143288
 creating model and diffusion...
 creating data loader...
 training...
+batch.shape[0]: 128
+self.microbatch: 128
 ------------------------
-| grad_norm | 2.95     |
-| loss      | 1.01     |
-| loss_q0   | 1.01     |
-| loss_q1   | 0.998    |
-| loss_q2   | 1        |
-| loss_q3   | 1.03     |
-| mse       | 0.998    |
-| mse_q0    | 0.997    |
-| mse_q1    | 0.993    |
-| mse_q2    | 0.998    |
-| mse_q3    | 1        |
+| grad_norm | 2.97     |
+| loss      | 1.04     |
+| loss_q0   | 1.02     |
+| loss_q1   | 0.992    |
+| loss_q2   | 0.999    |
+| loss_q3   | 1.14     |
+| mse       | 0.993    |
+| mse_q0    | 0.995    |
+| mse_q1    | 0.987    |
+| mse_q2    | 0.994    |
+| mse_q3    | 0.995    |
 | samples   | 128      |
 | step      | 0        |
-| vb        | 0.0135   |
-| vb_q0     | 0.0167   |
-| vb_q1     | 0.00488  |
-| vb_q2     | 0.0051   |
-| vb_q3     | 0.0246   |
+| vb        | 0.0434   |
+| vb_q0     | 0.0248   |
+| vb_q1     | 0.00485  |
+| vb_q2     | 0.00512  |
+| vb_q3     | 0.144    |
 ------------------------
 saving model 0...
 saving model 0.9999...
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
 ------------------------
-| grad_norm | 2.99     |
-| loss      | 2.96     |
-| loss_q0   | 0.976    |
-| loss_q1   | 0.91     |
-| loss_q2   | 0.909    |
-| loss_q3   | 9.67     |
-| mse       | 0.912    |
-| mse_q0    | 0.941    |
-| mse_q1    | 0.906    |
-| mse_q2    | 0.905    |
-| mse_q3    | 0.896    |
+| grad_norm | 3        |
+| loss      | 0.93     |
+| loss_q0   | 0.956    |
+| loss_q1   | 0.906    |
+| loss_q2   | 0.906    |
+| loss_q3   | 0.953    |
+| mse       | 0.91     |
+| mse_q0    | 0.933    |
+| mse_q1    | 0.902    |
+| mse_q2    | 0.901    |
+| mse_q3    | 0.901    |
 | samples   | 1.41e+03 |
 | step      | 10       |
-| vb        | 2.05     |
-| vb_q0     | 0.0351   |
-| vb_q1     | 0.00454  |
-| vb_q2     | 0.00459  |
-| vb_q3     | 8.78     |
+| vb        | 0.0207   |
+| vb_q0     | 0.0231   |
+| vb_q1     | 0.00452  |
+| vb_q2     | 0.00455  |
+| vb_q3     | 0.052    |
 ------------------------
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
 ------------------------
-| grad_norm | 2.86     |
-| loss      | 0.748    |
-| loss_q0   | 0.804    |
-| loss_q1   | 0.726    |
-| loss_q2   | 0.718    |
-| loss_q3   | 0.745    |
-| mse       | 0.734    |
-| mse_q0    | 0.78     |
-| mse_q1    | 0.723    |
-| mse_q2    | 0.714    |
-| mse_q3    | 0.72     |
+| grad_norm | 2.82     |
+| loss      | 0.747    |
+| loss_q0   | 0.801    |
+| loss_q1   | 0.719    |
+| loss_q2   | 0.721    |
+| loss_q3   | 0.741    |
+| mse       | 0.735    |
+| mse_q0    | 0.782    |
+| mse_q1    | 0.716    |
+| mse_q2    | 0.717    |
+| mse_q3    | 0.719    |
 | samples   | 2.69e+03 |
 | step      | 20       |
-| vb        | 0.0141   |
-| vb_q0     | 0.0236   |
-| vb_q1     | 0.00364  |
-| vb_q2     | 0.00367  |
-| vb_q3     | 0.025    |
+| vb        | 0.0122   |
+| vb_q0     | 0.0194   |
+| vb_q1     | 0.00357  |
+| vb_q2     | 0.0036   |
+| vb_q3     | 0.0212   |
 ------------------------
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
 ------------------------
-| grad_norm | 2.51     |
-| loss      | 1.69     |
+| grad_norm | 2.52     |
+| loss      | 0.593    |
 | loss_q0   | 0.669    |
-| loss_q1   | 0.57     |
-| loss_q2   | 0.561    |
-| loss_q3   | 4.92     |
-| mse       | 0.582    |
-| mse_q0    | 0.644    |
-| mse_q1    | 0.567    |
-| mse_q2    | 0.558    |
-| mse_q3    | 0.555    |
+| loss_q1   | 0.568    |
+| loss_q2   | 0.562    |
+| loss_q3   | 0.582    |
+| mse       | 0.581    |
+| mse_q0    | 0.649    |
+| mse_q1    | 0.566    |
+| mse_q2    | 0.56     |
+| mse_q3    | 0.558    |
 | samples   | 3.97e+03 |
 | step      | 30       |
-| vb        | 1.1      |
-| vb_q0     | 0.0249   |
-| vb_q1     | 0.00282  |
-| vb_q2     | 0.00283  |
-| vb_q3     | 4.37     |
+| vb        | 0.0122   |
+| vb_q0     | 0.0201   |
+| vb_q1     | 0.00285  |
+| vb_q2     | 0.00285  |
+| vb_q3     | 0.0247   |
 ------------------------
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
 ------------------------
-| grad_norm | 2.18     |
-| loss      | 0.471    |
-| loss_q0   | 0.566    |
-| loss_q1   | 0.445    |
-| loss_q2   | 0.429    |
-| loss_q3   | 0.449    |
-| mse       | 0.459    |
-| mse_q0    | 0.543    |
-| mse_q1    | 0.443    |
-| mse_q2    | 0.427    |
-| mse_q3    | 0.429    |
+| grad_norm | 2.16     |
+| loss      | 0.473    |
+| loss_q0   | 0.56     |
+| loss_q1   | 0.444    |
+| loss_q2   | 0.433    |
+| loss_q3   | 0.45     |
+| mse       | 0.462    |
+| mse_q0    | 0.539    |
+| mse_q1    | 0.442    |
+| mse_q2    | 0.431    |
+| mse_q3    | 0.431    |
 | samples   | 5.25e+03 |
 | step      | 40       |
-| vb        | 0.0121   |
-| vb_q0     | 0.0232   |
-| vb_q1     | 0.00224  |
-| vb_q2     | 0.00215  |
-| vb_q3     | 0.02     |
+| vb        | 0.0114   |
+| vb_q0     | 0.0205   |
+| vb_q1     | 0.00221  |
+| vb_q2     | 0.00217  |
+| vb_q3     | 0.019    |
 ------------------------
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
 ------------------------
-| grad_norm | 1.88     |
-| loss      | 0.373    |
-| loss_q0   | 0.471    |
-| loss_q1   | 0.352    |
+| grad_norm | 1.87     |
+| loss      | 1.19     |
+| loss_q0   | 0.498    |
+| loss_q1   | 0.347    |
 | loss_q2   | 0.333    |
-| loss_q3   | 0.334    |
+| loss_q3   | 3.47     |
 | mse       | 0.366    |
-| mse_q0    | 0.456    |
-| mse_q1    | 0.35     |
+| mse_q0    | 0.459    |
+| mse_q1    | 0.345    |
 | mse_q2    | 0.331    |
-| mse_q3    | 0.323    |
+| mse_q3    | 0.33     |
 | samples   | 6.53e+03 |
 | step      | 50       |
-| vb        | 0.00727  |
-| vb_q0     | 0.0144   |
-| vb_q1     | 0.00174  |
+| vb        | 0.826    |
+| vb_q0     | 0.0395   |
+| vb_q1     | 0.00173  |
 | vb_q2     | 0.00168  |
-| vb_q3     | 0.0115   |
+| vb_q3     | 3.14     |
 ------------------------
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
 ------------------------
-| grad_norm | 1.62     |
-| loss      | 0.302    |
-| loss_q0   | 0.419    |
+| grad_norm | 1.6      |
+| loss      | 0.895    |
+| loss_q0   | 0.412    |
 | loss_q1   | 0.277    |
-| loss_q2   | 0.255    |
-| loss_q3   | 0.261    |
-| mse       | 0.293    |
-| mse_q0    | 0.398    |
+| loss_q2   | 0.257    |
+| loss_q3   | 2.66     |
+| mse       | 0.297    |
+| mse_q0    | 0.399    |
 | mse_q1    | 0.276    |
-| mse_q2    | 0.254    |
-| mse_q3    | 0.247    |
+| mse_q2    | 0.256    |
+| mse_q3    | 0.25     |
 | samples   | 7.81e+03 |
 | step      | 60       |
-| vb        | 0.00911  |
-| vb_q0     | 0.0211   |
-| vb_q1     | 0.00139  |
-| vb_q2     | 0.00129  |
-| vb_q3     | 0.0132   |
+| vb        | 0.598    |
+| vb_q0     | 0.0129   |
+| vb_q1     | 0.00138  |
+| vb_q2     | 0.0013   |
+| vb_q3     | 2.41     |
 ------------------------
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
 ------------------------
-| grad_norm | 1.38     |
-| loss      | 0.637    |
-| loss_q0   | 0.386    |
-| loss_q1   | 0.222    |
-| loss_q2   | 0.198    |
-| loss_q3   | 1.72     |
-| mse       | 0.242    |
-| mse_q0    | 0.36     |
-| mse_q1    | 0.221    |
-| mse_q2    | 0.197    |
+| grad_norm | 1.39     |
+| loss      | 0.245    |
+| loss_q0   | 0.358    |
+| loss_q1   | 0.225    |
+| loss_q2   | 0.201    |
+| loss_q3   | 0.196    |
+| mse       | 0.24     |
+| mse_q0    | 0.348    |
+| mse_q1    | 0.224    |
+| mse_q2    | 0.2      |
 | mse_q3    | 0.191    |
 | samples   | 9.09e+03 |
 | step      | 70       |
-| vb        | 0.395    |
-| vb_q0     | 0.0262   |
-| vb_q1     | 0.00111  |
-| vb_q2     | 0.000993 |
-| vb_q3     | 1.53     |
+| vb        | 0.00463  |
+| vb_q0     | 0.0103   |
+| vb_q1     | 0.00112  |
+| vb_q2     | 0.00102  |
+| vb_q3     | 0.00575  |
 ------------------------
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
 ------------------------
-| grad_norm | 1.2      |
-| loss      | 0.797    |
-| loss_q0   | 0.341    |
+| grad_norm | 1.19     |
+| loss      | 0.204    |
+| loss_q0   | 0.323    |
 | loss_q1   | 0.184    |
-| loss_q2   | 0.158    |
-| loss_q3   | 2.46     |
-| mse       | 0.203    |
-| mse_q0    | 0.328    |
-| mse_q1    | 0.184    |
-| mse_q2    | 0.158    |
+| loss_q2   | 0.159    |
+| loss_q3   | 0.155    |
+| mse       | 0.199    |
+| mse_q0    | 0.311    |
+| mse_q1    | 0.183    |
+| mse_q2    | 0.159    |
 | mse_q3    | 0.149    |
 | samples   | 1.04e+04 |
 | step      | 80       |
-| vb        | 0.594    |
-| vb_q0     | 0.0131   |
-| vb_q1     | 0.000922 |
-| vb_q2     | 0.000794 |
-| vb_q3     | 2.31     |
+| vb        | 0.00463  |
+| vb_q0     | 0.0119   |
+| vb_q1     | 0.000924 |
+| vb_q2     | 0.000809 |
+| vb_q3     | 0.00559  |
 ------------------------
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
 ------------------------
-| grad_norm | 1.04     |
-| loss      | 0.189    |
-| loss_q0   | 0.323    |
+| grad_norm | 1.03     |
+| loss      | 0.18     |
+| loss_q0   | 0.309    |
 | loss_q1   | 0.157    |
 | loss_q2   | 0.128    |
-| loss_q3   | 0.131    |
-| mse       | 0.179    |
-| mse_q0    | 0.302    |
+| loss_q3   | 0.122    |
+| mse       | 0.175    |
+| mse_q0    | 0.295    |
 | mse_q1    | 0.156    |
 | mse_q2    | 0.127    |
 | mse_q3    | 0.118    |
 | samples   | 1.16e+04 |
 | step      | 90       |
-| vb        | 0.00905  |
-| vb_q0     | 0.0212   |
-| vb_q1     | 0.000788 |
-| vb_q2     | 0.000641 |
-| vb_q3     | 0.0127   |
+| vb        | 0.00497  |
+| vb_q0     | 0.014    |
+| vb_q1     | 0.000794 |
+| vb_q2     | 0.000639 |
+| vb_q3     | 0.0043   |
 ------------------------
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
 ------------------------
-| grad_norm | 0.923    |
-| loss      | 0.338    |
-| loss_q0   | 0.291    |
-| loss_q1   | 0.135    |
-| loss_q2   | 0.107    |
-| loss_q3   | 0.794    |
-| mse       | 0.15     |
-| mse_q0    | 0.279    |
-| mse_q1    | 0.135    |
-| mse_q2    | 0.107    |
-| mse_q3    | 0.0957   |
+| grad_norm | 0.912    |
+| loss      | 0.16     |
+| loss_q0   | 0.295    |
+| loss_q1   | 0.134    |
+| loss_q2   | 0.106    |
+| loss_q3   | 0.0998   |
+| mse       | 0.153    |
+| mse_q0    | 0.275    |
+| mse_q1    | 0.133    |
+| mse_q2    | 0.106    |
+| mse_q3    | 0.0949   |
 | samples   | 1.29e+04 |
 | step      | 100      |
-| vb        | 0.188    |
-| vb_q0     | 0.0125   |
-| vb_q1     | 0.000682 |
-| vb_q2     | 0.000534 |
-| vb_q3     | 0.698    |
+| vb        | 0.00663  |
+| vb_q0     | 0.0199   |
+| vb_q1     | 0.000681 |
+| vb_q2     | 0.000529 |
+| vb_q3     | 0.00488  |
 ------------------------
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
 ------------------------
-| grad_norm | 0.814    |
-| loss      | 0.147    |
-| loss_q0   | 0.296    |
-| loss_q1   | 0.118    |
-| loss_q2   | 0.0909   |
-| loss_q3   | 0.0812   |
-| mse       | 0.141    |
-| mse_q0    | 0.278    |
+| grad_norm | 0.794    |
+| loss      | 0.15     |
+| loss_q0   | 0.299    |
+| loss_q1   | 0.119    |
+| loss_q2   | 0.0903   |
+| loss_q3   | 0.0811   |
+| mse       | 0.145    |
+| mse_q0    | 0.284    |
 | mse_q1    | 0.118    |
-| mse_q2    | 0.0904   |
-| mse_q3    | 0.0781   |
+| mse_q2    | 0.0898   |
+| mse_q3    | 0.078    |
 | samples   | 1.42e+04 |
 | step      | 110      |
-| vb        | 0.00581  |
-| vb_q0     | 0.0187   |
-| vb_q1     | 0.000598 |
-| vb_q2     | 0.000453 |
-| vb_q3     | 0.00309  |
+| vb        | 0.00514  |
+| vb_q0     | 0.0158   |
+| vb_q1     | 0.000602 |
+| vb_q2     | 0.000452 |
+| vb_q3     | 0.00303  |
 ------------------------
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
 ------------------------
-| grad_norm | 0.734    |
-| loss      | 0.136    |
-| loss_q0   | 0.306    |
-| loss_q1   | 0.109    |
-| loss_q2   | 0.0798   |
-| loss_q3   | 0.0697   |
+| grad_norm | 0.721    |
+| loss      | 0.133    |
+| loss_q0   | 0.281    |
+| loss_q1   | 0.106    |
+| loss_q2   | 0.0784   |
+| loss_q3   | 0.0678   |
 | mse       | 0.128    |
-| mse_q0    | 0.274    |
-| mse_q1    | 0.108    |
-| mse_q2    | 0.0794   |
-| mse_q3    | 0.065    |
+| mse_q0    | 0.265    |
+| mse_q1    | 0.106    |
+| mse_q2    | 0.078    |
+| mse_q3    | 0.0653   |
 | samples   | 1.55e+04 |
 | step      | 120      |
-| vb        | 0.0087   |
-| vb_q0     | 0.032    |
-| vb_q1     | 0.00055  |
-| vb_q2     | 0.000394 |
-| vb_q3     | 0.0047   |
+| vb        | 0.00481  |
+| vb_q0     | 0.0162   |
+| vb_q1     | 0.000533 |
+| vb_q2     | 0.000395 |
+| vb_q3     | 0.00251  |
 ------------------------
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
 ------------------------
-| grad_norm | 0.653    |
-| loss      | 0.24     |
-| loss_q0   | 0.277    |
-| loss_q1   | 0.102    |
-| loss_q2   | 0.0696   |
-| loss_q3   | 0.522    |
-| mse       | 0.119    |
-| mse_q0    | 0.247    |
-| mse_q1    | 0.101    |
-| mse_q2    | 0.0693   |
-| mse_q3    | 0.057    |
+| grad_norm | 0.658    |
+| loss      | 0.126    |
+| loss_q0   | 0.279    |
+| loss_q1   | 0.1      |
+| loss_q2   | 0.07     |
+| loss_q3   | 0.0598   |
+| mse       | 0.121    |
+| mse_q0    | 0.262    |
+| mse_q1    | 0.0995   |
+| mse_q2    | 0.0697   |
+| mse_q3    | 0.0561   |
 | samples   | 1.68e+04 |
 | step      | 130      |
-| vb        | 0.121    |
-| vb_q0     | 0.0299   |
-| vb_q1     | 0.000515 |
+| vb        | 0.00527  |
+| vb_q0     | 0.0167   |
+| vb_q1     | 0.000508 |
 | vb_q2     | 0.00035  |
-| vb_q3     | 0.465    |
+| vb_q3     | 0.00365  |
 ------------------------
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
 ------------------------
-| grad_norm | 0.602    |
-| loss      | 0.212    |
-| loss_q0   | 0.287    |
-| loss_q1   | 0.0929   |
-| loss_q2   | 0.0641   |
-| loss_q3   | 0.369    |
-| mse       | 0.114    |
-| mse_q0    | 0.256    |
-| mse_q1    | 0.0924   |
-| mse_q2    | 0.0638   |
+| grad_norm | 0.596    |
+| loss      | 0.215    |
+| loss_q0   | 0.259    |
+| loss_q1   | 0.0947   |
+| loss_q2   | 0.0639   |
+| loss_q3   | 0.434    |
+| mse       | 0.108    |
+| mse_q0    | 0.248    |
+| mse_q1    | 0.0942   |
+| mse_q2    | 0.0636   |
 | mse_q3    | 0.0497   |
 | samples   | 1.8e+04  |
 | step      | 140      |
-| vb        | 0.0975   |
-| vb_q0     | 0.0309   |
-| vb_q1     | 0.000467 |
-| vb_q2     | 0.000321 |
-| vb_q3     | 0.32     |
+| vb        | 0.107    |
+| vb_q0     | 0.0112   |
+| vb_q1     | 0.000484 |
+| vb_q2     | 0.000319 |
+| vb_q3     | 0.385    |
 ------------------------
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
 ------------------------
-| grad_norm | 0.551    |
-| loss      | 0.121    |
-| loss_q0   | 0.279    |
-| loss_q1   | 0.089    |
-| loss_q2   | 0.0596   |
-| loss_q3   | 0.0476   |
-| mse       | 0.113    |
-| mse_q0    | 0.249    |
-| mse_q1    | 0.0886   |
-| mse_q2    | 0.0593   |
-| mse_q3    | 0.0443   |
+| grad_norm | 0.569    |
+| loss      | 0.188    |
+| loss_q0   | 0.242    |
+| loss_q1   | 0.09     |
+| loss_q2   | 0.0595   |
+| loss_q3   | 0.373    |
+| mse       | 0.108    |
+| mse_q0    | 0.232    |
+| mse_q1    | 0.0895   |
+| mse_q2    | 0.0592   |
+| mse_q3    | 0.0453   |
 | samples   | 1.93e+04 |
 | step      | 150      |
-| vb        | 0.00857  |
-| vb_q0     | 0.0292   |
-| vb_q1     | 0.000452 |
+| vb        | 0.0805   |
+| vb_q0     | 0.0102   |
+| vb_q1     | 0.00046  |
 | vb_q2     | 0.000298 |
-| vb_q3     | 0.00329  |
+| vb_q3     | 0.328    |
 ------------------------
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
 ------------------------
-| grad_norm | 0.525    |
-| loss      | 0.11     |
-| loss_q0   | 0.251    |
-| loss_q1   | 0.0862   |
-| loss_q2   | 0.0552   |
-| loss_q3   | 0.0426   |
-| mse       | 0.105    |
-| mse_q0    | 0.233    |
-| mse_q1    | 0.0858   |
-| mse_q2    | 0.0549   |
-| mse_q3    | 0.0415   |
+| grad_norm | 0.526    |
+| loss      | 0.112    |
+| loss_q0   | 0.269    |
+| loss_q1   | 0.0877   |
+| loss_q2   | 0.0549   |
+| loss_q3   | 0.0431   |
+| mse       | 0.106    |
+| mse_q0    | 0.251    |
+| mse_q1    | 0.0872   |
+| mse_q2    | 0.0547   |
+| mse_q3    | 0.0412   |
 | samples   | 2.06e+04 |
 | step      | 160      |
-| vb        | 0.00483  |
-| vb_q0     | 0.0172   |
-| vb_q1     | 0.000436 |
-| vb_q2     | 0.000279 |
-| vb_q3     | 0.00109  |
+| vb        | 0.00512  |
+| vb_q0     | 0.0187   |
+| vb_q1     | 0.000446 |
+| vb_q2     | 0.000274 |
+| vb_q3     | 0.00191  |
 ------------------------
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
 ------------------------
-| grad_norm | 0.499    |
-| loss      | 0.118    |
-| loss_q0   | 0.283    |
-| loss_q1   | 0.0857   |
-| loss_q2   | 0.0523   |
-| loss_q3   | 0.0394   |
-| mse       | 0.107    |
-| mse_q0    | 0.245    |
-| mse_q1    | 0.0853   |
-| mse_q2    | 0.052    |
-| mse_q3    | 0.0383   |
+| grad_norm | 0.488    |
+| loss      | 0.109    |
+| loss_q0   | 0.272    |
+| loss_q1   | 0.0835   |
+| loss_q2   | 0.0528   |
+| loss_q3   | 0.041    |
+| mse       | 0.104    |
+| mse_q0    | 0.256    |
+| mse_q1    | 0.0831   |
+| mse_q2    | 0.0526   |
+| mse_q3    | 0.0386   |
 | samples   | 2.19e+04 |
 | step      | 170      |
-| vb        | 0.0104   |
-| vb_q0     | 0.0376   |
-| vb_q1     | 0.000435 |
-| vb_q2     | 0.000263 |
-| vb_q3     | 0.00113  |
+| vb        | 0.00452  |
+| vb_q0     | 0.0161   |
+| vb_q1     | 0.000425 |
+| vb_q2     | 0.000264 |
+| vb_q3     | 0.00236  |
 ------------------------
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
 ------------------------
-| grad_norm | 0.471    |
-| loss      | 0.181    |
-| loss_q0   | 0.243    |
-| loss_q1   | 0.085    |
-| loss_q2   | 0.0522   |
-| loss_q3   | 0.344    |
-| mse       | 0.102    |
-| mse_q0    | 0.232    |
-| mse_q1    | 0.0845   |
-| mse_q2    | 0.0519   |
-| mse_q3    | 0.0371   |
+| grad_norm | 0.463    |
+| loss      | 0.102    |
+| loss_q0   | 0.263    |
+| loss_q1   | 0.0798   |
+| loss_q2   | 0.0507   |
+| loss_q3   | 0.0376   |
+| mse       | 0.0956   |
+| mse_q0    | 0.236    |
+| mse_q1    | 0.0793   |
+| mse_q2    | 0.0504   |
+| mse_q3    | 0.0364   |
 | samples   | 2.32e+04 |
 | step      | 180      |
-| vb        | 0.0785   |
-| vb_q0     | 0.0109   |
-| vb_q1     | 0.000436 |
-| vb_q2     | 0.00026  |
-| vb_q3     | 0.307    |
+| vb        | 0.0064   |
+| vb_q0     | 0.027    |
+| vb_q1     | 0.000405 |
+| vb_q2     | 0.000252 |
+| vb_q3     | 0.00119  |
 ------------------------
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
 ------------------------
-| grad_norm | 0.455    |
-| loss      | 0.11     |
-| loss_q0   | 0.248    |
-| loss_q1   | 0.081    |
-| loss_q2   | 0.0496   |
-| loss_q3   | 0.0375   |
-| mse       | 0.105    |
-| mse_q0    | 0.232    |
-| mse_q1    | 0.0806   |
-| mse_q2    | 0.0494   |
-| mse_q3    | 0.0358   |
+| grad_norm | 0.449    |
+| loss      | 0.102    |
+| loss_q0   | 0.225    |
+| loss_q1   | 0.0807   |
+| loss_q2   | 0.0498   |
+| loss_q3   | 0.0361   |
+| mse       | 0.0983   |
+| mse_q0    | 0.215    |
+| mse_q1    | 0.0803   |
+| mse_q2    | 0.0495   |
+| mse_q3    | 0.035    |
 | samples   | 2.44e+04 |
 | step      | 190      |
-| vb        | 0.00496  |
-| vb_q0     | 0.0155   |
-| vb_q1     | 0.000416 |
-| vb_q2     | 0.000248 |
-| vb_q3     | 0.00171  |
+| vb        | 0.00321  |
+| vb_q0     | 0.0103   |
+| vb_q1     | 0.000408 |
+| vb_q2     | 0.000247 |
+| vb_q3     | 0.00106  |
 ------------------------
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
+batch.shape[0]: 128
+self.microbatch: 128
 saving model 0...
 saving model 0.9999...

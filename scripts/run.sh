@@ -3,7 +3,7 @@
 #SBATCH -N 1
 #SBATCH -n 2
 #SBATCH -q debug
-#SBATCH --time=00:15:00
+#SBATCH --time=00:6:00
 #SBATCH -A csc547
 #SBATCH --gpus-per-node=2
 

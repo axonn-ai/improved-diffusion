@@ -1,0 +1,15 @@
+srun -n 2 python image_train.py --image_size 32 --num_channels 128 --num_res_blocks 3 --learn_sigma True --dropout 0.3 --diffusion_steps 4000 --noise_schedule cosine --lr 1e-4 --batch_size 64 --deepspeed_config ./ds_config.json
+Traceback (most recent call last):
+  File "/lustre/orion/csc547/scratch/adityaranjan/my-venv/improved-diffusion/scripts/image_train.py", line 7, in <module>
+Traceback (most recent call last):
+  File "/lustre/orion/csc547/scratch/adityaranjan/my-venv/improved-diffusion/scripts/image_train.py", line 7, in <module>
+    from improved_diffusion import dist_util, logger
+  File "/ccs/home/adityaranjan/scratch/my-venv/improved-diffusion/improved_diffusion/dist_util.py", line 10, in <module>
+    from improved_diffusion import dist_util, logger
+  File "/ccs/home/adityaranjan/scratch/my-venv/improved-diffusion/improved_diffusion/dist_util.py", line 10, in <module>
+    from mpi4py import MPI
+ImportError: libfabric.so.1: cannot open shared object file: No such file or directory
+    from mpi4py import MPI
+ImportError: libfabric.so.1: cannot open shared object file: No such file or directory
+srun: error: frontier02466: tasks 0-1: Exited with exit code 1
+srun: Terminating StepId=1591456.0

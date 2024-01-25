@@ -70,7 +70,7 @@ def create_argparser():
         log_interval=10,
         save_interval=10000,
         resume_checkpoint="",
-        use_fp16=False,
+        use_fp16=True,
         fp16_scale_growth=1e-3,
     )
     defaults.update(model_and_diffusion_defaults())

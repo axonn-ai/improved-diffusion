@@ -15,16 +15,37 @@ from improved_diffusion.script_util import (
 )
 from improved_diffusion.train_util import TrainLoop
 
+from axonn import axonn as ax
+from axonn.communication import communication_handle
 
 def main():
     args = create_argparser().parse_args()
 
-    dist_util.setup_dist()
+    G_depth, G_row, G_col = args.G_depth, args.G_row, args.G_col
+    handle = communication_handle(
+            G_row=G_row,
+            G_col=G_col,
+            G_depth=G_depth,
+            gpus_per_node=2
+        )
+
+    # try using bf16 eventually
+    ax.init(
+            G_data=1,
+            G_inter=1,
+            G_intra_r=G_row,
+            G_intra_c=G_col,
+            G_intra_d=G_depth,
+            gpus_per_node=2,
+        )
+
+
+    # dist_util.setup_dist()
     logger.configure()
 
     logger.log("creating model and diffusion...")
     model, diffusion = create_model_and_diffusion(
-        **args_to_dict(args, model_and_diffusion_defaults().keys())
+        **args_to_dict(args, model_and_diffusion_defaults().keys()), handle=handle
     )
     model.to(dist_util.dev())
     schedule_sampler = create_named_schedule_sampler(args.schedule_sampler, diffusion)
@@ -72,6 +93,12 @@ def create_argparser():
         resume_checkpoint="",
         use_fp16=False,
         fp16_scale_growth=1e-3,
+        G_row=1,
+        G_col=1,
+        G_depth=1,
+        use_flash_attention=False,
+        async_comm=False,
+        mid_channels=32
     )
     defaults.update(model_and_diffusion_defaults())
     parser = argparse.ArgumentParser()

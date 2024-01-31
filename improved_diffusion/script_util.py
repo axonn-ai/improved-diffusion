@@ -55,6 +55,10 @@ def create_model_and_diffusion(
     rescale_learned_sigmas,
     use_checkpoint,
     use_scale_shift_norm,
+    use_flash_attention,
+    handle,
+    async_comm,
+    mid_channels
 ):
     model = create_model(
         image_size,
@@ -95,6 +99,10 @@ def create_model(
     num_heads_upsample,
     use_scale_shift_norm,
     dropout,
+    use_flash_attention,
+    handle,
+    async_comm,
+    mid_channels
 ):
     if image_size == 256:
         channel_mult = (1, 1, 2, 2, 4, 4)
@@ -122,6 +130,10 @@ def create_model(
         num_heads=num_heads,
         num_heads_upsample=num_heads_upsample,
         use_scale_shift_norm=use_scale_shift_norm,
+        use_flash_attention=use_flash_attention,
+        handle=handle,
+        async_comm=async_comm,
+        mid_channels=mid_channels
     )
 
 

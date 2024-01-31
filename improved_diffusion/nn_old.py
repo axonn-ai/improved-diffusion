@@ -6,7 +6,6 @@ import math
 
 import torch as th
 import torch.nn as nn
-import torch.nn.functional as F
 
 
 # PyTorch 1.7 has SiLU, but we support PyTorch 1.5.
@@ -17,7 +16,7 @@ class SiLU(nn.Module):
 
 class GroupNorm32(nn.GroupNorm):
     def forward(self, x):
-        return F.group_norm(x.float(), self.num_groups, self.weight.float(), self.bias.float(), self.eps).to(x.dtype)
+        return super().forward(x.float()).type(x.dtype)
 
 
 def conv_nd(dims, *args, **kwargs):
@@ -100,11 +99,8 @@ def normalization(channels):
     """
     return GroupNorm32(32, channels)
 
-def divide(a, b):
-    assert a%b==0
-    return a // b
 
-def timestep_embedding(timesteps, dim, max_period=10000, partition=0, num_partitions=1):
+def timestep_embedding(timesteps, dim, max_period=10000):
     """
     Create sinusoidal timestep embeddings.
 
@@ -114,25 +110,14 @@ def timestep_embedding(timesteps, dim, max_period=10000, partition=0, num_partit
     :param max_period: controls the minimum frequency of the embeddings.
     :return: an [N x dim] Tensor of positional embeddings.
     """
-    assert dim%4 == 0
     half = dim // 2
     freqs = th.exp(
         -math.log(max_period) * th.arange(start=0, end=half, dtype=th.float32) / half
     ).to(device=timesteps.device)
-
-    #from axonn_tensor_parallel.logger import log_dist
-    #log_dist(f'FREQS:- {freqs.shape}',[0])
     args = timesteps[:, None].float() * freqs[None]
-    #log_dist(f'ARGS:- {args.shape}',[0])
-    cosine = th.cos(args)
-    sine = th.sin(args)
-    cosine_split = th.split(cosine, divide(cosine.shape[-1], num_partitions), dim=-1)[partition]
-    sine_split = th.split(sine, divide(sine.shape[-1], num_partitions), dim=-1)[partition]
-    embedding = th.cat([cosine_split, sine_split], dim=-1)
-    #log_dist(f'embedding:- {embedding.shape}',[0])
-    #if dim % 2:
-    #    embedding = th.cat([embedding, th.zeros_like(embedding[:, :1])], dim=-1)
-    #embedding = th.split(embedding, divide(embedding.shape[-1], num_partitions), dim=-1)[partition]
+    embedding = th.cat([th.cos(args), th.sin(args)], dim=-1)
+    if dim % 2:
+        embedding = th.cat([embedding, th.zeros_like(embedding[:, :1])], dim=-1)
     return embedding
 
 
@@ -183,4 +168,3 @@ class CheckpointFunction(th.autograd.Function):
         del ctx.input_params
         del output_tensors
         return (None, None) + input_grads
-

@@ -25,6 +25,8 @@ from .resample import LossAwareSampler, UniformSampler
 # 20-21 within the first ~1K steps of training.
 INITIAL_LOG_LOSS_SCALE = 20.0
 
+from axonn import axonn as ax
+
 
 class TrainLoop:
     def __init__(
@@ -92,6 +94,9 @@ class TrainLoop:
                 copy.deepcopy(self.master_params) for _ in range(len(self.ema_rate))
             ]
 
+        self.model, self.opt = ax.register_model_and_optimizer(self.model, self.opt)
+
+        """
         if th.cuda.is_available():
             self.use_ddp = True
             self.ddp_model = DDP(
@@ -110,6 +115,9 @@ class TrainLoop:
                 )
             self.use_ddp = False
             self.ddp_model = self.model
+        """
+        self.ddp_model = model
+        self.use_ddp = False
 
     def _load_and_sync_parameters(self):
         resume_checkpoint = find_resume_checkpoint() or self.resume_checkpoint

@@ -31,7 +31,8 @@ def model_and_diffusion_defaults():
         rescale_timesteps=True,
         rescale_learned_sigmas=True,
         use_checkpoint=False,
-        use_scale_shift_norm=True,
+        # use_scale_shift_norm=True, assertion error was throwing
+        use_scale_shift_norm=False
     )
 
 
@@ -72,6 +73,10 @@ def create_model_and_diffusion(
         num_heads_upsample=num_heads_upsample,
         use_scale_shift_norm=use_scale_shift_norm,
         dropout=dropout,
+        use_flash_attention=use_flash_attention,
+        handle=handle,
+        async_comm=async_comm,
+        mid_channels=mid_channels
     )
     diffusion = create_gaussian_diffusion(
         steps=diffusion_steps,

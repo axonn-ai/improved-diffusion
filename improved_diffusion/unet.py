@@ -9,7 +9,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.distributed as dist
 
-from nn import (
+from .nn import (
     conv_nd,
     linear,
     avg_pool_nd,
@@ -18,14 +18,14 @@ from nn import (
     timestep_embedding,
 )
 
-from fused_ops import (
+from .fused_ops import (
     silu_dropout_fused,
     fused_residual_bias_add,
     fused_residual_bias_add_prediv,
 )
 
 
-from flops import conv3x3_flops
+from .flops import conv3x3_flops
 
 # from axonn_tensor_parallel.layers import Conv2d, Linear
 # from axonn_tensor_parallel.communication_ops import all_reduce
@@ -35,7 +35,8 @@ from flops import conv3x3_flops
 # from axonn_tensor_parallel.layers.global_vars import Method
 
 # ok to replace with these imports instead?
-from axonn.layers import Conv2d, Linear
+from axonn.intra_layer.conv import Conv2d
+from axonn.intra_layer.fully_connected import Linear
 from axonn.intra_layer.communication import _all_reduce
 
 import asyncio
@@ -208,13 +209,15 @@ class ResBlock(TimestepBlock):
         self.use_scale_shift_norm = use_scale_shift_norm
         self.handle = handle
 
-        inner_parallel_group = handle.get_row_parallel_group()
+        # row group is outer in axonn?
+        inner_parallel_group = handle.outer_intra_layer_parallel_group
         inner_parallel_size = dist.get_world_size(inner_parallel_group)
         inner_parallel_rank = dist.get_rank(inner_parallel_group)
 
-        outer_parallel_group = handle.get_column_parallel_group()
+        # column group is inner in axonn?
+        outer_parallel_group = handle.inner_intra_layer_parallel_group
         outer_parallel_size = dist.get_world_size(outer_parallel_group)
-        depth_parallel_group = handle.get_depth_parallel_group()
+        depth_parallel_group = handle.depth_intra_layer_parallel_group
 
         #self.inner_parallel_rank = inner_parallel_rank
         #self.inner_parallel_size = inner_parallel_size
@@ -243,8 +246,8 @@ class ResBlock(TimestepBlock):
                     in_channels=channels,
                     out_channels=self.out_channels,
                     kernel_size=3,
-                    bias=False,
-                    padding=1
+                    padding=1,
+                    bias=False
                     # transpose_groups=False,
                     # async_comm=async_comm,
                     # method=method,
@@ -372,9 +375,9 @@ class ResBlock(TimestepBlock):
         # if self.async_comm:
         # x = residual_prologue(x)
         h = checkpoint_wrapper(self.in_layers, x, use_checkpoint=self.use_checkpoint)
-        h = await self.in_conv(h)
+        h = self.in_conv(h)
         emb_out = self.emb_layers_silu(emb).type(h.dtype)
-        emb_out = await self.emb_layers_linear(emb_out)
+        emb_out = self.emb_layers_linear(emb_out)
         while len(emb_out.shape) < len(h.shape):
             emb_out = emb_out[..., None]
         if self.use_scale_shift_norm:
@@ -388,7 +391,7 @@ class ResBlock(TimestepBlock):
                 h = fused_residual_bias_add(h, bias, emb)
                 return norm(h)
             h = checkpoint_wrapper(_pre_out_conv, h, self.in_conv_bias, emb_out, self.out_layers, use_checkpoint=self.use_checkpoint)
-            h = await self.out_conv(h)
+            h = self.out_conv(h)
         """
         if isAsync(self.skip_connection.forward):
             skip_output = await self.skip_connection(x)
@@ -538,9 +541,9 @@ class AttentionBlock(nn.Module):
         # x = residual_prologue(x)
         h = self.norm(x)
         b, c, *spatial = h.shape
-        qkv = await self.qkv(h)
+        qkv = self.qkv(h)
         h = checkpoint_wrapper(self._internal_compute, qkv, b, c, use_checkpoint=self.use_checkpoint) 
-        h = await self.proj_out(h)
+        h = self.proj_out(h)
         return fused_residual_bias_add(x, h, self.proj_out_bias)
 
 
@@ -668,14 +671,16 @@ class UNetModel(nn.Module):
         self.num_heads_upsample = num_heads_upsample
         # self.method = method
 
-        inner_parallel_group = handle.get_row_parallel_group()
+        # previously this was getting row group and in axonn row is outer?
+        inner_parallel_group = handle.outer_intra_layer_parallel_group
         inner_parallel_size = dist.get_world_size(inner_parallel_group)
         inner_parallel_rank = dist.get_rank(inner_parallel_group)
 
-        outer_parallel_group = handle.get_column_parallel_group()
+        # previously this was getting column and in axonn column is inner?
+        outer_parallel_group = handle.inner_intra_layer_parallel_group
         outer_parallel_size = dist.get_world_size(outer_parallel_group)
 
-        depth_parallel_group = handle.get_depth_parallel_group()
+        depth_parallel_group = handle.inner_intra_layer_parallel_group
 
         self.inner_parallel_rank = inner_parallel_rank
         self.inner_parallel_size = inner_parallel_size
@@ -746,7 +751,7 @@ class UNetModel(nn.Module):
                         use_scale_shift_norm=use_scale_shift_norm,
                         handle=handle,
                         async_comm=async_comm,
-                        method=method,
+                        # method=method,
                         mid_channels=mid_channels
                     )
                 ]
@@ -787,7 +792,7 @@ class UNetModel(nn.Module):
                     raise NotImplementedError
                     layers.append(
                         AttentionBlock(
-                            ch, use_checkpoint=use_checkpoint, num_heads=num_heads, handle=handle, use_flash_attention=use_flash_attention, async_comm=async_comm, method=method
+                            ch, use_checkpoint=use_checkpoint, num_heads=num_heads, handle=handle, use_flash_attention=use_flash_attention, async_comm=async_comm
                         )
                     )
                 self.input_blocks.append(TimestepEmbedSequential(*layers))
@@ -809,10 +814,10 @@ class UNetModel(nn.Module):
                 use_scale_shift_norm=use_scale_shift_norm,
                 handle=handle,
                 async_comm=async_comm,
-                method=method,
+                # method=method,
                 mid_channels=mid_channels
             ),
-            AttentionBlock(ch, use_checkpoint=use_checkpoint, num_heads=num_heads, handle=handle, use_flash_attention=use_flash_attention, async_comm=async_comm, method=method),
+            AttentionBlock(ch, use_checkpoint=use_checkpoint, num_heads=num_heads, handle=handle, use_flash_attention=use_flash_attention, async_comm=async_comm),
             ResBlock(
                 ch,
                 time_embed_dim,
@@ -822,7 +827,7 @@ class UNetModel(nn.Module):
                 use_scale_shift_norm=use_scale_shift_norm,
                 handle=handle,
                 async_comm=async_comm,
-                method=method,
+                # method=method,
                 mid_channels=mid_channels
             ),
         )
@@ -854,7 +859,7 @@ class UNetModel(nn.Module):
                         use_scale_shift_norm=use_scale_shift_norm,
                         handle=handle,
                         async_comm=async_comm,
-                        method=method,
+                        # method=method,
                         mid_channels=mid_channels
                     )
                 ]
@@ -897,7 +902,7 @@ class UNetModel(nn.Module):
                             handle=handle,
                             use_flash_attention=use_flash_attention,
                             async_comm=async_comm,
-                            method=method
+                            # method=method
                         )
                     )
                 if level and i == num_res_blocks:
@@ -986,9 +991,11 @@ class UNetModel(nn.Module):
                 num_partitions=num_partitions, 
                 ).to(x.dtype)
         
-        emb = await self.time_embed_l1(emb)
+        # emb = await self.time_embed_l1(emb)
+        emb = self.time_embed_l1(emb)
         emb = self.time_embed_l2(emb)
-        emb = await self.time_embed_l3(emb)
+        # emb = await self.time_embed_l3(emb)
+        emb = self.time_embed_l3(emb)
         
         if self.num_classes is not None:
             raise NotImplementedError
@@ -1004,19 +1011,20 @@ class UNetModel(nn.Module):
         #log_dist(f'Before input blocks First five elements of h - {h.reshape(-1)[10:15]}', [0])
         
         for module in self.input_blocks:
-            h = await module(h, emb)
+            # h = await module(h, emb)
+            h = module(h, emb)
             # if self.async_comm:
             # h = residual_prologue(h)
             hs.append(h)
             iters += 1
         #log_dist(f'After input blocks First five elements of h - {h.reshape(-1)[10:15]}', [0])
-        h = await self.middle_block(h,emb)
+        h = self.middle_block(h,emb)
        # log_dist(f'After middle blocks First five elements of h - {h.reshape(-1)[10:15]}', [0])
         step=0
         for module in self.output_blocks:
             prev = hs.pop()#.detach()#.detach()
             cat_in = th.cat([h, prev], dim=1)
-            h = await module(cat_in, emb)
+            h = module(cat_in, emb)
             #log_dist(f'After output block number {step} {module.__class__} First five elements of h - {h.reshape(-1)[10:15]}', [0])
             step += 1
         h = h.type(x.dtype)

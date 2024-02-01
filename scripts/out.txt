@@ -1,0 +1,38 @@
+Logging to /tmp/openai-2024-01-31-19-25-56-681663
+creating model and diffusion...
+128 2
+128 2
+128 2
+128 2
+Traceback (most recent call last):
+  File "/nfshomes/aranjan2/adi-venv/improved-diffusion/scripts/image_train.py", line 109, in <module>
+    main()
+  File "/nfshomes/aranjan2/adi-venv/improved-diffusion/scripts/image_train.py", line 49, in main
+    model, diffusion = create_model_and_diffusion(
+  File "/nfshomes/aranjan2/adi-venv/improved-diffusion/improved_diffusion/script_util.py", line 64, in create_model_and_diffusion
+    model = create_model(
+  File "/nfshomes/aranjan2/adi-venv/improved-diffusion/improved_diffusion/script_util.py", line 125, in create_model
+    return UNetModel(
+  File "/nfshomes/aranjan2/adi-venv/improved-diffusion/improved_diffusion/unet.py", line 792, in __init__
+    raise NotImplementedError
+NotImplementedError
+Rank 0 : Creating res block IC=128 OC=128
+128 2
+Rank 0 : Creating res block IC=128 OC=128
+128 2
+Rank 0 : Creating res block IC=128 OC=128
+128 2
+Rank 0 : Creating res block IC=128 OC=256
+128 2
+Traceback (most recent call last):
+  File "/nfshomes/aranjan2/adi-venv/improved-diffusion/scripts/image_train.py", line 109, in <module>
+    main()
+  File "/nfshomes/aranjan2/adi-venv/improved-diffusion/scripts/image_train.py", line 49, in main
+    model, diffusion = create_model_and_diffusion(
+  File "/nfshomes/aranjan2/adi-venv/improved-diffusion/improved_diffusion/script_util.py", line 64, in create_model_and_diffusion
+    model = create_model(
+  File "/nfshomes/aranjan2/adi-venv/improved-diffusion/improved_diffusion/script_util.py", line 125, in create_model
+    return UNetModel(
+  File "/nfshomes/aranjan2/adi-venv/improved-diffusion/improved_diffusion/unet.py", line 792, in __init__
+    raise NotImplementedError
+NotImplementedError

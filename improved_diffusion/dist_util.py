@@ -13,12 +13,15 @@ import torch.distributed as dist
 
 # Change this to reflect your cluster layout.
 # The GPU for a given rank is (rank % GPUS_PER_NODE).
-GPUS_PER_NODE = 8
+GPUS_PER_NODE = 2
 
 SETUP_RETRY_COUNT = 3
 
 
-def setup_dist():
+from axonn import axonn as ax
+
+
+def setup_dist(G_data, G_inter, G_row, G_col, G_depth):
     """
     Setup a distributed process group.
     """
@@ -40,6 +43,15 @@ def setup_dist():
     os.environ["MASTER_PORT"] = str(port)
     dist.init_process_group(backend=backend, init_method="env://")
 
+    # bf16?
+    ax.init(
+        G_data=G_data,
+        G_inter=G_inter,
+        G_intra_r=G_row,
+        G_intra_c=G_col,
+        G_intra_d=G_depth,
+        gpus_per_node=GPUS_PER_NODE,
+    )
 
 def dev():
     """

@@ -7,6 +7,8 @@ import math
 import torch as th
 import torch.nn as nn
 
+from axonn.intra_layer.conv import Conv2d
+
 
 # PyTorch 1.7 has SiLU, but we support PyTorch 1.5.
 class SiLU(nn.Module):
@@ -26,7 +28,8 @@ def conv_nd(dims, *args, **kwargs):
     if dims == 1:
         return nn.Conv1d(*args, **kwargs)
     elif dims == 2:
-        return nn.Conv2d(*args, **kwargs)
+        return Conv2d(*args, **kwargs)
+        # return nn.Conv2d(*args, **kwargs)
     elif dims == 3:
         return nn.Conv3d(*args, **kwargs)
     raise ValueError(f"unsupported dimensions: {dims}")

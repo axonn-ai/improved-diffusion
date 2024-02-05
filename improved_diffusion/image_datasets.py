@@ -6,7 +6,7 @@ from torch.utils.data import DataLoader, Dataset
 
 
 def load_data(
-    *, data_dir, batch_size, image_size, class_cond=False, deterministic=False
+    *, data_dir, batch_size, image_size, class_cond=False, deterministic=False, data_parallel_rank, G_data
 ):
     """
     For a dataset, create a generator over (images, kwargs) pairs.
@@ -38,8 +38,10 @@ def load_data(
         image_size,
         all_files,
         classes=classes,
-        shard=MPI.COMM_WORLD.Get_rank(),
-        num_shards=MPI.COMM_WORLD.Get_size(),
+        # shard=MPI.COMM_WORLD.Get_rank(),
+        # num_shards=MPI.COMM_WORLD.Get_size(),
+        shard=data_parallel_rank,
+        num_shards=G_data
     )
     if deterministic:
         loader = DataLoader(

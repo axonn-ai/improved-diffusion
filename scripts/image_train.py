@@ -16,10 +16,16 @@ from improved_diffusion.script_util import (
 from improved_diffusion.train_util import TrainLoop
 
 
+from axonn import axonn as ax
+import torch as th
+
+
 def main():
     args = create_argparser().parse_args()
 
-    dist_util.setup_dist()
+    G_data, G_inter, G_row, G_col, G_depth = args.G_data, args.G_inter, args.G_row, args.G_col, args.G_depth
+
+    dist_util.setup_dist(G_data, G_inter, G_row, G_col, G_depth)
     logger.configure()
 
     logger.log("creating model and diffusion...")
@@ -29,12 +35,16 @@ def main():
     model.to(dist_util.dev())
     schedule_sampler = create_named_schedule_sampler(args.schedule_sampler, diffusion)
 
+    print("Number of Model Parameters on Rank " + str(th.cuda.current_device()) + ": " + str(sum(p.numel() for p in model.parameters())))
+
     logger.log("creating data loader...")
     data = load_data(
         data_dir=args.data_dir,
         batch_size=args.batch_size,
         image_size=args.image_size,
         class_cond=args.class_cond,
+        data_parallel_rank=ax.config.data_parallel_rank,
+        G_data=ax.config.G_data
     )
 
     logger.log("training...")
@@ -59,11 +69,11 @@ def main():
 
 def create_argparser():
     defaults = dict(
-        data_dir="",
+        data_dir="/nfshomes/aranjan2/adi-venv/improved-diffusion/datasets/cifar_data",
         schedule_sampler="uniform",
         lr=1e-4,
         weight_decay=0.0,
-        lr_anneal_steps=0,
+        lr_anneal_steps=200,
         batch_size=1,
         microbatch=-1,  # -1 disables microbatches
         ema_rate="0.9999",  # comma-separated list of EMA values
@@ -72,6 +82,11 @@ def create_argparser():
         resume_checkpoint="",
         use_fp16=False,
         fp16_scale_growth=1e-3,
+        G_data=1,
+        G_inter=1,
+        G_row=1,
+        G_col=1,
+        G_depth=1
     )
     defaults.update(model_and_diffusion_defaults())
     parser = argparse.ArgumentParser()

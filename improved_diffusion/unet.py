@@ -431,13 +431,13 @@ class AttentionBlock(nn.Module):
         self.channels = channels
         self.use_checkpoint = use_checkpoint
 
-        inner_parallel_group = handle.get_row_parallel_group()
+        inner_parallel_group = handle.outer_intra_layer_parallel_group
         inner_parallel_size = dist.get_world_size(inner_parallel_group)
         inner_parallel_rank = dist.get_rank(inner_parallel_group)
 
-        outer_parallel_group = handle.get_column_parallel_group()
+        outer_parallel_group = handle.inner_intra_layer_parallel_group
         outer_parallel_size = dist.get_world_size(outer_parallel_group)
-        depth_parallel_group = handle.get_depth_parallel_group()
+        depth_parallel_group = handle.depth_intra_layer_parallel_group
 
         self.num_heads = divide(num_heads, outer_parallel_size) 
         self.inner_parallel_group = inner_parallel_group

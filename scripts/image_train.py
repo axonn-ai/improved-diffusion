@@ -23,9 +23,9 @@ import torch as th
 def main():
     args = create_argparser().parse_args()
 
-    G_data, G_inter, G_row, G_col, G_depth = args.G_data, args.G_inter, args.G_row, args.G_col, args.G_depth
+    g_data, g_inter, g_row, g_col, g_depth = args.G_data, args.G_inter, args.G_row, args.G_col, args.G_depth
 
-    dist_util.setup_dist(G_data, G_inter, G_row, G_col, G_depth)
+    dist_util.setup_dist(g_data, g_inter, g_row, g_col, g_depth)
     logger.configure()
 
     logger.log("creating model and diffusion...")

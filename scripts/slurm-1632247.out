@@ -1,0 +1,452 @@
+
+Lmod is automatically replacing "PrgEnv-cray/8.3.3" with "PrgEnv-amd/8.3.3".
+
+
+Lmod is automatically replacing "cce/15.0.0" with "amd/5.6.0".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-mpich/8.1.23
+
+srun -n 2 python image_train.py --image_size 32 --num_channels 128 --num_res_blocks 3 --learn_sigma True --dropout 0.3 --diffusion_steps 4000 --noise_schedule cosine --lr 1e-4 --batch_size 64 --G_data 2 --G_inter 1 --G_row 1 --G_col 1 --G_depth 1
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+[W socket.cpp:436] [c10d] The server socket cannot be initialized on [::]:53757 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier10284.hsn.cm.frontier.olcf.ornl.gov]:53757 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier10284.hsn.cm.frontier.olcf.ornl.gov]:53757 (errno: 97 - Address family not supported by protocol).
+Logging to /tmp/openai-2024-02-05-15-54-21-419792
+creating model and diffusion...
+Number of Model Parameters on Rank 0: 52546438
+creating data loader...
+training...
+Number of Model Parameters on Rank 1: 52546438
+------------------------
+| grad_norm | 2.85     |
+| loss      | 1.01     |
+| loss_q0   | 1.01     |
+| loss_q1   | 1.01     |
+| loss_q2   | 0.99     |
+| loss_q3   | 1.04     |
+| mse       | 0.992    |
+| mse_q0    | 0.991    |
+| mse_q1    | 1        |
+| mse_q2    | 0.985    |
+| mse_q3    | 0.997    |
+| samples   | 128      |
+| step      | 0        |
+| vb        | 0.0154   |
+| vb_q0     | 0.0227   |
+| vb_q1     | 0.00502  |
+| vb_q2     | 0.00505  |
+| vb_q3     | 0.0397   |
+------------------------
+------------------------
+| grad_norm | 3.05     |
+| loss      | 0.924    |
+| loss_q0   | 0.959    |
+| loss_q1   | 0.907    |
+| loss_q2   | 0.899    |
+| loss_q3   | 0.934    |
+| mse       | 0.909    |
+| mse_q0    | 0.936    |
+| mse_q1    | 0.903    |
+| mse_q2    | 0.894    |
+| mse_q3    | 0.907    |
+| samples   | 1.41e+03 |
+| step      | 10       |
+| vb        | 0.0147   |
+| vb_q0     | 0.0222   |
+| vb_q1     | 0.00456  |
+| vb_q2     | 0.00464  |
+| vb_q3     | 0.027    |
+------------------------
+------------------------
+| grad_norm | 2.83     |
+| loss      | 0.749    |
+| loss_q0   | 0.805    |
+| loss_q1   | 0.729    |
+| loss_q2   | 0.725    |
+| loss_q3   | 0.737    |
+| mse       | 0.737    |
+| mse_q0    | 0.783    |
+| mse_q1    | 0.725    |
+| mse_q2    | 0.721    |
+| mse_q3    | 0.717    |
+| samples   | 2.69e+03 |
+| step      | 20       |
+| vb        | 0.0121   |
+| vb_q0     | 0.0215   |
+| vb_q1     | 0.00367  |
+| vb_q2     | 0.00365  |
+| vb_q3     | 0.0202   |
+------------------------
+------------------------
+| grad_norm | 2.52     |
+| loss      | 0.596    |
+| loss_q0   | 0.659    |
+| loss_q1   | 0.57     |
+| loss_q2   | 0.563    |
+| loss_q3   | 0.594    |
+| mse       | 0.582    |
+| mse_q0    | 0.646    |
+| mse_q1    | 0.567    |
+| mse_q2    | 0.56     |
+| mse_q3    | 0.554    |
+| samples   | 3.97e+03 |
+| step      | 30       |
+| vb        | 0.0147   |
+| vb_q0     | 0.0127   |
+| vb_q1     | 0.00284  |
+| vb_q2     | 0.00285  |
+| vb_q3     | 0.0395   |
+------------------------
+------------------------
+| grad_norm | 2.19     |
+| loss      | 0.47     |
+| loss_q0   | 0.548    |
+| loss_q1   | 0.444    |
+| loss_q2   | 0.439    |
+| loss_q3   | 0.448    |
+| mse       | 0.461    |
+| mse_q0    | 0.537    |
+| mse_q1    | 0.442    |
+| mse_q2    | 0.436    |
+| mse_q3    | 0.428    |
+| samples   | 5.25e+03 |
+| step      | 40       |
+| vb        | 0.00877  |
+| vb_q0     | 0.0107   |
+| vb_q1     | 0.00223  |
+| vb_q2     | 0.00222  |
+| vb_q3     | 0.0196   |
+------------------------
+------------------------
+| grad_norm | 1.89     |
+| loss      | 0.378    |
+| loss_q0   | 0.482    |
+| loss_q1   | 0.352    |
+| loss_q2   | 0.337    |
+| loss_q3   | 0.35     |
+| mse       | 0.368    |
+| mse_q0    | 0.461    |
+| mse_q1    | 0.35     |
+| mse_q2    | 0.336    |
+| mse_q3    | 0.333    |
+| samples   | 6.53e+03 |
+| step      | 50       |
+| vb        | 0.01     |
+| vb_q0     | 0.021    |
+| vb_q1     | 0.00176  |
+| vb_q2     | 0.0017   |
+| vb_q3     | 0.0163   |
+------------------------
+------------------------
+| grad_norm | 1.64     |
+| loss      | 0.301    |
+| loss_q0   | 0.398    |
+| loss_q1   | 0.282    |
+| loss_q2   | 0.26     |
+| loss_q3   | 0.267    |
+| mse       | 0.295    |
+| mse_q0    | 0.39     |
+| mse_q1    | 0.281    |
+| mse_q2    | 0.259    |
+| mse_q3    | 0.255    |
+| samples   | 7.81e+03 |
+| step      | 60       |
+| vb        | 0.00574  |
+| vb_q0     | 0.00817  |
+| vb_q1     | 0.0014   |
+| vb_q2     | 0.0013   |
+| vb_q3     | 0.0122   |
+------------------------
+------------------------
+| grad_norm | 1.41     |
+| loss      | 0.247    |
+| loss_q0   | 0.357    |
+| loss_q1   | 0.226    |
+| loss_q2   | 0.202    |
+| loss_q3   | 0.201    |
+| mse       | 0.242    |
+| mse_q0    | 0.344    |
+| mse_q1    | 0.225    |
+| mse_q2    | 0.201    |
+| mse_q3    | 0.197    |
+| samples   | 9.09e+03 |
+| step      | 70       |
+| vb        | 0.00472  |
+| vb_q0     | 0.0125   |
+| vb_q1     | 0.00113  |
+| vb_q2     | 0.00102  |
+| vb_q3     | 0.00411  |
+------------------------
+------------------------
+| grad_norm | 1.2      |
+| loss      | 0.216    |
+| loss_q0   | 0.361    |
+| loss_q1   | 0.188    |
+| loss_q2   | 0.163    |
+| loss_q3   | 0.157    |
+| mse       | 0.211    |
+| mse_q0    | 0.347    |
+| mse_q1    | 0.187    |
+| mse_q2    | 0.162    |
+| mse_q3    | 0.152    |
+| samples   | 1.04e+04 |
+| step      | 80       |
+| vb        | 0.00538  |
+| vb_q0     | 0.0147   |
+| vb_q1     | 0.000936 |
+| vb_q2     | 0.000808 |
+| vb_q3     | 0.00486  |
+------------------------
+------------------------
+| grad_norm | 1.04     |
+| loss      | 0.199    |
+| loss_q0   | 0.348    |
+| loss_q1   | 0.162    |
+| loss_q2   | 0.132    |
+| loss_q3   | 0.133    |
+| mse       | 0.19     |
+| mse_q0    | 0.324    |
+| mse_q1    | 0.161    |
+| mse_q2    | 0.132    |
+| mse_q3    | 0.121    |
+| samples   | 1.16e+04 |
+| step      | 90       |
+| vb        | 0.00959  |
+| vb_q0     | 0.0246   |
+| vb_q1     | 0.000813 |
+| vb_q2     | 0.000668 |
+| vb_q3     | 0.0117   |
+------------------------
+------------------------
+| grad_norm | 0.924    |
+| loss      | 0.616    |
+| loss_q0   | 0.305    |
+| loss_q1   | 0.141    |
+| loss_q2   | 0.111    |
+| loss_q3   | 1.92     |
+| mse       | 0.16     |
+| mse_q0    | 0.293    |
+| mse_q1    | 0.14     |
+| mse_q2    | 0.111    |
+| mse_q3    | 0.0989   |
+| samples   | 1.29e+04 |
+| step      | 100      |
+| vb        | 0.456    |
+| vb_q0     | 0.0115   |
+| vb_q1     | 0.000701 |
+| vb_q2     | 0.000561 |
+| vb_q3     | 1.82     |
+------------------------
+------------------------
+| grad_norm | 0.831    |
+| loss      | 0.15     |
+| loss_q0   | 0.302    |
+| loss_q1   | 0.129    |
+| loss_q2   | 0.0948   |
+| loss_q3   | 0.0853   |
+| mse       | 0.143    |
+| mse_q0    | 0.276    |
+| mse_q1    | 0.128    |
+| mse_q2    | 0.0943   |
+| mse_q3    | 0.0834   |
+| samples   | 1.42e+04 |
+| step      | 110      |
+| vb        | 0.00699  |
+| vb_q0     | 0.0262   |
+| vb_q1     | 0.000664 |
+| vb_q2     | 0.000478 |
+| vb_q3     | 0.00194  |
+------------------------
+------------------------
+| grad_norm | 0.746    |
+| loss      | 0.144    |
+| loss_q0   | 0.314    |
+| loss_q1   | 0.113    |
+| loss_q2   | 0.085    |
+| loss_q3   | 0.0735   |
+| mse       | 0.136    |
+| mse_q0    | 0.285    |
+| mse_q1    | 0.112    |
+| mse_q2    | 0.0846   |
+| mse_q3    | 0.0712   |
+| samples   | 1.55e+04 |
+| step      | 120      |
+| vb        | 0.00761  |
+| vb_q0     | 0.0282   |
+| vb_q1     | 0.000565 |
+| vb_q2     | 0.000423 |
+| vb_q3     | 0.00234  |
+------------------------
+------------------------
+| grad_norm | 0.673    |
+| loss      | 0.14     |
+| loss_q0   | 0.303    |
+| loss_q1   | 0.105    |
+| loss_q2   | 0.0739   |
+| loss_q3   | 0.0619   |
+| mse       | 0.135    |
+| mse_q0    | 0.287    |
+| mse_q1    | 0.104    |
+| mse_q2    | 0.0735   |
+| mse_q3    | 0.0602   |
+| samples   | 1.68e+04 |
+| step      | 130      |
+| vb        | 0.00502  |
+| vb_q0     | 0.0163   |
+| vb_q1     | 0.000526 |
+| vb_q2     | 0.000376 |
+| vb_q3     | 0.00173  |
+------------------------
+------------------------
+| grad_norm | 0.62     |
+| loss      | 0.128    |
+| loss_q0   | 0.29     |
+| loss_q1   | 0.0991   |
+| loss_q2   | 0.0689   |
+| loss_q3   | 0.0583   |
+| mse       | 0.123    |
+| mse_q0    | 0.274    |
+| mse_q1    | 0.0986   |
+| mse_q2    | 0.0685   |
+| mse_q3    | 0.0536   |
+| samples   | 1.8e+04  |
+| step      | 140      |
+| vb        | 0.00545  |
+| vb_q0     | 0.0159   |
+| vb_q1     | 0.000499 |
+| vb_q2     | 0.000343 |
+| vb_q3     | 0.0047   |
+------------------------
+------------------------
+| grad_norm | 0.576    |
+| loss      | 0.118    |
+| loss_q0   | 0.257    |
+| loss_q1   | 0.0918   |
+| loss_q2   | 0.0642   |
+| loss_q3   | 0.0498   |
+| mse       | 0.114    |
+| mse_q0    | 0.244    |
+| mse_q1    | 0.0913   |
+| mse_q2    | 0.0639   |
+| mse_q3    | 0.0482   |
+| samples   | 1.93e+04 |
+| step      | 150      |
+| vb        | 0.00393  |
+| vb_q0     | 0.0129   |
+| vb_q1     | 0.000461 |
+| vb_q2     | 0.000322 |
+| vb_q3     | 0.00159  |
+------------------------
+------------------------
+| grad_norm | 0.548    |
+| loss      | 0.108    |
+| loss_q0   | 0.266    |
+| loss_q1   | 0.0935   |
+| loss_q2   | 0.0603   |
+| loss_q3   | 0.0462   |
+| mse       | 0.105    |
+| mse_q0    | 0.256    |
+| mse_q1    | 0.093    |
+| mse_q2    | 0.06     |
+| mse_q3    | 0.0446   |
+| samples   | 2.06e+04 |
+| step      | 160      |
+| vb        | 0.00257  |
+| vb_q0     | 0.00941  |
+| vb_q1     | 0.000476 |
+| vb_q2     | 0.000301 |
+| vb_q3     | 0.0016   |
+------------------------
+------------------------
+| grad_norm | 0.525    |
+| loss      | 0.107    |
+| loss_q0   | 0.249    |
+| loss_q1   | 0.0898   |
+| loss_q2   | 0.0559   |
+| loss_q3   | 0.0428   |
+| mse       | 0.105    |
+| mse_q0    | 0.24     |
+| mse_q1    | 0.0893   |
+| mse_q2    | 0.0556   |
+| mse_q3    | 0.0419   |
+| samples   | 2.19e+04 |
+| step      | 170      |
+| vb        | 0.00246  |
+| vb_q0     | 0.0087   |
+| vb_q1     | 0.000457 |
+| vb_q2     | 0.000277 |
+| vb_q3     | 0.000891 |
+------------------------
+------------------------
+| grad_norm | 0.501    |
+| loss      | 0.111    |
+| loss_q0   | 0.25     |
+| loss_q1   | 0.0862   |
+| loss_q2   | 0.0537   |
+| loss_q3   | 0.041    |
+| mse       | 0.108    |
+| mse_q0    | 0.24     |
+| mse_q1    | 0.0858   |
+| mse_q2    | 0.0534   |
+| mse_q3    | 0.0396   |
+| samples   | 2.32e+04 |
+| step      | 180      |
+| vb        | 0.00307  |
+| vb_q0     | 0.00974  |
+| vb_q1     | 0.000434 |
+| vb_q2     | 0.00027  |
+| vb_q3     | 0.00139  |
+------------------------
+------------------------
+| grad_norm | 0.482    |
+| loss      | 0.114    |
+| loss_q0   | 0.276    |
+| loss_q1   | 0.0878   |
+| loss_q2   | 0.0535   |
+| loss_q3   | 0.0428   |
+| mse       | 0.107    |
+| mse_q0    | 0.251    |
+| mse_q1    | 0.0874   |
+| mse_q2    | 0.0532   |
+| mse_q3    | 0.038    |
+| samples   | 2.44e+04 |
+| step      | 190      |
+| vb        | 0.00775  |
+| vb_q0     | 0.0246   |
+| vb_q1     | 0.000446 |
+| vb_q2     | 0.000268 |
+| vb_q3     | 0.00474  |
+------------------------

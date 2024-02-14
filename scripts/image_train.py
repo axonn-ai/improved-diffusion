@@ -69,7 +69,7 @@ def main():
 
 def create_argparser():
     defaults = dict(
-        data_dir="/nfshomes/aranjan2/adi-venv/improved-diffusion/datasets/cifar_data",
+        data_dir="/ccs/home/adityaranjan/scratch/my-venv/improved-diffusion/datasets/cifar_data",
         schedule_sampler="uniform",
         lr=1e-4,
         weight_decay=0.0,

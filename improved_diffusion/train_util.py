@@ -26,7 +26,9 @@ from .resample import LossAwareSampler, UniformSampler
 INITIAL_LOG_LOSS_SCALE = 20.0
 
 
+import pickle
 import matplotlib.pyplot as plt
+from axonn import axonn as ax
 
 
 class TrainLoop:
@@ -94,8 +96,7 @@ class TrainLoop:
             self.ema_params = [
                 copy.deepcopy(self.master_params) for _ in range(len(self.ema_rate))
             ]
-        
-        """
+       
         if th.cuda.is_available():
             self.use_ddp = True
             self.ddp_model = DDP(
@@ -105,6 +106,7 @@ class TrainLoop:
                 broadcast_buffers=False,
                 bucket_cap_mb=128,
                 find_unused_parameters=False,
+                process_group=ax.comm_handle.coll_nccl_comm,
             )
         else:
             if dist.get_world_size() > 1:
@@ -114,9 +116,6 @@ class TrainLoop:
                 )
             self.use_ddp = False
             self.ddp_model = self.model
-        """
-        self.use_ddp=False
-        self.ddp_model=self.model
 
     def _load_and_sync_parameters(self):
         resume_checkpoint = find_resume_checkpoint() or self.resume_checkpoint
@@ -188,6 +187,9 @@ class TrainLoop:
         if (self.step - 1) % self.save_interval != 0:
             self.save()
         """
+
+        with open('validation_easy.pickle', 'wb') as handle:
+            pickle.dump(losses, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
         plt.plot([i for i in range(len(losses))], losses)
         plt.xlabel("Step")

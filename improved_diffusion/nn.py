@@ -21,15 +21,17 @@ class GroupNorm32(nn.GroupNorm):
         return super().forward(x.float()).type(x.dtype)
 
 
-def conv_nd(dims, *args, **kwargs):
+def conv_nd(axonn, dims, *args, **kwargs):
     """
     Create a 1D, 2D, or 3D convolution module.
     """
     if dims == 1:
         return nn.Conv1d(*args, **kwargs)
     elif dims == 2:
-        return Conv2d(*args, **kwargs)
-        # return nn.Conv2d(*args, **kwargs)
+        if axonn:
+            return Conv2d(*args, **kwargs)
+        else:
+            return nn.Conv2d(*args, **kwargs)
     elif dims == 3:
         return nn.Conv3d(*args, **kwargs)
     raise ValueError(f"unsupported dimensions: {dims}")

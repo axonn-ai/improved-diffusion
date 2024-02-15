@@ -2,7 +2,7 @@
 
 #SBATCH -N 2
 #SBATCH -n 16
-#SBATCH --time=00:05:00
+#SBATCH --time=00:10:00
 #SBATCH -A csc547
 #SBATCH -q debug
 #SBATCH --gpus-per-node=8
@@ -18,7 +18,7 @@ module load libfabric
 
 ## this enables the slingshot-11 plugin for RCCL (crucial for inter-node bw)
 export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/lustre/orion/scratch/adityaranjan/csc547/my-venv/aws-ofi-rccl/build/lib"
-export NCCL_DEBUG=INFO
+# export NCCL_DEBUG=INFO
 export FI_CXI_ATS=0
 
 ## this improves cross node bandwidth for some cases

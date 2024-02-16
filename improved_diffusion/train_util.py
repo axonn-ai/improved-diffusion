@@ -21,6 +21,7 @@ from .nn import update_ema
 from .resample import LossAwareSampler, UniformSampler
 
 import matplotlib.pyplot as plt
+import pickle
 
 # For ImageNet experiments, this was a good default value.
 # We found that the lg_loss_scale quickly climbed to
@@ -184,6 +185,9 @@ class TrainLoop:
         if (self.step - 1) % self.save_interval != 0:
             self.save()
         """
+
+        with open('validation_baseline.pickle', 'wb') as handle:
+            pickle.dump(losses, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
         plt.plot([i for i in range(len(losses))], losses)
         plt.xlabel("Step")

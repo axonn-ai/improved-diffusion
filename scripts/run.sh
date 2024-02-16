@@ -2,9 +2,8 @@
 
 #SBATCH -N 2
 #SBATCH -n 16
-#SBATCH --time=00:10:00
+#SBATCH -t 2:00:00
 #SBATCH -A csc547
-#SBATCH -q debug
 #SBATCH --gpus-per-node=8
 
 source /ccs/home/adityaranjan/scratch/my-venv/bin/activate

@@ -2,6 +2,16 @@
 Train a diffusion model on images.
 """
 
+import random
+import numpy as np
+import torch as th
+
+seed=123
+random.seed(seed)
+np.random.seed(seed)
+th.manual_seed(seed)
+th.cuda.manual_seed_all(seed)
+
 import argparse
 
 from improved_diffusion import dist_util, logger
@@ -17,7 +27,6 @@ from improved_diffusion.train_util import TrainLoop
 
 
 from axonn import axonn as ax
-import torch as th
 
 
 def main():
@@ -69,7 +78,7 @@ def main():
 
 def create_argparser():
     defaults = dict(
-        data_dir="/ccs/home/adityaranjan/scratch/my-venv/improved-diffusion/datasets/cifar_data",
+        data_dir="/pscratch/sd/a/aranjan/my-venv/improved-diffusion/datasets",
         schedule_sampler="uniform",
         lr=1e-4,
         weight_decay=0.0,

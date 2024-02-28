@@ -8,6 +8,7 @@ import torch as th
 import torch.nn as nn
 
 from axonn.intra_layer.conv import Conv2d
+from axonn.intra_layer.fully_connected import Linear
 
 
 # PyTorch 1.7 has SiLU, but we support PyTorch 1.5.
@@ -41,7 +42,8 @@ def linear(*args, **kwargs):
     """
     Create a linear module.
     """
-    return nn.Linear(*args, **kwargs)
+    return Linear(*args, **kwargs)
+    #return nn.Linear(*args, **kwargs)
 
 
 def avg_pool_nd(dims, *args, **kwargs):

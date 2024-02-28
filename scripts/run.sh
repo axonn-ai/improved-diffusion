@@ -1,43 +1,46 @@
 #!/bin/bash
 
-#SBATCH -N 2
+#SBATCH -A m4641
+#SBATCH -C gpu
+#SBATCH -t 02:00:00
+#SBATCH -q regular
+#SBATCH -N 4
 #SBATCH -n 16
-#SBATCH -t 2:00:00
-#SBATCH -A csc547
-#SBATCH --gpus-per-node=8
+#SBATCH --gpus-per-node=4
+#SBATCH -c 32
 
-source /ccs/home/adityaranjan/scratch/my-venv/bin/activate
-module load amd/5.6.0
-module load libfabric
-
-## these lines enable CUDA aware MPI
-# module load craype-accel-amd-gfx90a
-# export MPICH_GPU_SUPPORT_ENABLED=1
-# export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${CRAY_MPICH_ROOTDIR}/gtl/lib"
-
-## this enables the slingshot-11 plugin for RCCL (crucial for inter-node bw)
-export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/lustre/orion/scratch/adityaranjan/csc547/my-venv/aws-ofi-rccl/build/lib"
-# export NCCL_DEBUG=INFO
-export FI_CXI_ATS=0
-
-## this improves cross node bandwidth for some cases
-export NCCL_CROSS_NIC=1
+export MPICH_GPU_SUPPORT_ENABLED=0
+# module load craype-accel-nvidia80
 
 export CUDA_DEVICE_MAX_CONNECTIONS=1
+export MASTER_ADDR=$(hostname)
+export MASTER_PORT=29500
+export CUDA_DEVICE_MAX_CONNECTIONS=1
+export NCCL_NET_GDR_LEVEL=PHB
+export CUDA_DEVICE_MAX_CONNECTIONS=1
+export CUDA_VISIBLE_DEVICES=3,2,1,0
+export NCCL_CROSS_NIC=1
+export NCCL_SOCKET_IFNAME=hsn
+export NCCL_NET="AWS Libfabric"
+export FI_CXI_RDZV_THRESHOLD=0
+export FI_CXI_RDZV_GET_MIN=0
+export FI_CXI_OFLOW_BUF_SIZE=1073741824
+export FI_CXI_OFLOW_BUF_COUNT=1
 
-export PYTHONPATH="${PYTHONPATH}:/ccs/home/adityaranjan/scratch/my-venv/improved-diffusion"
 
-export MIOPEN_USER_DB_PATH="/tmp/my-miopen-cache"
-export MIOPEN_CUSTOM_CACHE_DIR=${MIOPEN_USER_DB_PATH}
-rm -rf ${MIOPEN_USER_DB_PATH}
-mkdir -p ${MIOPEN_USER_DB_PATH}
+source /pscratch/sd/a/aranjan/my-venv/bin/activate
 
-# divided batch size (128) by num data parallel (2) to get 64 batch size
+module load PrgEnv-gnu/8.5.0
+module load pytorch/2.1.0-cu12
+
+export PYTHONPATH="${PYTHONPATH}:/pscratch/sd/a/aranjan/my-venv/improved-diffusion"
+
+# batch size = 128/2 (num data parallel) = 64
 MODEL_FLAGS="--image_size 32 --num_channels 128 --num_res_blocks 3 --learn_sigma True --dropout 0.3"
 DIFFUSION_FLAGS="--diffusion_steps 4000 --noise_schedule cosine"
 TRAIN_FLAGS="--lr 1e-4 --batch_size 64 --G_data 2 --G_inter 1 --G_row 2 --G_col 2 --G_depth 2"
 
-cmd="srun -n 16 python image_train.py $MODEL_FLAGS $DIFFUSION_FLAGS $TRAIN_FLAGS" 
+cmd="srun -n 16 --cpu-bind=cores python image_train.py $MODEL_FLAGS $DIFFUSION_FLAGS $TRAIN_FLAGS"
 
 echo "${cmd}"
 

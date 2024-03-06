@@ -6,7 +6,7 @@ from torch.utils.data import DataLoader, Dataset
 
 
 def load_data(
-    *, data_dir, batch_size, image_size, class_cond=False, deterministic=False
+    *, data_dir, batch_size, image_size, class_cond=False, deterministic=True
 ):
     """
     For a dataset, create a generator over (images, kwargs) pairs.

@@ -20,6 +20,7 @@ from .fp16_util import (
 from .nn import update_ema
 from .resample import LossAwareSampler, UniformSampler
 
+import pickle
 import matplotlib.pyplot as plt
 
 # For ImageNet experiments, this was a good default value.
@@ -186,6 +187,9 @@ class TrainLoop:
         # Save the last checkpoint if it wasn't already saved.
         # if (self.step - 1) % self.save_interval != 0:
         # self.save()
+
+        with open('validation_fsdp.pickle', 'wb') as handle:
+            pickle.dump(losses, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
         plt.plot([i for i in range(len(losses))], losses)
         plt.xlabel("Step")

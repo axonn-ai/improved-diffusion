@@ -2,6 +2,16 @@
 Train a diffusion model on images.
 """
 
+import torch
+import random
+import numpy as np
+
+seed=123
+random.seed(seed)
+np.random.seed(seed)
+torch.manual_seed(seed)
+torch.cuda.manual_seed_all(seed)
+
 import argparse
 
 from improved_diffusion import dist_util, logger
@@ -17,7 +27,6 @@ from improved_diffusion.train_util import TrainLoop
 from torch.distributed.fsdp import FullyShardedDataParallel as FSDP
 import functools
 from torch.distributed.fsdp.wrap import size_based_auto_wrap_policy
-import torch
 import os
 
 def main():
@@ -27,8 +36,6 @@ def main():
     logger.configure()
 
     logger.log("creating model and diffusion...")
-
-    torch.cuda.set_device(torch.device('cuda', int(os.getenv("RANK"))))
 
     model, diffusion = create_model_and_diffusion(
         **args_to_dict(args, model_and_diffusion_defaults().keys())
@@ -76,7 +83,7 @@ def create_argparser():
         schedule_sampler="uniform",
         lr=1e-4,
         weight_decay=0.0,
-        lr_anneal_steps=200,
+        lr_anneal_steps=100,
         batch_size=1,
         microbatch=-1,  # -1 disables microbatches
         ema_rate="0.9999",  # comma-separated list of EMA values

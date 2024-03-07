@@ -40,7 +40,7 @@ def setup_dist():
     os.environ["MASTER_PORT"] = str(port)
     dist.init_process_group(backend=backend, init_method="env://")
 
-    th.cuda.set_device(th.device('cuda', comm.rank))
+    th.cuda.set_device(th.device('cuda', comm.rank % GPUS_PER_NODE))
 
 
 def dev():

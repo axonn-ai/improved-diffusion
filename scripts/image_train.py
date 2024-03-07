@@ -2,6 +2,16 @@
 Train a diffusion model on images.
 """
 
+import random
+import numpy as np
+import torch as th
+
+seed=123
+random.seed(seed)
+np.random.seed(seed)
+th.manual_seed(seed)
+th.cuda.manual_seed_all(seed)
+
 import argparse
 
 from improved_diffusion import dist_util, logger
@@ -39,26 +49,29 @@ def main():
 
     logger.log("creating data loader...")
     
-    data = load_dataset(
+    data = load_data(
         data_dir=args.data_dir,
         batch_size=args.batch_size,
         image_size=args.image_size,
         class_cond=args.class_cond,
     )
-
+    
     args.local_rank = int(os.environ.get("LOCAL_RANK"))
 
     opt = AdamW(list(model.parameters()), lr = args.lr, weight_decay=args.weight_decay)
 
-    model_engine, optimizer, data_loader, __ = deepspeed.initialize(
-        args=args, model=model, optimizer=opt, training_data=data)
+    # training_data=data
+    model_engine, optimizer, __, __ = deepspeed.initialize(
+        args=args, model=model, optimizer=opt)
+
+    # data_loader._create_dataloader()
 
     logger.log("training...")
     TrainLoop(
         opt=optimizer,
         model=model_engine,
         diffusion=diffusion,
-        data=data_loader,
+        data=data,
         batch_size=args.batch_size,
         microbatch=args.microbatch,
         lr=args.lr,
@@ -73,14 +86,13 @@ def main():
         lr_anneal_steps=args.lr_anneal_steps,
     ).run_loop()
 
-
 def create_argparser():
     defaults = dict(
         data_dir="/ccs/home/adityaranjan/scratch/my-venv/improved-diffusion/datasets/cifar_data",
         schedule_sampler="uniform",
         lr=1e-4,
         weight_decay=0.0,
-        lr_anneal_steps=200,
+        lr_anneal_steps=100,
         batch_size=1,  # overriden by run script
         microbatch=-1,  # -1 disables microbatches
         ema_rate="0.9999",  # comma-separated list of EMA values

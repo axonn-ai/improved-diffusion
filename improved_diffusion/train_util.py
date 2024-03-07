@@ -20,6 +20,7 @@ from .fp16_util import (
 from .nn import update_ema
 from .resample import LossAwareSampler, UniformSampler
 
+import pickle
 import matplotlib.pyplot as plt
 
 # For ImageNet experiments, this was a good default value.
@@ -168,9 +169,6 @@ class TrainLoop:
         self.model.convert_to_fp16()
 
     def run_loop(self):
-        # needed to populate the data loader, otherwise next(self.data) will error
-        self.data._create_dataloader()
-
         losses = []
 
         while (
@@ -199,6 +197,9 @@ class TrainLoop:
         if (self.step - 1) % self.save_interval != 0:
             self.save()
         """
+
+        with open('validation_deepspeed.pickle', 'wb') as handle:
+            pickle.dump(losses, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
         plt.plot([i for i in range(len(losses))], losses)
         plt.xlabel("Step")

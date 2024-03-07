@@ -5,7 +5,7 @@ import numpy as np
 from torch.utils.data import DataLoader, Dataset
 
 def load_dataset(
-    *, data_dir, batch_size, image_size, class_cond=False, deterministic=False
+    *, data_dir, batch_size, image_size, class_cond=False, deterministic=True
 ):
     """
     For a dataset, create a generator over (images, kwargs) pairs.
@@ -45,7 +45,7 @@ def load_dataset(
 
 
 def load_data(
-    *, data_dir, batch_size, image_size, class_cond=False, deterministic=False
+    *, data_dir, batch_size, image_size, class_cond=False, deterministic=True
 ):
     """
     For a dataset, create a generator over (images, kwargs) pairs.
@@ -63,6 +63,9 @@ def load_data(
                        exception will be raised.
     :param deterministic: if True, yield results in a deterministic order.
     """
+
+    print("RANK: " + str(MPI.COMM_WORLD.Get_rank()))
+
     if not data_dir:
         raise ValueError("unspecified data directory")
     all_files = _list_image_files_recursively(data_dir)

@@ -1,0 +1,1827 @@
+
+Lmod is automatically replacing "PrgEnv-cray/8.3.3" with "PrgEnv-amd/8.3.3".
+
+
+Lmod is automatically replacing "cce/15.0.0" with "amd/5.6.0".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-mpich/8.1.23
+
+srun -n 64 python image_train.py --image_size 32 --num_channels 416 --num_res_blocks 3 --learn_sigma True --dropout 0.3 --diffusion_steps 4000 --noise_schedule cosine --lr 0.00005547001 --batch_size 32 --deepspeed_config ./ds_config.json
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+amdgpu.ids: No such file or directory
+[2024-03-07 12:50:02,396] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,396] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,396] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,396] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,396] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,396] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,396] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,396] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,402] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,402] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,402] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,402] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,402] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,402] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,402] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,402] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,404] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,404] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,404] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,404] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,404] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,404] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,404] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,404] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,424] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,424] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,424] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,424] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,424] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,424] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,424] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,424] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,441] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,441] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,441] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,441] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,441] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,441] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,441] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,441] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,445] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,445] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,445] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,445] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,445] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,445] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,445] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,445] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,449] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,449] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,449] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,449] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,449] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,449] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,449] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,449] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,467] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,467] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,467] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,467] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,467] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,467] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,467] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:02,467] [INFO] [real_accelerator.py:191:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-03-07 12:50:03,683] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,683] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,683] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,683] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,683] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,683] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,683] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,683] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,683] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,683] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,683] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,683] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,683] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,683] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,683] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,683] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,683] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,683] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,683] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,683] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,683] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,683] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,683] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,683] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,683] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,683] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,683] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,683] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,683] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,683] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,683] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,683] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,900] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,901] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,901] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,900] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,901] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,901] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,901] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,901] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,901] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,901] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,901] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,901] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,901] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,901] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,901] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,901] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,901] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,901] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,901] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,901] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,901] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,901] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,901] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,901] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,901] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,902] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,902] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,902] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,901] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,902] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,902] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,902] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,902] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,902] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,902] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,902] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,902] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,902] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,902] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,902] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,902] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,902] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,902] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,902] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,902] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,902] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,902] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,902] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,903] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,903] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,903] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,903] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,903] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,903] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,903] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,903] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,903] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,903] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,903] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,903] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,903] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,903] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,903] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,903] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,904] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,904] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,904] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,904] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,904] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,904] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,904] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,904] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,904] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,904] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,904] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,904] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,904] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,904] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,904] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,904] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,904] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,904] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,904] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,904] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,904] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,904] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,904] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,904] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,904] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,904] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,904] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,904] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,904] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,904] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-03-07 12:50:03,904] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,904] [INFO] [comm.py:652:init_distributed] Not using the DeepSpeed or dist launchers, attempting to detect MPI environment...
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=32, local_rank=0, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=16, local_rank=0, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=24, local_rank=0, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=40, local_rank=0, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=8, local_rank=0, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=56, local_rank=0, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=48, local_rank=0, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=33, local_rank=1, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=19, local_rank=3, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=27, local_rank=3, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=41, local_rank=1, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=11, local_rank=3, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=57, local_rank=1, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=34, local_rank=2, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=21, local_rank=5, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=29, local_rank=5, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=42, local_rank=2, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=13, local_rank=5, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=59, local_rank=3, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=49, local_rank=1, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=35, local_rank=3, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=23, local_rank=7, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=25, local_rank=1, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=43, local_rank=3, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=9, local_rank=1, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=61, local_rank=5, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=53, local_rank=5, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=36, local_rank=4, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=17, local_rank=1, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=0, local_rank=0, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:668:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=26, local_rank=2, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=44, local_rank=4, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=10, local_rank=2, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=63, local_rank=7, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=55, local_rank=7, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=37, local_rank=5, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=18, local_rank=2, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=1, local_rank=1, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=28, local_rank=4, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=45, local_rank=5, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=12, local_rank=4, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=58, local_rank=2, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=50, local_rank=2, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=39, local_rank=7, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=20, local_rank=4, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=2, local_rank=2, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=46, local_rank=6, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=14, local_rank=6, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=60, local_rank=4, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=51, local_rank=3, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=38, local_rank=6, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=22, local_rank=6, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=3, local_rank=3, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=47, local_rank=7, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=15, local_rank=7, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=62, local_rank=6, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=52, local_rank=4, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=4, local_rank=4, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=30, local_rank=6, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=54, local_rank=6, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=5, local_rank=5, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=31, local_rank=7, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=6, local_rank=6, world_size=64, master_addr=100.64.128.101, master_port=29500
+[2024-03-07 12:50:03,906] [INFO] [comm.py:702:mpi_discovery] Discovered MPI settings of world_rank=7, local_rank=7, world_size=64, master_addr=100.64.128.101, master_port=29500
+[W socket.cpp:436] [c10d] The server socket cannot be initialized on [::]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+[W socket.cpp:663] [c10d] The client socket cannot be initialized to connect to [frontier00101.hostmgmt2000.cm.frontier.olcf.ornl.gov]:29500 (errno: 97 - Address family not supported by protocol).
+Logging to /tmp/openai-2024-03-07-12-50-03-942906
+initialized deepspeed
+creating model and diffusion...
+creating data loader...
+[2024-03-07 12:50:09,595] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed info: version=0.13.1, git-hash=unknown, git-branch=unknown
+[2024-03-07 12:50:12,054] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2024-03-07 12:50:12,062] [INFO] [logging.py:96:log_dist] [Rank 0] Using client Optimizer as basic optimizer
+[2024-03-07 12:50:12,062] [INFO] [logging.py:96:log_dist] [Rank 0] Removing param_group that has no 'params' in the basic Optimizer
+[2024-03-07 12:50:12,122] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Basic Optimizer = AdamW
+[2024-03-07 12:50:12,122] [INFO] [utils.py:56:is_zero_supported_optimizer] Checking ZeRO support for optimizer=AdamW type=<class 'torch.optim.adamw.AdamW'>
+[2024-03-07 12:50:12,122] [INFO] [logging.py:96:log_dist] [Rank 0] Creating fp16 ZeRO stage 3 optimizer, MiCS is enabled False, Hierarchical params gather False
+[2024-03-07 12:50:12,122] [INFO] [logging.py:96:log_dist] [Rank 0] Creating torch.float32 ZeRO stage 3 optimizer
+[2024-03-07 12:50:12,259] [INFO] [utils.py:791:see_memory_usage] Stage 3 initialize beginning
+[2024-03-07 12:50:12,268] [INFO] [utils.py:792:see_memory_usage] MA 2.08 GB         Max_MA 2.08 GB         CA 2.13 GB         Max_CA 2 GB 
+[2024-03-07 12:50:12,268] [INFO] [utils.py:799:see_memory_usage] CPU Virtual Memory:  used = 30.72 GB, percent = 6.1%
+[2024-03-07 12:50:12,271] [INFO] [stage3.py:128:__init__] Reduce bucket size 10000000
+[2024-03-07 12:50:12,271] [INFO] [stage3.py:129:__init__] Prefetch bucket size 10000000
+[2024-03-07 12:50:12,391] [INFO] [utils.py:791:see_memory_usage] DeepSpeedZeRoOffload initialize [begin]
+[2024-03-07 12:50:12,392] [INFO] [utils.py:792:see_memory_usage] MA 2.08 GB         Max_MA 2.08 GB         CA 2.13 GB         Max_CA 2 GB 
+[2024-03-07 12:50:12,392] [INFO] [utils.py:799:see_memory_usage] CPU Virtual Memory:  used = 30.62 GB, percent = 6.1%
+Parameter Offload: Total persistent parameters: 329062 in 301 params
+[2024-03-07 12:50:15,504] [INFO] [utils.py:791:see_memory_usage] DeepSpeedZeRoOffload initialize [end]
+[2024-03-07 12:50:15,504] [INFO] [utils.py:792:see_memory_usage] MA 0.03 GB         Max_MA 2.08 GB         CA 2.17 GB         Max_CA 2 GB 
+[2024-03-07 12:50:15,505] [INFO] [utils.py:799:see_memory_usage] CPU Virtual Memory:  used = 31.46 GB, percent = 6.3%
+[2024-03-07 12:50:15,908] [INFO] [utils.py:791:see_memory_usage] Before creating fp16 partitions
+[2024-03-07 12:50:15,909] [INFO] [utils.py:792:see_memory_usage] MA 0.03 GB         Max_MA 0.03 GB         CA 2.17 GB         Max_CA 2 GB 
+[2024-03-07 12:50:15,909] [INFO] [utils.py:799:see_memory_usage] CPU Virtual Memory:  used = 31.46 GB, percent = 6.3%
+[2024-03-07 12:50:24,723] [INFO] [utils.py:791:see_memory_usage] After creating fp16 partitions: 1
+[2024-03-07 12:50:24,724] [INFO] [utils.py:792:see_memory_usage] MA 0.03 GB         Max_MA 0.03 GB         CA 0.04 GB         Max_CA 2 GB 
+[2024-03-07 12:50:24,724] [INFO] [utils.py:799:see_memory_usage] CPU Virtual Memory:  used = 31.48 GB, percent = 6.3%
+[2024-03-07 12:50:24,779] [INFO] [utils.py:791:see_memory_usage] Before creating fp32 partitions
+[2024-03-07 12:50:24,779] [INFO] [utils.py:792:see_memory_usage] MA 0.03 GB         Max_MA 0.03 GB         CA 0.04 GB         Max_CA 0 GB 
+[2024-03-07 12:50:24,779] [INFO] [utils.py:799:see_memory_usage] CPU Virtual Memory:  used = 31.48 GB, percent = 6.3%
+[2024-03-07 12:50:24,834] [INFO] [utils.py:791:see_memory_usage] After creating fp32 partitions
+[2024-03-07 12:50:24,834] [INFO] [utils.py:792:see_memory_usage] MA 0.07 GB         Max_MA 0.07 GB         CA 0.07 GB         Max_CA 0 GB 
+[2024-03-07 12:50:24,834] [INFO] [utils.py:799:see_memory_usage] CPU Virtual Memory:  used = 31.48 GB, percent = 6.3%
+[2024-03-07 12:50:24,888] [INFO] [utils.py:791:see_memory_usage] Before initializing optimizer states
+[2024-03-07 12:50:24,889] [INFO] [utils.py:792:see_memory_usage] MA 0.07 GB         Max_MA 0.07 GB         CA 0.07 GB         Max_CA 0 GB 
+[2024-03-07 12:50:24,889] [INFO] [utils.py:799:see_memory_usage] CPU Virtual Memory:  used = 31.48 GB, percent = 6.3%
+[2024-03-07 12:50:25,566] [INFO] [utils.py:791:see_memory_usage] After initializing optimizer states
+[2024-03-07 12:50:25,566] [INFO] [utils.py:792:see_memory_usage] MA 0.13 GB         Max_MA 0.2 GB         CA 0.2 GB         Max_CA 0 GB 
+[2024-03-07 12:50:25,567] [INFO] [utils.py:799:see_memory_usage] CPU Virtual Memory:  used = 31.54 GB, percent = 6.3%
+[2024-03-07 12:50:25,567] [INFO] [stage3.py:482:_setup_for_real_optimizer] optimizer state initialized
+[2024-03-07 12:50:26,944] [INFO] [utils.py:791:see_memory_usage] After initializing ZeRO optimizer
+[2024-03-07 12:50:26,945] [INFO] [utils.py:792:see_memory_usage] MA 0.2 GB         Max_MA 0.3 GB         CA 0.72 GB         Max_CA 1 GB 
+[2024-03-07 12:50:26,945] [INFO] [utils.py:799:see_memory_usage] CPU Virtual Memory:  used = 31.61 GB, percent = 6.3%
+[2024-03-07 12:50:26,945] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Final Optimizer = AdamW
+[2024-03-07 12:50:26,945] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed using client LR scheduler
+[2024-03-07 12:50:26,945] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed LR Scheduler = None
+[2024-03-07 12:50:26,945] [INFO] [logging.py:96:log_dist] [Rank 0] step=0, skipped=0, lr=[5.547001e-05], mom=[(0.9, 0.999)]
+[2024-03-07 12:50:26,946] [INFO] [config.py:984:print] DeepSpeedEngine configuration:
+[2024-03-07 12:50:26,946] [INFO] [config.py:988:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2024-03-07 12:50:26,946] [INFO] [config.py:988:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2024-03-07 12:50:26,946] [INFO] [config.py:988:print]   amp_enabled .................. False
+[2024-03-07 12:50:26,946] [INFO] [config.py:988:print]   amp_params ................... False
+[2024-03-07 12:50:26,947] [INFO] [config.py:988:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2024-03-07 12:50:26,947] [INFO] [config.py:988:print]   bfloat16_enabled ............. False
+[2024-03-07 12:50:26,947] [INFO] [config.py:988:print]   checkpoint_parallel_write_pipeline  False
+[2024-03-07 12:50:26,947] [INFO] [config.py:988:print]   checkpoint_tag_validation_enabled  True
+[2024-03-07 12:50:26,947] [INFO] [config.py:988:print]   checkpoint_tag_validation_fail  False
+[2024-03-07 12:50:26,947] [INFO] [config.py:988:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7ff657ef51c0>
+[2024-03-07 12:50:26,947] [INFO] [config.py:988:print]   communication_data_type ...... None
+[2024-03-07 12:50:26,947] [INFO] [config.py:988:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2024-03-07 12:50:26,947] [INFO] [config.py:988:print]   curriculum_enabled_legacy .... False
+[2024-03-07 12:50:26,947] [INFO] [config.py:988:print]   curriculum_params_legacy ..... False
+[2024-03-07 12:50:26,947] [INFO] [config.py:988:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2024-03-07 12:50:26,947] [INFO] [config.py:988:print]   data_efficiency_enabled ...... False
+[2024-03-07 12:50:26,947] [INFO] [config.py:988:print]   dataloader_drop_last ......... False
+[2024-03-07 12:50:26,947] [INFO] [config.py:988:print]   disable_allgather ............ False
+[2024-03-07 12:50:26,947] [INFO] [config.py:988:print]   dump_state ................... False
+[2024-03-07 12:50:26,947] [INFO] [config.py:988:print]   dynamic_loss_scale_args ...... None
+[2024-03-07 12:50:26,947] [INFO] [config.py:988:print]   eigenvalue_enabled ........... False
+[2024-03-07 12:50:26,947] [INFO] [config.py:988:print]   eigenvalue_gas_boundary_resolution  1
+[2024-03-07 12:50:26,947] [INFO] [config.py:988:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2024-03-07 12:50:26,947] [INFO] [config.py:988:print]   eigenvalue_layer_num ......... 0
+[2024-03-07 12:50:26,947] [INFO] [config.py:988:print]   eigenvalue_max_iter .......... 100
+[2024-03-07 12:50:26,947] [INFO] [config.py:988:print]   eigenvalue_stability ......... 1e-06
+[2024-03-07 12:50:26,947] [INFO] [config.py:988:print]   eigenvalue_tol ............... 0.01
+[2024-03-07 12:50:26,947] [INFO] [config.py:988:print]   eigenvalue_verbose ........... False
+[2024-03-07 12:50:26,947] [INFO] [config.py:988:print]   elasticity_enabled ........... False
+[2024-03-07 12:50:26,947] [INFO] [config.py:988:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "recompute_fwd_factor": 0.0, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2024-03-07 12:50:26,947] [INFO] [config.py:988:print]   fp16_auto_cast ............... None
+[2024-03-07 12:50:26,947] [INFO] [config.py:988:print]   fp16_enabled ................. False
+[2024-03-07 12:50:26,947] [INFO] [config.py:988:print]   fp16_master_weights_and_gradients  False
+[2024-03-07 12:50:26,947] [INFO] [config.py:988:print]   global_rank .................. 0
+[2024-03-07 12:50:26,947] [INFO] [config.py:988:print]   grad_accum_dtype ............. None
+[2024-03-07 12:50:26,947] [INFO] [config.py:988:print]   gradient_accumulation_steps .. 1
+[2024-03-07 12:50:26,947] [INFO] [config.py:988:print]   gradient_clipping ............ 0.0
+[2024-03-07 12:50:26,947] [INFO] [config.py:988:print]   gradient_predivide_factor .... 1.0
+[2024-03-07 12:50:26,947] [INFO] [config.py:988:print]   graph_harvesting ............. False
+[2024-03-07 12:50:26,948] [INFO] [config.py:988:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2024-03-07 12:50:26,948] [INFO] [config.py:988:print]   initial_dynamic_scale ........ 65536
+[2024-03-07 12:50:26,948] [INFO] [config.py:988:print]   load_universal_checkpoint .... False
+[2024-03-07 12:50:26,948] [INFO] [config.py:988:print]   loss_scale ................... 0
+[2024-03-07 12:50:26,948] [INFO] [config.py:988:print]   memory_breakdown ............. False
+[2024-03-07 12:50:26,948] [INFO] [config.py:988:print]   mics_hierarchial_params_gather  False
+[2024-03-07 12:50:26,948] [INFO] [config.py:988:print]   mics_shard_size .............. -1
+[2024-03-07 12:50:26,948] [INFO] [config.py:988:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=False
+[2024-03-07 12:50:26,948] [INFO] [config.py:988:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2024-03-07 12:50:26,948] [INFO] [config.py:988:print]   optimizer_legacy_fusion ...... False
+[2024-03-07 12:50:26,948] [INFO] [config.py:988:print]   optimizer_name ............... None
+[2024-03-07 12:50:26,948] [INFO] [config.py:988:print]   optimizer_params ............. None
+[2024-03-07 12:50:26,948] [INFO] [config.py:988:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0, 'pipe_partitioned': True, 'grad_partitioned': True}
+[2024-03-07 12:50:26,948] [INFO] [config.py:988:print]   pld_enabled .................. False
+[2024-03-07 12:50:26,948] [INFO] [config.py:988:print]   pld_params ................... False
+[2024-03-07 12:50:26,948] [INFO] [config.py:988:print]   prescale_gradients ........... False
+[2024-03-07 12:50:26,948] [INFO] [config.py:988:print]   scheduler_name ............... None
+[2024-03-07 12:50:26,948] [INFO] [config.py:988:print]   scheduler_params ............. None
+[2024-03-07 12:50:26,948] [INFO] [config.py:988:print]   seq_parallel_communication_data_type  torch.float32
+[2024-03-07 12:50:26,948] [INFO] [config.py:988:print]   sparse_attention ............. None
+[2024-03-07 12:50:26,948] [INFO] [config.py:988:print]   sparse_gradients_enabled ..... False
+[2024-03-07 12:50:26,948] [INFO] [config.py:988:print]   steps_per_print .............. 10
+[2024-03-07 12:50:26,948] [INFO] [config.py:988:print]   train_batch_size ............. 2048
+[2024-03-07 12:50:26,948] [INFO] [config.py:988:print]   train_micro_batch_size_per_gpu  32
+[2024-03-07 12:50:26,948] [INFO] [config.py:988:print]   use_data_before_expert_parallel_  False
+[2024-03-07 12:50:26,948] [INFO] [config.py:988:print]   use_node_local_storage ....... False
+[2024-03-07 12:50:26,948] [INFO] [config.py:988:print]   wall_clock_breakdown ......... False
+[2024-03-07 12:50:26,948] [INFO] [config.py:988:print]   weight_quantization_config ... None
+[2024-03-07 12:50:26,948] [INFO] [config.py:988:print]   world_size ................... 64
+[2024-03-07 12:50:26,948] [INFO] [config.py:988:print]   zero_allow_untested_optimizer  False
+[2024-03-07 12:50:26,948] [INFO] [config.py:988:print]   zero_config .................. stage=3 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=10000000 use_multi_rank_bucket_allreduce=True allgather_partitions=True allgather_bucket_size=500,000,000 overlap_comm=True load_from_fp32_weights=True elastic_checkpoint=False offload_param=None offload_optimizer=None sub_group_size=1000000000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=10000000 param_persistence_threshold=100000 model_persistence_threshold=sys.maxsize max_live_parameters=1000000000 max_reuse_distance=1000000000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_nontrainable_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True pipeline_loading_checkpoint=False override_module_apply=True
+[2024-03-07 12:50:26,948] [INFO] [config.py:988:print]   zero_enabled ................. True
+[2024-03-07 12:50:26,948] [INFO] [config.py:988:print]   zero_force_ds_cpu_optimizer .. True
+[2024-03-07 12:50:26,948] [INFO] [config.py:988:print]   zero_optimization_stage ...... 3
+[2024-03-07 12:50:26,948] [INFO] [config.py:974:print_user_config]   json = {
+    "train_batch_size": 2.048000e+03, 
+    "train_micro_batch_size_per_gpu": 32, 
+    "zero_optimization": {
+        "stage": 3, 
+        "contiguous_gradients": true, 
+        "stage3_max_live_parameters": 1.000000e+09, 
+        "stage3_max_reuse_distance": 1.000000e+09, 
+        "stage3_prefetch_bucket_size": 1.000000e+07, 
+        "stage3_param_persistence_threshold": 1.000000e+05, 
+        "reduce_bucket_size": 1.000000e+07, 
+        "sub_group_size": 1.000000e+09
+    }
+}
+training...
+RANK: 50
+RANK: 54
+RANK: 51
+RANK: 53
+RANK: 49
+RANK: 48
+RANK: 55
+RANK: 52
+RANK: 10
+RANK: 12
+RANK: 9
+RANK: 14
+RANK: 8
+RANK: 13
+RANK: 15
+RANK: 11
+RANK: 16
+RANK: 20
+RANK: 22
+RANK: 19
+RANK: 23
+RANK: 18
+RANK: 21
+RANK: 17
+RANK: 30
+RANK: 31
+RANK: 25
+RANK: 26
+RANK: 27
+RANK: 29
+RANK: 24
+RANK: 28
+RANK: 57
+RANK: 60
+RANK: 62
+RANK: 63
+RANK: 56
+RANK: 61
+RANK: 58
+RANK: 59
+RANK: 38
+RANK: 33
+RANK: 39
+RANK: 32
+RANK: 35
+RANK: 36
+RANK: 34
+RANK: 37
+RANK: 7
+RANK: 1
+RANK: 6
+RANK: 0
+RANK: 4
+RANK: 5
+RANK: 2
+RANK: 3
+RANK: 43
+RANK: 40
+RANK: 44
+RANK: 46
+RANK: 41
+RANK: 42
+RANK: 47
+RANK: 45
+MIOpen(HIP): Warning [PlainTextDb] Unable to create a directory: "/tmp/my-miopen-cache"
+MIOpen(HIP): Warning [PlainTextDb] Unable to create a directory: "/tmp/my-miopen-cache"
+MIOpen(HIP): Warning [PlainTextDb] Unable to create a directory: "/tmp/my-miopen-cache"
+MIOpen(HIP): Warning [PlainTextDb] Unable to create a directory: "/tmp/my-miopen-cache"
+MIOpen(HIP): Warning [PlainTextDb] Unable to create a directory: "/tmp/my-miopen-cache"
+MIOpen(HIP): Warning [PlainTextDb] Unable to create a directory: "/tmp/my-miopen-cache"
+MIOpen(HIP): Warning [PlainTextDb] Unable to create a directory: "/tmp/my-miopen-cache"
+MIOpen(HIP): Warning [PlainTextDb] Unable to create a directory: "/tmp/my-miopen-cache"
+----------------------
+| loss    | 1.01     |
+| loss_q0 | 1        |
+| loss_q1 | 1.01     |
+| loss_q2 | 1        |
+| loss_q3 | 1.04     |
+| mse     | 0.999    |
+| mse_q0  | 0.992    |
+| mse_q1  | 1.01     |
+| mse_q2  | 0.995    |
+| mse_q3  | 0.999    |
+| samples | 2.05e+03 |
+| step    | 0        |
+| vb      | 0.00864  |
+| vb_q0   | 0.0109   |
+| vb_q1   | 0.00497  |
+| vb_q2   | 0.0053   |
+| vb_q3   | 0.0439   |
+----------------------
+[2024-03-07 12:55:45,833] [INFO] [logging.py:96:log_dist] [Rank 0] step=10, skipped=0, lr=[5.04777091e-05], mom=[(0.9, 0.999)]
+[2024-03-07 12:55:45,833] [INFO] [timer.py:260:stop] epoch=0/micro_step=10/global_step=10, RunningAvgSamplesPerSec=82.27003628034466, CurrSamplesPerSec=81.20194341646686, MemAllocated=0.2GB, MaxMemAllocated=9.86GB
+----------------------
+| loss    | 0.877    |
+| loss_q0 | 0.925    |
+| loss_q1 | 0.857    |
+| loss_q2 | 0.867    |
+| loss_q3 | 0.861    |
+| mse     | 0.861    |
+| mse_q0  | 0.896    |
+| mse_q1  | 0.853    |
+| mse_q2  | 0.863    |
+| mse_q3  | 0.833    |
+| samples | 2.25e+04 |
+| step    | 10       |
+| vb      | 0.0162   |
+| vb_q0   | 0.0287   |
+| vb_q1   | 0.00424  |
+| vb_q2   | 0.00429  |
+| vb_q3   | 0.0282   |
+----------------------
+[2024-03-07 13:00:01,176] [INFO] [logging.py:96:log_dist] [Rank 0] step=20, skipped=0, lr=[4.493070810000001e-05], mom=[(0.9, 0.999)]
+[2024-03-07 13:00:01,177] [INFO] [timer.py:260:stop] epoch=0/micro_step=20/global_step=20, RunningAvgSamplesPerSec=81.12789248521155, CurrSamplesPerSec=80.18678484091922, MemAllocated=0.2GB, MaxMemAllocated=9.86GB
+----------------------
+| loss    | 0.61     |
+| loss_q0 | 0.714    |
+| loss_q1 | 0.588    |
+| loss_q2 | 0.555    |
+| loss_q3 | 0.579    |
+| mse     | 0.587    |
+| mse_q0  | 0.659    |
+| mse_q1  | 0.585    |
+| mse_q2  | 0.552    |
+| mse_q3  | 0.551    |
+| samples | 4.3e+04  |
+| step    | 20       |
+| vb      | 0.0223   |
+| vb_q0   | 0.0551   |
+| vb_q1   | 0.00293  |
+| vb_q2   | 0.0028   |
+| vb_q3   | 0.0276   |
+----------------------
+[2024-03-07 13:04:18,019] [INFO] [logging.py:96:log_dist] [Rank 0] step=30, skipped=0, lr=[3.93837071e-05], mom=[(0.9, 0.999)]
+[2024-03-07 13:04:18,020] [INFO] [timer.py:260:stop] epoch=0/micro_step=30/global_step=30, RunningAvgSamplesPerSec=80.70035839925471, CurrSamplesPerSec=77.21250862591187, MemAllocated=0.2GB, MaxMemAllocated=9.86GB
+----------------------
+| loss    | 0.399    |
+| loss_q0 | 0.498    |
+| loss_q1 | 0.367    |
+| loss_q2 | 0.36     |
+| loss_q3 | 0.376    |
+| mse     | 0.392    |
+| mse_q0  | 0.486    |
+| mse_q1  | 0.365    |
+| mse_q2  | 0.358    |
+| mse_q3  | 0.364    |
+| samples | 6.35e+04 |
+| step    | 30       |
+| vb      | 0.00658  |
+| vb_q0   | 0.0115   |
+| vb_q1   | 0.00181  |
+| vb_q2   | 0.00181  |
+| vb_q3   | 0.0118   |
+----------------------
+[2024-03-07 13:08:32,570] [INFO] [logging.py:96:log_dist] [Rank 0] step=40, skipped=0, lr=[3.38367061e-05], mom=[(0.9, 0.999)]
+[2024-03-07 13:08:32,571] [INFO] [timer.py:260:stop] epoch=0/micro_step=40/global_step=40, RunningAvgSamplesPerSec=80.64308261628938, CurrSamplesPerSec=76.84943777900965, MemAllocated=0.2GB, MaxMemAllocated=9.86GB
+----------------------
+| loss    | 0.312    |
+| loss_q0 | 0.467    |
+| loss_q1 | 0.255    |
+| loss_q2 | 0.235    |
+| loss_q3 | 0.239    |
+| mse     | 0.291    |
+| mse_q0  | 0.415    |
+| mse_q1  | 0.254    |
+| mse_q2  | 0.234    |
+| mse_q3  | 0.222    |
+| samples | 8.4e+04  |
+| step    | 40       |
+| vb      | 0.0203   |
+| vb_q0   | 0.0515   |
+| vb_q1   | 0.00128  |
+| vb_q2   | 0.00121  |
+| vb_q3   | 0.0168   |
+----------------------
+[2024-03-07 13:12:38,347] [INFO] [logging.py:96:log_dist] [Rank 0] step=50, skipped=0, lr=[2.8289705100000003e-05], mom=[(0.9, 0.999)]
+[2024-03-07 13:12:38,347] [INFO] [timer.py:260:stop] epoch=0/micro_step=50/global_step=50, RunningAvgSamplesPerSec=81.1943654689058, CurrSamplesPerSec=82.898382205969, MemAllocated=0.2GB, MaxMemAllocated=9.86GB
+----------------------
+| loss    | 0.212    |
+| loss_q0 | 0.334    |
+| loss_q1 | 0.18     |
+| loss_q2 | 0.152    |
+| loss_q3 | 0.175    |
+| mse     | 0.203    |
+| mse_q0  | 0.323    |
+| mse_q1  | 0.179    |
+| mse_q2  | 0.151    |
+| mse_q3  | 0.153    |
+| samples | 1.04e+05 |
+| step    | 50       |
+| vb      | 0.0094   |
+| vb_q0   | 0.0115   |
+| vb_q1   | 0.000914 |
+| vb_q2   | 0.00078  |
+| vb_q3   | 0.0221   |
+----------------------
+[2024-03-07 13:16:44,986] [INFO] [logging.py:96:log_dist] [Rank 0] step=60, skipped=0, lr=[2.2742704100000004e-05], mom=[(0.9, 0.999)]
+[2024-03-07 13:16:44,986] [INFO] [timer.py:260:stop] epoch=0/micro_step=60/global_step=60, RunningAvgSamplesPerSec=81.55666761066121, CurrSamplesPerSec=80.56554736227609, MemAllocated=0.2GB, MaxMemAllocated=9.86GB
+----------------------
+| loss    | 0.181    |
+| loss_q0 | 0.363    |
+| loss_q1 | 0.145    |
+| loss_q2 | 0.114    |
+| loss_q3 | 0.111    |
+| mse     | 0.167    |
+| mse_q0  | 0.313    |
+| mse_q1  | 0.144    |
+| mse_q2  | 0.114    |
+| mse_q3  | 0.106    |
+| samples | 1.25e+05 |
+| step    | 60       |
+| vb      | 0.0141   |
+| vb_q0   | 0.0501   |
+| vb_q1   | 0.00075  |
+| vb_q2   | 0.00058  |
+| vb_q3   | 0.0051   |
+----------------------
+[2024-03-07 13:20:56,078] [INFO] [logging.py:96:log_dist] [Rank 0] step=70, skipped=0, lr=[1.7195703100000005e-05], mom=[(0.9, 0.999)]
+[2024-03-07 13:20:56,078] [INFO] [timer.py:260:stop] epoch=0/micro_step=70/global_step=70, RunningAvgSamplesPerSec=81.56238913301524, CurrSamplesPerSec=80.28592279837547, MemAllocated=0.2GB, MaxMemAllocated=9.86GB
+----------------------
+| loss    | 0.146    |
+| loss_q0 | 0.272    |
+| loss_q1 | 0.125    |
+| loss_q2 | 0.0924   |
+| loss_q3 | 0.0847   |
+| mse     | 0.143    |
+| mse_q0  | 0.265    |
+| mse_q1  | 0.124    |
+| mse_q2  | 0.092    |
+| mse_q3  | 0.0794   |
+| samples | 1.45e+05 |
+| step    | 70       |
+| vb      | 0.00339  |
+| vb_q0   | 0.00752  |
+| vb_q1   | 0.000637 |
+| vb_q2   | 0.000463 |
+| vb_q3   | 0.00534  |
+----------------------
+[2024-03-07 13:25:12,213] [INFO] [logging.py:96:log_dist] [Rank 0] step=80, skipped=0, lr=[1.16487021e-05], mom=[(0.9, 0.999)]
+[2024-03-07 13:25:12,213] [INFO] [timer.py:260:stop] epoch=0/micro_step=80/global_step=80, RunningAvgSamplesPerSec=81.35698730819293, CurrSamplesPerSec=82.05103974598867, MemAllocated=0.2GB, MaxMemAllocated=9.86GB
+----------------------
+| loss    | 0.162    |
+| loss_q0 | 0.354    |
+| loss_q1 | 0.109    |
+| loss_q2 | 0.0758   |
+| loss_q3 | 0.0681   |
+| mse     | 0.145    |
+| mse_q0  | 0.3      |
+| mse_q1  | 0.108    |
+| mse_q2  | 0.0755   |
+| mse_q3  | 0.0659   |
+| samples | 1.66e+05 |
+| step    | 80       |
+| vb      | 0.0164   |
+| vb_q0   | 0.0538   |
+| vb_q1   | 0.000559 |
+| vb_q2   | 0.000384 |
+| vb_q3   | 0.00218  |
+----------------------
+[2024-03-07 13:29:26,142] [INFO] [logging.py:96:log_dist] [Rank 0] step=90, skipped=0, lr=[6.1017011e-06], mom=[(0.9, 0.999)]
+[2024-03-07 13:29:26,143] [INFO] [timer.py:260:stop] epoch=0/micro_step=90/global_step=90, RunningAvgSamplesPerSec=81.30104308799983, CurrSamplesPerSec=81.86373476504534, MemAllocated=0.2GB, MaxMemAllocated=9.86GB
+----------------------
+| loss    | 0.123    |
+| loss_q0 | 0.255    |
+| loss_q1 | 0.102    |
+| loss_q2 | 0.0713   |
+| loss_q3 | 0.0595   |
+| mse     | 0.119    |
+| mse_q0  | 0.242    |
+| mse_q1  | 0.101    |
+| mse_q2  | 0.0709   |
+| mse_q3  | 0.0584   |
+| samples | 1.86e+05 |
+| step    | 90       |
+| vb      | 0.00382  |
+| vb_q0   | 0.0126   |
+| vb_q1   | 0.000508 |
+| vb_q2   | 0.000358 |
+| vb_q3   | 0.0011   |
+----------------------
+[2024-03-07 13:33:36,357] [INFO] [logging.py:96:log_dist] [Rank 0] step=100, skipped=0, lr=[5.547001000000005e-07], mom=[(0.9, 0.999)]
+[2024-03-07 13:33:36,357] [INFO] [timer.py:260:stop] epoch=0/micro_step=100/global_step=100, RunningAvgSamplesPerSec=81.36000744036372, CurrSamplesPerSec=79.89601526053414, MemAllocated=0.2GB, MaxMemAllocated=9.86GB
+slurmstepd: error: *** STEP 1735584.0 ON frontier00101 CANCELLED AT 2024-03-07T13:49:56 DUE TO TIME LIMIT ***
+slurmstepd: error: *** JOB 1735584 ON frontier00101 CANCELLED AT 2024-03-07T13:49:56 DUE TO TIME LIMIT ***
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.

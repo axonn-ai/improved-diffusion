@@ -64,8 +64,6 @@ def load_data(
     :param deterministic: if True, yield results in a deterministic order.
     """
 
-    print("RANK: " + str(MPI.COMM_WORLD.Get_rank()))
-
     if not data_dir:
         raise ValueError("unspecified data directory")
     all_files = _list_image_files_recursively(data_dir)

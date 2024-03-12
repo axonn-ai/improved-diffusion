@@ -29,6 +29,7 @@ INITIAL_LOG_LOSS_SCALE = 20.0
 import pickle
 import matplotlib.pyplot as plt
 from axonn import axonn as ax
+from axonn.intra_layer import optimize_communication
 
 
 class TrainLoop:
@@ -223,30 +224,37 @@ class TrainLoop:
                 model_kwargs=micro_cond,
             )
 
-            if last_batch or not self.use_ddp:
+            with optimize_communication(
+                overlap_all_reduce=True, 
+                overlap_reduce_scatter=True,
+                cache_weights=True,
+                overlap_all_gather=True,
+                model_object_for_overlapping_allgathers=self.ddp_model,
+            ):
                 with th.autocast(device_type="cuda", dtype=th.bfloat16):
-                    losses = compute_losses()
-            else:
-                with self.ddp_model.no_sync():
-                    losses = compute_losses()
+                    if last_batch or not self.use_ddp:
+                        losses = compute_losses()
+                    else:
+                        with self.ddp_model.no_sync():
+                            losses = compute_losses()
 
-            if isinstance(self.schedule_sampler, LossAwareSampler):
-                self.schedule_sampler.update_with_local_losses(
-                    t, losses["loss"].detach()
+                if isinstance(self.schedule_sampler, LossAwareSampler):
+                    self.schedule_sampler.update_with_local_losses(
+                        t, losses["loss"].detach()
+                    )
+
+                loss = (losses["loss"] * weights).mean()
+
+                loss_list.append(loss.item())
+
+                log_loss_dict(
+                    self.diffusion, t, {k: v * weights for k, v in losses.items()}
                 )
-
-            loss = (losses["loss"] * weights).mean()
-
-            loss_list.append(loss.item())
-
-            log_loss_dict(
-                self.diffusion, t, {k: v * weights for k, v in losses.items()}
-            )
-            if self.use_fp16:
-                loss_scale = 2 ** self.lg_loss_scale
-                (loss * loss_scale).backward()
-            else:
-                loss.backward()
+                if self.use_fp16:
+                    loss_scale = 2 ** self.lg_loss_scale
+                    (loss * loss_scale).backward()
+                else:
+                    loss.backward()
 
     def optimize_fp16(self):
         if any(not th.isfinite(p.grad).all() for p in self.model_params):

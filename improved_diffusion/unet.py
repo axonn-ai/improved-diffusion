@@ -95,7 +95,7 @@ class Downsample(nn.Module):
         self.dims = dims
         stride = 2 if dims != 3 else (1, 2, 2)
         if use_conv:
-            self.op = conv_nd(True, dims, channels, channels, 3, stride=stride, padding=1)
+            self.op = conv_nd(False, dims, channels, channels, 3, stride=stride, padding=1)
         else:
             self.op = avg_pool_nd(stride)
 

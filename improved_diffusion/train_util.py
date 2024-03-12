@@ -223,12 +223,12 @@ class TrainLoop:
                 model_kwargs=micro_cond,
             )
 
-            if last_batch or not self.use_ddp:
-                with th.autocast(device_type="cuda", dtype=th.bfloat16):
+            with th.autocast(device_type="cuda", dtype=th.bfloat16):
+                if last_batch or not self.use_ddp:
                     losses = compute_losses()
-            else:
-                with self.ddp_model.no_sync():
-                    losses = compute_losses()
+                else:
+                    with self.ddp_model.no_sync():
+                       losses = compute_losses()
 
             if isinstance(self.schedule_sampler, LossAwareSampler):
                 self.schedule_sampler.update_with_local_losses(

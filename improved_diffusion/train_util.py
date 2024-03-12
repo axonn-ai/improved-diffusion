@@ -23,6 +23,8 @@ from .resample import LossAwareSampler, UniformSampler
 import pickle
 import matplotlib.pyplot as plt
 
+from mpi4py import MPI
+
 # For ImageNet experiments, this was a good default value.
 # We found that the lg_loss_scale quickly climbed to
 # 20-21 within the first ~1K steps of training.
@@ -169,15 +171,23 @@ class TrainLoop:
         self.model.convert_to_fp16()
 
     def run_loop(self):
-        losses = []
+        losses, iter_times = [], []
+
+        start_event = th.cuda.Event(enable_timing=True)
+        stop_event = th.cuda.Event(enable_timing=True)
 
         while (
             not self.lr_anneal_steps
             or self.step + self.resume_step < self.lr_anneal_steps
         ):
             batch, cond = next(self.data)
-            self.run_step(batch, cond, losses)
             
+            start_event.record()
+            self.run_step(batch, cond, losses)
+            stop_event.record()
+            th.cuda.synchronize()
+            iter_times.append(start_event.elapsed_time(stop_event))
+
             if self.step % self.log_interval == 0:
                 logger.dumpkvs()
 
@@ -192,19 +202,23 @@ class TrainLoop:
                     return
             """
             self.step += 1
-        """
-        # Save the last checkpoint if it wasn't already saved.
-        if (self.step - 1) % self.save_interval != 0:
+            """
+            # Save the last checkpoint if it wasn't already saved.
+            if (self.step - 1) % self.save_interval != 0:
             self.save()
-        """
+            """
 
-        with open('validation_deepspeed.pickle', 'wb') as handle:
-            pickle.dump(losses, handle, protocol=pickle.HIGHEST_PROTOCOL)
+            if self.step % 1 == 0:
+                with open('iter_deepspeed' + str(MPI.COMM_WORLD.size) + '.pickle', 'wb') as handle:
+                    pickle.dump(iter_times, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
-        plt.plot([i for i in range(len(losses))], losses)
-        plt.xlabel("Step")
-        plt.ylabel("Loss")
-        plt.savefig('out.png')
+                with open('validation_deepspeed' + str(MPI.COMM_WORLD.size) + '.pickle', 'wb') as handle:
+                    pickle.dump(losses, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+                plt.plot([i for i in range(len(losses))], losses)
+                plt.xlabel("Step")
+                plt.ylabel("Loss")
+                plt.savefig('out' + str(MPI.COMM_WORLD.size) + '.png')
     
     def run_step(self, batch, cond, losses):
         self.forward_backward(batch, cond, losses)

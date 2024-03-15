@@ -74,7 +74,7 @@ class TrainLoop:
 
         self.step = 0
         self.resume_step = 0
-        self.global_batch = self.batch_size * dist.get_world_size()
+        self.global_batch = self.batch_size * ax.config.G_data
 
         self.model_params = list(self.model.parameters())
         self.master_params = self.model_params
@@ -117,6 +117,8 @@ class TrainLoop:
                 )
             self.use_ddp = False
             self.ddp_model = self.model
+
+        self.batch_timers = [th.cuda.Event(enable_timing=True) for _ in range(2)]
 
     def _load_and_sync_parameters(self):
         resume_checkpoint = find_resume_checkpoint() or self.resume_checkpoint
@@ -198,12 +200,16 @@ class TrainLoop:
         plt.savefig('out.png')
 
     def run_step(self, batch, cond, losses):
+        self.batch_timers[0].record() 
         self.forward_backward(batch, cond, losses)
         if self.use_fp16:
             self.optimize_fp16()
         else:
             self.optimize_normal()
-        self.log_step()
+        self.batch_timers[1].record()
+        th.cuda.synchronize()
+        time = self.batch_timers[0].elapsed_time(self.batch_timers[1]) / 1000
+        self.log_step(time=time)
 
     def forward_backward(self, batch, cond, loss_list):
         zero_grad(self.model_params)
@@ -293,11 +299,14 @@ class TrainLoop:
         for param_group in self.opt.param_groups:
             param_group["lr"] = lr
 
-    def log_step(self):
+    def log_step(self, time=None):
         logger.logkv("step", self.step + self.resume_step)
         logger.logkv("samples", (self.step + self.resume_step + 1) * self.global_batch)
         if self.use_fp16:
             logger.logkv("lg_loss_scale", self.lg_loss_scale)
+        #if th.distributed.get_rank() == 0:
+            #print(f"Batch Time = {time:.2f} s")
+        logger.logkv("batch_time", time)
 
     def save(self):
         def save_checkpoint(rate, params):

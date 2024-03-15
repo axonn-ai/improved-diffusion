@@ -7,7 +7,11 @@ import os
 import socket
 
 import blobfile as bf
-from mpi4py import MPI
+try:
+    from mpi4py import MPI
+    MPI4PY = True
+except ImportError:
+    MPI4PY=False
 import torch as th
 import torch.distributed as dist
 
@@ -28,20 +32,24 @@ def setup_dist(G_data, G_inter, G_row, G_col, G_depth):
     if dist.is_initialized():
         return
 
-    comm = MPI.COMM_WORLD
-    backend = "gloo" if not th.cuda.is_available() else "nccl"
+    if MPI4PY:
+        comm = MPI.COMM_WORLD
+        backend = "gloo" if not th.cuda.is_available() else "nccl"
 
-    if backend == "gloo":
-        hostname = "localhost"
+        if backend == "gloo":
+            hostname = "localhost"
+        else:
+            hostname = socket.gethostbyname(socket.getfqdn())
+        os.environ["MASTER_ADDR"] = comm.bcast(hostname, root=0)
+        os.environ["RANK"] = str(comm.rank)
+        os.environ["WORLD_SIZE"] = str(comm.size)
+
+        port = comm.bcast(_find_free_port(), root=0)
+        os.environ["MASTER_PORT"] = str(port)
+        dist.init_process_group(backend=backend, init_method="env://")
     else:
-        hostname = socket.gethostbyname(socket.getfqdn())
-    os.environ["MASTER_ADDR"] = comm.bcast(hostname, root=0)
-    os.environ["RANK"] = str(comm.rank)
-    os.environ["WORLD_SIZE"] = str(comm.size)
-
-    port = comm.bcast(_find_free_port(), root=0)
-    os.environ["MASTER_PORT"] = str(port)
-    dist.init_process_group(backend=backend, init_method="env://")
+        backend = "gloo" if not th.cuda.is_available() else "nccl"
+        dist.init_process_group(backend=backend, init_method="env://")
 
     ax.init(
         G_data=G_data,
@@ -49,7 +57,6 @@ def setup_dist(G_data, G_inter, G_row, G_col, G_depth):
         G_intra_r=G_row,
         G_intra_c=G_col,
         G_intra_d=G_depth,
-        gpus_per_node=GPUS_PER_NODE,
     )
 
 def dev():
@@ -57,7 +64,7 @@ def dev():
     Get the device to use for torch.distributed.
     """
     if th.cuda.is_available():
-        return th.device(f"cuda:{MPI.COMM_WORLD.Get_rank() % GPUS_PER_NODE}")
+        return 'cuda' 
     return th.device("cpu")
 
 

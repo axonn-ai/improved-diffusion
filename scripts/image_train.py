@@ -52,8 +52,6 @@ def main():
         batch_size=args.batch_size,
         image_size=args.image_size,
         class_cond=args.class_cond,
-        data_parallel_rank=ax.config.data_parallel_rank,
-        G_data=ax.config.G_data
     )
 
     logger.log("training...")

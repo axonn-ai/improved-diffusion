@@ -1,7 +1,7 @@
 #!/bin/bash
 
-#SBATCH -N 8
-#SBATCH -n 64
+#SBATCH -N 4
+#SBATCH -n 32
 #SBATCH -q debug
 #SBATCH --time=00:30:00
 #SBATCH -A csc547
@@ -38,9 +38,9 @@ mkdir -p ${MIOPEN_USER_DB_PATH}
 # changed learning rate according to paper: (1 / ((416 / 128) ^ 0.5)) * 0.0001 = 0.00005547001
 MODEL_FLAGS="--image_size 32 --num_channels 1600 --num_res_blocks 3 --learn_sigma True --dropout 0.3"
 DIFFUSION_FLAGS="--diffusion_steps 4000 --noise_schedule cosine"
-TRAIN_FLAGS="--lr 0.00005547001 --batch_size 32"
+TRAIN_FLAGS="--lr 0.00005547001 --batch_size 64"
 
-cmd="srun -n 64 python image_train.py $MODEL_FLAGS $DIFFUSION_FLAGS $TRAIN_FLAGS --deepspeed_config ./temp.json" 
+cmd="srun -n 32 python image_train.py $MODEL_FLAGS $DIFFUSION_FLAGS $TRAIN_FLAGS --deepspeed_config ./temp32.json" 
 
 echo "${cmd}"
 

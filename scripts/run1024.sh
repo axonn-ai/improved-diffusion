@@ -39,7 +39,7 @@ MODEL_FLAGS="--image_size 32 --num_channels 1600 --num_res_blocks 3 --learn_sigm
 DIFFUSION_FLAGS="--diffusion_steps 4000 --noise_schedule cosine"
 TRAIN_FLAGS="--lr 0.00002828427 --batch_size 2"
 
-cmd="srun -n 1024 python image_train.py $MODEL_FLAGS $DIFFUSION_FLAGS $TRAIN_FLAGS --deepspeed_config ./ds_config1024.json" 
+cmd="srun -n 1024 python image_train.py $MODEL_FLAGS $DIFFUSION_FLAGS $TRAIN_FLAGS --deepspeed_config ./temp1024.json" 
 
 echo "${cmd}"
 

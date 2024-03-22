@@ -1,0 +1,10 @@
+{
+  "train_batch_size": 2048,
+  "train_micro_batch_size_per_gpu": 4,
+  "zero_optimization": {
+      "stage": 3
+  },
+  "steps_per_print": 1,
+  "overlap_comm": true
+}
+

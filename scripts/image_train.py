@@ -29,6 +29,8 @@ import os
 import deepspeed
 from torch.optim import AdamW
 
+from mpi4py import MPI
+
 
 def main():
     parser = create_argparser()
@@ -92,7 +94,7 @@ def create_argparser():
         schedule_sampler="uniform",
         lr=1e-4,
         weight_decay=0.0,
-        lr_anneal_steps=50,
+        lr_anneal_steps=20,
         batch_size=1,  # overriden by run script
         microbatch=-1,  # -1 disables microbatches
         ema_rate="0.9999",  # comma-separated list of EMA values

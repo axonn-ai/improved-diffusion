@@ -2,7 +2,7 @@
 
 #SBATCH -N 16
 #SBATCH -n 128
-#SBATCH --time=02:00:00
+#SBATCH --time=00:30:00
 #SBATCH -A csc547
 #SBATCH --gpus-per-node=8
 
@@ -35,11 +35,11 @@ mkdir -p ${MIOPEN_USER_DB_PATH}
 # divided batch size (2048) by num gpus (128) to get 16 batch size
 # changed num_channels to 576 to get a model size of roughly 1 bil
 # changed learning rate according to paper: (1 / ((576 / 128) ^ 0.5)) * 0.0001 = 0.00004714045
-MODEL_FLAGS="--image_size 32 --num_channels 576 --num_res_blocks 3 --learn_sigma True --dropout 0.3"
+MODEL_FLAGS="--image_size 32 --num_channels 1600 --num_res_blocks 3 --learn_sigma True --dropout 0.3"
 DIFFUSION_FLAGS="--diffusion_steps 4000 --noise_schedule cosine"
 TRAIN_FLAGS="--lr 0.00004714045 --batch_size 16"
 
-cmd="srun -n 128 python image_train.py $MODEL_FLAGS $DIFFUSION_FLAGS $TRAIN_FLAGS --deepspeed_config ./ds_config128.json" 
+cmd="srun -n 128 python image_train.py $MODEL_FLAGS $DIFFUSION_FLAGS $TRAIN_FLAGS --deepspeed_config ./temp128.json" 
 
 echo "${cmd}"
 

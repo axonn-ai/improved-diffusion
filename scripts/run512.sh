@@ -35,11 +35,11 @@ mkdir -p ${MIOPEN_USER_DB_PATH}
 # divided batch size (2048) by num gpus (512) to get 4 batch size
 # changed num_channels to 1120 to get a model size of roughly 4 bil
 # changed learning rate according to paper: (1 / ((1120 / 128) ^ 0.5)) * 0.0001 = 0.00003380617
-MODEL_FLAGS="--image_size 32 --num_channels 1120 --num_res_blocks 3 --learn_sigma True --dropout 0.3"
+MODEL_FLAGS="--image_size 32 --num_channels 1600 --num_res_blocks 3 --learn_sigma True --dropout 0.3"
 DIFFUSION_FLAGS="--diffusion_steps 4000 --noise_schedule cosine"
 TRAIN_FLAGS="--lr 0.00003380617 --batch_size 4"
 
-cmd="srun -n 512 python image_train.py $MODEL_FLAGS $DIFFUSION_FLAGS $TRAIN_FLAGS --deepspeed_config ./ds_config512.json" 
+cmd="srun -n 512 python image_train.py $MODEL_FLAGS $DIFFUSION_FLAGS $TRAIN_FLAGS --deepspeed_config ./temp512.json" 
 
 echo "${cmd}"
 

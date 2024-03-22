@@ -123,6 +123,8 @@ class TrainLoop:
         self.use_ddp=False
         self.ddp_model = self.model
 
+        self.batch_timers = [th.cuda.Event(enable_timing=True) for _ in range(2)]
+
     def _load_and_sync_parameters(self):
         resume_checkpoint = find_resume_checkpoint() or self.resume_checkpoint
 
@@ -182,11 +184,11 @@ class TrainLoop:
         ):
             batch, cond = next(self.data)
             
-            start_event.record()
+            #start_event.record()
             self.run_step(batch, cond, losses)
-            stop_event.record()
-            th.cuda.synchronize()
-            iter_times.append(start_event.elapsed_time(stop_event))
+            #stop_event.record()
+            #th.cuda.synchronize()
+            #iter_times.append(start_event.elapsed_time(stop_event))
 
             if self.step % self.log_interval == 0:
                 logger.dumpkvs()
@@ -209,18 +211,20 @@ class TrainLoop:
             """
 
             if self.step % 1 == 0:
-                with open('iter_deepspeed' + str(MPI.COMM_WORLD.size) + '.pickle', 'wb') as handle:
-                    pickle.dump(iter_times, handle, protocol=pickle.HIGHEST_PROTOCOL)
+                pass
+                #with open('iter_deepspeed' + str(MPI.COMM_WORLD.size) + '.pickle', 'wb') as handle:
+                #    pickle.dump(iter_times, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
-                with open('validation_deepspeed' + str(MPI.COMM_WORLD.size) + '.pickle', 'wb') as handle:
-                    pickle.dump(losses, handle, protocol=pickle.HIGHEST_PROTOCOL)
+                #with open('validation_deepspeed' + str(MPI.COMM_WORLD.size) + '.pickle', 'wb') as handle:
+                #    pickle.dump(losses, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
-                plt.plot([i for i in range(len(losses))], losses)
-                plt.xlabel("Step")
-                plt.ylabel("Loss")
-                plt.savefig('out' + str(MPI.COMM_WORLD.size) + '.png')
+                #plt.plot([i for i in range(len(losses))], losses)
+                #plt.xlabel("Step")
+                #plt.ylabel("Loss")
+                #plt.savefig('out' + str(MPI.COMM_WORLD.size) + '.png')
     
     def run_step(self, batch, cond, losses):
+        self.batch_timers[0].record()
         self.forward_backward(batch, cond, losses)
         if self.use_fp16:
             # not using fp16 rn, but assuming deepspeed takes care of all of that?
@@ -228,7 +232,10 @@ class TrainLoop:
         else:
             # modified this function to do model_engine.step()
            self.optimize_normal()
-        self.log_step()
+        self.batch_timers[1].record()
+        th.cuda.synchronize()
+        time = self.batch_timers[0].elapsed_time(self.batch_timers[1]) / 1000
+        self.log_step(time=time)
 
     def forward_backward(self, batch, cond, loss_list):
         zero_grad(self.model_params)
@@ -325,11 +332,12 @@ class TrainLoop:
         for param_group in self.opt.param_groups:
             param_group["lr"] = lr
 
-    def log_step(self):
+    def log_step(self, time=None):
         logger.logkv("step", self.step + self.resume_step)
         logger.logkv("samples", (self.step + self.resume_step + 1) * self.global_batch)
         if self.use_fp16:
             logger.logkv("lg_loss_scale", self.lg_loss_scale)
+        logger.logkv("batch_time", time)
 
     def save(self):
         def save_checkpoint(rate, params):

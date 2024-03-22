@@ -88,15 +88,15 @@ def main():
 
 def create_argparser():
     defaults = dict(
-        data_dir="/ccs/home/adityaranjan/scratch/my-venv/improved-diffusion/datasets/cifar_data",
+        data_dir="/pscratch/sd/p/prajwal/improved-diffusion/datasets",
         schedule_sampler="uniform",
         lr=1e-4,
         weight_decay=0.0,
-        lr_anneal_steps=50,
+        lr_anneal_steps=10,
         batch_size=1,  # overriden by run script
         microbatch=-1,  # -1 disables microbatches
         ema_rate="0.9999",  # comma-separated list of EMA values
-        log_interval=10,
+        log_interval=1,
         save_interval=10000,
         resume_checkpoint="",
         use_fp16=False,

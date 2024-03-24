@@ -44,7 +44,10 @@ def main():
     model.to(dist_util.dev())
     schedule_sampler = create_named_schedule_sampler(args.schedule_sampler, diffusion)
 
-    print("Number of Model Parameters on Rank " + str(th.cuda.current_device()) + ": " + str(sum(p.numel() for p in model.parameters())))
+    local_params = sum(p.numel() for p in model.parameters())
+    total_model_params = local_params * ax.config.G_intra
+    if th.distributed.get_rank() == 0:
+        print(f"Total Model Parameters = {total_model_params / 1e9:.3f} B")
 
     logger.log("creating data loader...")
     data = load_data(
@@ -53,6 +56,7 @@ def main():
         image_size=args.image_size,
         class_cond=args.class_cond,
     )
+    
 
     logger.log("training...")
     TrainLoop(
@@ -93,7 +97,7 @@ def create_argparser():
         G_inter=1,
         G_row=1,
         G_col=1,
-        G_depth=1
+        G_depth=1,
     )
     defaults.update(model_and_diffusion_defaults())
     parser = argparse.ArgumentParser()

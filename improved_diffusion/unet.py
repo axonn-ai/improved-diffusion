@@ -19,6 +19,7 @@ from .nn import (
     checkpoint,
 )
 
+from axonn import axonn as ax
 
 class TimestepBlock(nn.Module):
     """
@@ -138,12 +139,13 @@ class ResBlock(TimestepBlock):
         self.use_conv = use_conv
         self.use_checkpoint = use_checkpoint
         self.use_scale_shift_norm = use_scale_shift_norm
+       
 
         self.in_layers = nn.Sequential(
             normalization(channels),
             SiLU(),
-            conv_nd(True, dims, channels, self.out_channels, 3, padding=1),
         )
+        self.in_conv = conv_nd(True, dims, channels, self.out_channels, 3, padding=1)
         self.emb_layers = nn.Sequential(
             SiLU(),
             linear(
@@ -152,13 +154,14 @@ class ResBlock(TimestepBlock):
             ),
         )
         self.out_layers = nn.Sequential(
-            normalization(self.out_channels),
+            normalization(self.out_channels // ax.config.G_intra_r),
             SiLU(),
             nn.Dropout(p=dropout),
-            zero_module(
-                conv_nd(True, dims, self.out_channels, self.out_channels, 3, padding=1)
-            ),
         )
+
+        self.out_conv = zero_module(
+                conv_nd(True, dims, self.out_channels, self.out_channels, 3, padding=1, transpose=True)
+            )
 
         if self.out_channels == channels:
             self.skip_connection = nn.Identity()
@@ -183,7 +186,10 @@ class ResBlock(TimestepBlock):
 
     def _forward(self, x, emb):
         h = self.in_layers(x)
-        emb_out = self.emb_layers(emb).type(h.dtype)
+        h = self.in_conv(h, gather_output=False)
+        emb_out = self.emb_layers[0](emb)
+        emb_out = self.emb_layers[1](emb_out, gather_output=False).type(h.dtype)
+
         while len(emb_out.shape) < len(h.shape):
             emb_out = emb_out[..., None]
         if self.use_scale_shift_norm:
@@ -191,9 +197,11 @@ class ResBlock(TimestepBlock):
             scale, shift = th.chunk(emb_out, 2, dim=1)
             h = out_norm(h) * (1 + scale) + shift
             h = out_rest(h)
+            h = self.out_conv(h, scatter_input=False)
         else:
             h = h + emb_out
             h = self.out_layers(h)
+            h = self.out_conv(h, scatter_input=False)
         return self.skip_connection(x) + h
 
 
@@ -207,8 +215,9 @@ class AttentionBlock(nn.Module):
 
     def __init__(self, channels, num_heads=1, use_checkpoint=False):
         super().__init__()
+        self.parallel = (num_heads % ax.config.G_intra_r == 0)
         self.channels = channels
-        self.num_heads = num_heads
+        self.num_heads = num_heads if not self.parallel else num_heads // ax.config.G_intra_r
         self.use_checkpoint = use_checkpoint
 
         self.norm = normalization(channels)
@@ -274,7 +283,6 @@ class QKVAttention(nn.Module):
         matmul_ops = 2 * b * (num_spatial ** 2) * c
         model.total_ops += th.DoubleTensor([matmul_ops])
 
-
 class UNetModel(nn.Module):
     """
     The full UNet model with attention and timestep embedding.
@@ -316,7 +324,6 @@ class UNetModel(nn.Module):
         use_scale_shift_norm=False,
     ):
         super().__init__()
-
         if num_heads_upsample == -1:
             num_heads_upsample = num_heads
 

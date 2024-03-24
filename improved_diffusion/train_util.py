@@ -185,6 +185,8 @@ class TrainLoop:
                     return
             """
             self.step += 1
+            if self.step == 20:
+                exit(0)
         # Save the last checkpoint if it wasn't already saved.
         """
         if (self.step - 1) % self.save_interval != 0:

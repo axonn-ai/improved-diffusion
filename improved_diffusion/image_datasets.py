@@ -39,8 +39,6 @@ def load_data(
         image_size,
         all_files,
         classes=classes,
-        # shard=MPI.COMM_WORLD.Get_rank(),
-        # num_shards=MPI.COMM_WORLD.Get_size(),
         shard=shard_number,
         num_shards=num_shards
     )

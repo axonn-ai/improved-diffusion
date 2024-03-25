@@ -13,12 +13,18 @@ parser.add_argument('--cache-all', action='store_true', default=False)
 parser.add_argument('--model', type=str, choices=["550M", "1B", "2B", "4B", "8B"])
 parser.add_argument('--manual', action='store_true', default=False, help="run with manual configuration")
 parser.add_argument('--config', type=int, nargs='+', help="if --manual, pass Gr,Gc,Gd as tuple here")
+parser.add_argument('--machine', type=str, choices=["perlmutter", "frontier"], default="perlmutter")
 
 args = parser.parse_args()
 
 #megatron_home = "/pscratch/sd/s/ssingh37/Megatron-LM/"
 model=args.model
-improved_diffusion_home = "/global/homes/s/ssingh37/improved-diffusion/scripts"
+
+if args.machine == "perlmutter":
+    improved_diffusion_home = "/global/homes/s/ssingh37/improved-diffusion/scripts"
+else:
+    improved_diffusion_home = "/lustre/orion/scratch/ssingh37/csc547/improved-diffusion/"
+
 
 ## arch
 
@@ -41,7 +47,7 @@ gbs=args.batch_size
 img_size=args.image_size
 GPUS=args.gpus
 topk=5
-machine="perlmutter"
+machine=args.machine
 
 if not args.manual:
     top_k_configs = get_configs_for_unet(
@@ -74,7 +80,7 @@ folder = f"{improved_diffusion_home}/logs/per_comm_model/{model}/"
 if not os.path.exists(folder):
     os.makedirs(folder)
 
-with open("template_perlmutter.sh") as f:
+with open(f"template_{machine}.sh") as f:
     template = f.read()
 
 def sanity_checks(gpu):

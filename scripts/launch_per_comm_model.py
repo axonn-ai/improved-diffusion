@@ -24,15 +24,15 @@ improved_diffusion_home = "/global/homes/s/ssingh37/improved-diffusion/scripts"
 
 # 175B
 if model == "550M":
-    channels = 256
-elif model == "1B":
     channels = 416
+elif model == "1B":
+    channels = 576
 elif model == "2B":
-    channels = 512
+    channels = 800
 elif model == "4B":
-    channels = 768
+    channels = 1120
 elif model == "8B":
-    channels = 1024
+    channels = 1600
 else:
     raise NotImplementedError
 
@@ -49,7 +49,7 @@ if not args.manual:
         sequence_length=img_size * img_size,
         channels=channels, 
         GPUs=GPUS,
-        minimum_degree_of_tensor_parallelism=8,
+        minimum_degree_of_tensor_parallelism=4,
         model_version="v2",
         topk=topk,
         no_dp=False,

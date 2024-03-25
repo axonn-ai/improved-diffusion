@@ -104,8 +104,10 @@ def normalization(channels):
     :param channels: number of input channels.
     :return: an nn.Module for normalization.
     """
-    return GroupNorm32(32, channels)
-
+    initial = 32
+    while channels % initial !=0:
+        initial = initial // 2
+    return GroupNorm32(initial, channels)    
 
 def timestep_embedding(timesteps, dim, max_period=10000):
     """

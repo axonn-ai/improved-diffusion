@@ -221,22 +221,27 @@ class AttentionBlock(nn.Module):
         self.use_checkpoint = use_checkpoint
 
         self.norm = normalization(channels)
-        self.qkv = conv_nd(True, 1, channels, channels * 3, 1)
+        self.qkv = conv_nd(True, 2, channels, channels * 3, 1, transpose=False)
         self.attention = QKVAttention()
-        self.proj_out = zero_module(conv_nd(True, 1, channels, channels, 1))
+        self.proj_out = zero_module(conv_nd(True, 2, channels, channels, 1, transpose=True))
 
     def forward(self, x):
         return checkpoint(self._forward, (x,), self.parameters(), self.use_checkpoint)
 
     def _forward(self, x):
-        b, c, *spatial = x.shape
-        x = x.reshape(b, c, -1)
-        qkv = self.qkv(self.norm(x))
+        b, ic, *spatial = x.shape
+        #x = x.reshape(b, c, -1)
+        qkv = self.qkv(self.norm(x), gather_output= not self.parallel)
+        _, oc, *spatial = qkv.shape
+        pixels = 0
+        for p in spatial:
+            pixels *= p
+        qkv = qkv.reshape(b, -1, p)
         qkv = qkv.reshape(b * self.num_heads, -1, qkv.shape[2])
         h = self.attention(qkv)
-        h = h.reshape(b, -1, h.shape[-1])
-        h = self.proj_out(h)
-        return (x + h).reshape(b, c, *spatial)
+        h = h.reshape(b, -1, *spatial)
+        h = self.proj_out(h, scatter_input = not self.parallel)
+        return (x + h)#.reshape(b, c, *spatial)
 
 
 class QKVAttention(nn.Module):

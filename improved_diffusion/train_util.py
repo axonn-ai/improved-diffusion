@@ -27,7 +27,7 @@ INITIAL_LOG_LOSS_SCALE = 20.0
 
 
 import pickle
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 from axonn import axonn as ax
 from axonn.intra_layer import optimize_communication
 
@@ -193,13 +193,13 @@ class TrainLoop:
             self.save()
         """
 
-        with open('validation_easy.pickle', 'wb') as handle:
-            pickle.dump(losses, handle, protocol=pickle.HIGHEST_PROTOCOL)
+        #with open('validation_easy.pickle', 'wb') as handle:
+        #    pickle.dump(losses, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
-        plt.plot([i for i in range(len(losses))], losses)
-        plt.xlabel("Step")
-        plt.ylabel("Loss")
-        plt.savefig('out.png')
+        #plt.plot([i for i in range(len(losses))], losses)
+        #plt.xlabel("Step")
+        #plt.ylabel("Loss")
+        #plt.savefig('out.png')
 
     def run_step(self, batch, cond, losses):
         self.batch_timers[0].record() 

@@ -7,11 +7,12 @@ import os
 import socket
 
 import blobfile as bf
-try:
-    from mpi4py import MPI
-    MPI4PY = True
-except ImportError:
-    MPI4PY=False
+#try:
+#    from mpi4py import MPI
+#    MPI4PY = True
+#except ImportError:
+#    MPI4PY=False
+MPI4PY = False
 import torch as th
 import torch.distributed as dist
 

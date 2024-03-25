@@ -16,14 +16,14 @@ userid=$(whoami)
 # These are the two things you need to change as per your setup
 # 1. Make LD_LIBRARY_PATH point to wherever your plugin is installed
 # this enables the slingshot-11 plugin for RCCL (crucial for inter-node bw)
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/lustre/orion/scratch/ssingh37/csc547/aws-ofi-rccl/build/lib"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/lustre/orion/scratch/ssingh37/csc547/aws-ofi-rccl/my-env-2/build/lib"
 # 2. Make PYTHONPATH point to your local clone of litgpt
 export PYTHONPATH="$PYTHONPATH:/lustre/orion/scratch/$userid/csc547/lit-gpt-dev"
 
 # This blob is setting up my python venv, ignore for conda builds
 echo "moving environment to burst buffer"
 ## load venv onto burst buffer
-srun -N $NNODES --ntasks-per-node=1 prepare_venv.sh
+#srun -N $NNODES --ntasks-per-node=1 prepare_venv.sh
 ## delete old symbolic link
 #rm -rf ~/axonn_venv
 ## create new symbolic link
@@ -31,10 +31,10 @@ srun -N $NNODES --ntasks-per-node=1 prepare_venv.sh
 
 module load PrgEnv-cray
 module load cray-python
-module load amd-mixed/5.6.0 #this should match with the rocm version your pytorch uses
+module load amd-mixed/5.7.0 #this should match with the rocm version your pytorch uses
 module load libfabric
 #. /ccs/home/$userid/axonn_venv/bin/activate
-. /lustre/orion/scratch/ssingh37/csc547/my-venv/bin/activate
+. /lustre/orion/scratch/ssingh37/csc547/my-env-2/bin/activate
 
 
 export MPICH_GPU_SUPPORT_ENABLED=0
@@ -51,7 +51,10 @@ export CUDA_DEVICE_MAX_CONNECTIONS=1
 export MASTER_ADDR=$(hostname)
 export MASTER_PORT=29500
 export WORLD_SIZE=$GPUS
-
+export MIOPEN_USER_DB_PATH="/tmp/my-miopen-cache"
+export MIOPEN_CUSTOM_CACHE_DIR=$MIOPEN_USER_DB_PATH
+rm -rf $MIOPEN_USER_DB_PATH
+mkdir -p $MIOPEN_USER_DB_PATH
 
 export OMP_NUM_THREADS=7 
 
@@ -80,7 +83,7 @@ DIFFUSION_FLAGS="--diffusion_steps 4000 --noise_schedule cosine"
 TRAIN_FLAGS="--lr 1e-4 --batch_size $LOCAL_BATCH_SIZE --G_data $G_DATA --G_inter 1 --G_row $G_ROW --G_col $G_COL --G_depth $G_DEPTH --data_dir $DATA_DIR"
 
 SCRIPT="python -u image_train.py $MODEL_FLAGS $DIFFUSION_FLAGS $TRAIN_FLAGS"
-run_cmd="srun -N $NNODES -n $GPUS -c7 --gpus-per-task=1 --gpu-bind=closest ./get_rank_from_slurm.sh $SCRIPT"
+run_cmd="srun -N $NNODES -n $GPUS -c7 --gpus-per-task=1 --gpu-bind=closest ./get_rank_from_slurm.sh $SCRIPT --log_interval 1"
 
 echo "$run_cmd"
 eval "$run_cmd"

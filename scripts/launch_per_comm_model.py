@@ -120,7 +120,7 @@ for ctp,rtp,dtp in zip(ctps, rtps, dtps):
     script_file = os.path.join(folder, f"{exp_name}.sh")
     with open(script_file, "w") as f:
         f.write(script)
-    print(f"sbatch -t {args.time} {script_file}")
+    print(f"sbatch -t {args.time} -J Unets --dependency=singleton {script_file}")
     if args.run:
         import subprocess
-        subprocess.run(["sbatch", "-t" , f"{args.time}", f"{script_file}"])
+        subprocess.run(["sbatch", "-t" , f"{args.time}", "-J", "UNets", "--dependency", "singleton", f"{script_file}"])

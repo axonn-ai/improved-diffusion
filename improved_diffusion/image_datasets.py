@@ -1,13 +1,11 @@
 from PIL import Image
 import blobfile as bf
-from mpi4py import MPI
 import numpy as np
 from torch.utils.data import DataLoader, Dataset
-
+from axonn import axonn as ax
 
 def load_data(
-    *, data_dir, batch_size, image_size, class_cond=False, deterministic=False
-):
+    *, data_dir, batch_size, image_size, class_cond=False, deterministic=True):
     """
     For a dataset, create a generator over (images, kwargs) pairs.
 
@@ -34,12 +32,15 @@ def load_data(
         class_names = [bf.basename(path).split("_")[0] for path in all_files]
         sorted_classes = {x: i for i, x in enumerate(sorted(set(class_names)))}
         classes = [sorted_classes[x] for x in class_names]
+
+    shard_number = ax.config.G_intra_d * ax.config.data_parallel_rank + ax.config.intra_layer_depth_parallel_rank 
+    num_shards = ax.config.G_intra_d * ax.config.G_data
     dataset = ImageDataset(
         image_size,
         all_files,
         classes=classes,
-        shard=MPI.COMM_WORLD.Get_rank(),
-        num_shards=MPI.COMM_WORLD.Get_size(),
+        shard=shard_number,
+        num_shards=num_shards
     )
     if deterministic:
         loader = DataLoader(

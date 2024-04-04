@@ -2,6 +2,16 @@
 Train a diffusion model on images.
 """
 
+import random
+import numpy as np
+import torch as th
+
+seed=123
+random.seed(seed)
+np.random.seed(seed)
+th.manual_seed(seed)
+th.cuda.manual_seed_all(seed)
+
 import argparse
 
 from improved_diffusion import dist_util, logger
@@ -16,10 +26,15 @@ from improved_diffusion.script_util import (
 from improved_diffusion.train_util import TrainLoop
 
 
+from axonn import axonn as ax
+
+
 def main():
     args = create_argparser().parse_args()
 
-    dist_util.setup_dist()
+    g_data, g_inter, g_row, g_col, g_depth = args.G_data, args.G_inter, args.G_row, args.G_col, args.G_depth
+
+    dist_util.setup_dist(g_data, g_inter, g_row, g_col, g_depth)
     logger.configure()
 
     logger.log("creating model and diffusion...")
@@ -29,6 +44,11 @@ def main():
     model.to(dist_util.dev())
     schedule_sampler = create_named_schedule_sampler(args.schedule_sampler, diffusion)
 
+    local_params = sum(p.numel() for p in model.parameters())
+    total_model_params = local_params * ax.config.G_intra
+    if th.distributed.get_rank() == 0:
+        print(f"Total Model Parameters = {total_model_params / 1e9:.3f} B")
+
     logger.log("creating data loader...")
     data = load_data(
         data_dir=args.data_dir,
@@ -36,6 +56,7 @@ def main():
         image_size=args.image_size,
         class_cond=args.class_cond,
     )
+    
 
     logger.log("training...")
     TrainLoop(
@@ -59,11 +80,11 @@ def main():
 
 def create_argparser():
     defaults = dict(
-        data_dir="",
+        data_dir="/pscratch/sd/a/aranjan/my-venv/improved-diffusion/datasets",
         schedule_sampler="uniform",
         lr=1e-4,
         weight_decay=0.0,
-        lr_anneal_steps=0,
+        lr_anneal_steps=12000,
         batch_size=1,
         microbatch=-1,  # -1 disables microbatches
         ema_rate="0.9999",  # comma-separated list of EMA values
@@ -72,6 +93,11 @@ def create_argparser():
         resume_checkpoint="",
         use_fp16=False,
         fp16_scale_growth=1e-3,
+        G_data=1,
+        G_inter=1,
+        G_row=1,
+        G_col=1,
+        G_depth=1,
     )
     defaults.update(model_and_diffusion_defaults())
     parser = argparse.ArgumentParser()

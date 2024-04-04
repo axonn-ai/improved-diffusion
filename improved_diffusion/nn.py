@@ -7,6 +7,9 @@ import math
 import torch as th
 import torch.nn as nn
 
+from axonn.intra_layer.conv import Conv2d
+from axonn.intra_layer.fully_connected import Linear
+
 
 # PyTorch 1.7 has SiLU, but we support PyTorch 1.5.
 class SiLU(nn.Module):
@@ -19,14 +22,17 @@ class GroupNorm32(nn.GroupNorm):
         return super().forward(x.float()).type(x.dtype)
 
 
-def conv_nd(dims, *args, **kwargs):
+def conv_nd(axonn, dims, *args, **kwargs):
     """
     Create a 1D, 2D, or 3D convolution module.
     """
     if dims == 1:
         return nn.Conv1d(*args, **kwargs)
     elif dims == 2:
-        return nn.Conv2d(*args, **kwargs)
+        if axonn:
+            return Conv2d(*args, **kwargs)
+        else:
+            return nn.Conv2d(*args, **kwargs)
     elif dims == 3:
         return nn.Conv3d(*args, **kwargs)
     raise ValueError(f"unsupported dimensions: {dims}")
@@ -36,7 +42,8 @@ def linear(*args, **kwargs):
     """
     Create a linear module.
     """
-    return nn.Linear(*args, **kwargs)
+    return Linear(*args, **kwargs)
+    #return nn.Linear(*args, **kwargs)
 
 
 def avg_pool_nd(dims, *args, **kwargs):
@@ -97,8 +104,10 @@ def normalization(channels):
     :param channels: number of input channels.
     :return: an nn.Module for normalization.
     """
-    return GroupNorm32(32, channels)
-
+    initial = 32
+    while channels % initial !=0:
+        initial = initial // 2
+    return GroupNorm32(initial, channels)    
 
 def timestep_embedding(timesteps, dim, max_period=10000):
     """

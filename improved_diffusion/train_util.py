@@ -26,6 +26,12 @@ from .resample import LossAwareSampler, UniformSampler
 INITIAL_LOG_LOSS_SCALE = 20.0
 
 
+import pickle
+#import matplotlib.pyplot as plt
+from axonn import axonn as ax
+from axonn.intra_layer import optimize_communication
+
+
 class TrainLoop:
     def __init__(
         self,
@@ -68,7 +74,7 @@ class TrainLoop:
 
         self.step = 0
         self.resume_step = 0
-        self.global_batch = self.batch_size * dist.get_world_size()
+        self.global_batch = self.batch_size * ax.config.G_data
 
         self.model_params = list(self.model.parameters())
         self.master_params = self.model_params
@@ -91,7 +97,7 @@ class TrainLoop:
             self.ema_params = [
                 copy.deepcopy(self.master_params) for _ in range(len(self.ema_rate))
             ]
-
+       
         if th.cuda.is_available():
             self.use_ddp = True
             self.ddp_model = DDP(
@@ -101,6 +107,7 @@ class TrainLoop:
                 broadcast_buffers=False,
                 bucket_cap_mb=128,
                 find_unused_parameters=False,
+                process_group=ax.comm_handle.coll_nccl_comm,
             )
         else:
             if dist.get_world_size() > 1:
@@ -110,6 +117,8 @@ class TrainLoop:
                 )
             self.use_ddp = False
             self.ddp_model = self.model
+
+        self.batch_timers = [th.cuda.Event(enable_timing=True) for _ in range(2)]
 
     def _load_and_sync_parameters(self):
         resume_checkpoint = find_resume_checkpoint() or self.resume_checkpoint
@@ -159,33 +168,52 @@ class TrainLoop:
         self.model.convert_to_fp16()
 
     def run_loop(self):
+        losses = []
         while (
             not self.lr_anneal_steps
             or self.step + self.resume_step < self.lr_anneal_steps
         ):
             batch, cond = next(self.data)
-            self.run_step(batch, cond)
+            self.run_step(batch, cond, losses)
             if self.step % self.log_interval == 0:
                 logger.dumpkvs()
+            """
             if self.step % self.save_interval == 0:
                 self.save()
                 # Run for a finite amount of time in integration tests.
                 if os.environ.get("DIFFUSION_TRAINING_TEST", "") and self.step > 0:
                     return
+            """
             self.step += 1
+            if self.step == 20:
+                exit(0)
         # Save the last checkpoint if it wasn't already saved.
+        """
         if (self.step - 1) % self.save_interval != 0:
             self.save()
+        """
 
-    def run_step(self, batch, cond):
-        self.forward_backward(batch, cond)
+        #with open('validation_easy.pickle', 'wb') as handle:
+        #    pickle.dump(losses, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+        #plt.plot([i for i in range(len(losses))], losses)
+        #plt.xlabel("Step")
+        #plt.ylabel("Loss")
+        #plt.savefig('out.png')
+
+    def run_step(self, batch, cond, losses):
+        self.batch_timers[0].record() 
+        self.forward_backward(batch, cond, losses)
         if self.use_fp16:
             self.optimize_fp16()
         else:
             self.optimize_normal()
-        self.log_step()
+        self.batch_timers[1].record()
+        th.cuda.synchronize()
+        time = self.batch_timers[0].elapsed_time(self.batch_timers[1]) / 1000
+        self.log_step(time=time)
 
-    def forward_backward(self, batch, cond):
+    def forward_backward(self, batch, cond, loss_list):
         zero_grad(self.model_params)
         for i in range(0, batch.shape[0], self.microbatch):
             micro = batch[i : i + self.microbatch].to(dist_util.dev())
@@ -204,26 +232,37 @@ class TrainLoop:
                 model_kwargs=micro_cond,
             )
 
-            if last_batch or not self.use_ddp:
-                losses = compute_losses()
-            else:
-                with self.ddp_model.no_sync():
-                    losses = compute_losses()
+            with optimize_communication(
+                overlap_all_reduce=True, 
+                overlap_reduce_scatter=True,
+                cache_weights=True,
+                overlap_all_gather=True,
+                model_object_for_overlapping_allgathers=self.ddp_model,
+            ):
+                with th.autocast(device_type="cuda", dtype=th.bfloat16):
+                    if last_batch or not self.use_ddp:
+                        losses = compute_losses()
+                    else:
+                        with self.ddp_model.no_sync():
+                            losses = compute_losses()
 
-            if isinstance(self.schedule_sampler, LossAwareSampler):
-                self.schedule_sampler.update_with_local_losses(
-                    t, losses["loss"].detach()
+                if isinstance(self.schedule_sampler, LossAwareSampler):
+                    self.schedule_sampler.update_with_local_losses(
+                        t, losses["loss"].detach()
+                    )
+
+                loss = (losses["loss"] * weights).mean()
+
+                loss_list.append(loss.item())
+
+                log_loss_dict(
+                    self.diffusion, t, {k: v * weights for k, v in losses.items()}
                 )
-
-            loss = (losses["loss"] * weights).mean()
-            log_loss_dict(
-                self.diffusion, t, {k: v * weights for k, v in losses.items()}
-            )
-            if self.use_fp16:
-                loss_scale = 2 ** self.lg_loss_scale
-                (loss * loss_scale).backward()
-            else:
-                loss.backward()
+                if self.use_fp16:
+                    loss_scale = 2 ** self.lg_loss_scale
+                    (loss * loss_scale).backward()
+                else:
+                    loss.backward()
 
     def optimize_fp16(self):
         if any(not th.isfinite(p.grad).all() for p in self.model_params):
@@ -262,11 +301,14 @@ class TrainLoop:
         for param_group in self.opt.param_groups:
             param_group["lr"] = lr
 
-    def log_step(self):
+    def log_step(self, time=None):
         logger.logkv("step", self.step + self.resume_step)
         logger.logkv("samples", (self.step + self.resume_step + 1) * self.global_batch)
         if self.use_fp16:
             logger.logkv("lg_loss_scale", self.lg_loss_scale)
+        #if th.distributed.get_rank() == 0:
+            #print(f"Batch Time = {time:.2f} s")
+        logger.logkv("batch_time", time)
 
     def save(self):
         def save_checkpoint(rate, params):

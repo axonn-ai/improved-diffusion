@@ -13,7 +13,8 @@ from improved_diffusion.script_util import (
     args_to_dict,
     add_dict_to_argparser,
 )
-from improved_diffusion.train_util import TrainLoop
+from improved_diffusion.train_util import TrainLoop as TrainLoopAdamW
+from improved_diffusion.train_util_jorge import TrainLoop as TrainLoopJorge
 
 
 def main():
@@ -38,23 +39,44 @@ def main():
     )
 
     logger.log("training...")
-    TrainLoop(
-        model=model,
-        diffusion=diffusion,
-        data=data,
-        batch_size=args.batch_size,
-        microbatch=args.microbatch,
-        lr=args.lr,
-        ema_rate=args.ema_rate,
-        log_interval=args.log_interval,
-        save_interval=args.save_interval,
-        resume_checkpoint=args.resume_checkpoint,
-        use_fp16=args.use_fp16,
-        fp16_scale_growth=args.fp16_scale_growth,
-        schedule_sampler=schedule_sampler,
-        weight_decay=args.weight_decay,
-        lr_anneal_steps=args.lr_anneal_steps,
-    ).run_loop()
+    if args.optimizer == "AdamW":
+        TrainLoopAdamW(
+            model=model,
+            diffusion=diffusion,
+            data=data,
+            batch_size=args.batch_size,
+            microbatch=args.microbatch,
+            lr=args.lr,
+            ema_rate=args.ema_rate,
+            log_interval=args.log_interval,
+            save_interval=args.save_interval,
+            resume_checkpoint=args.resume_checkpoint,
+            use_fp16=args.use_fp16,
+            fp16_scale_growth=args.fp16_scale_growth,
+            schedule_sampler=schedule_sampler,
+            weight_decay=args.weight_decay,
+            lr_anneal_steps=args.lr_anneal_steps,
+        ).run_loop()
+    elif args.optimizer == "Jorge":
+        TrainLoopJorge(
+            model=model,
+            diffusion=diffusion,
+            data=data,
+            batch_size=args.batch_size,
+            microbatch=args.microbatch,
+            lr=args.lr,
+            ema_rate=args.ema_rate,
+            log_interval=args.log_interval,
+            save_interval=args.save_interval,
+            resume_checkpoint=args.resume_checkpoint,
+            use_fp16=args.use_fp16,
+            fp16_scale_growth=args.fp16_scale_growth,
+            schedule_sampler=schedule_sampler,
+            weight_decay=args.weight_decay,
+            lr_anneal_steps=args.lr_anneal_steps,
+        ).run_loop()
+    else:
+        print("INVALID OPTIMIZER CHOSEN")
 
 
 def create_argparser():
@@ -72,6 +94,7 @@ def create_argparser():
         resume_checkpoint="",
         use_fp16=False,
         fp16_scale_growth=1e-3,
+        optimizer="AdamW",
     )
     defaults.update(model_and_diffusion_defaults())
     parser = argparse.ArgumentParser()

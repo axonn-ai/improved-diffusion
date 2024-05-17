@@ -2,8 +2,7 @@
 #SBATCH -p batch
 #SBATCH -A CSC569
 #SBATCH -t 00:10:00
-#SBATCH -N 1
-#SBATCH --output=/ccs/home/adityatomar/improved-diffusion/data.out
+#SBATCH -N 2
 #SBATCH -C nvme
 
 # calculating the number of nodes and GPUs
@@ -50,7 +49,6 @@ DATA_DIR="$IMPROVED_DIFFUSION_DIR/datasets/cifar_train"
 echo "$DATA_DIR"
 
 # set env variable to store logs and saved model
-export OPENAI_LOGDIR=$IMPROVED_DIFFUSION_DIR/logs
 
 export PYTHONPATH="$PYTHONPATH:$IMPROVED_DIFFUSION_DIR"
 
@@ -63,17 +61,26 @@ echo "GCDs: $GPUS"
 echo "GLOBAL_BATCH_SIZE: $GLOBAL_BATCH_SIZE"
 echo "LOCAL_BATCH_SIZE: $LOCAL_BATCH_SIZE"
 
+OPTIMIZER="AdamW"
+
+if [ $OPTIMIZER == "AdamW" ]; then
+export OPENAI_LOGDIR=$IMPROVED_DIFFUSION_DIR/logs/adamw
+elif [ $OPTIMIZER == "Jorge" ]; then
+export OPENAI_LOGDIR=$IMPROVED_DIFFUSION_DIR/logs/jorge
+else
+echo "INVALID OPTIMIZER CHOSEN"
+fi
+
 MODEL_FLAGS="--image_size 64 --num_channels 128 --num_res_blocks 3"
 DIFFUSION_FLAGS="--diffusion_steps 4000 --noise_schedule linear"
-TRAIN_FLAGS="--lr 1e-4 --batch_size $LOCAL_BATCH_SIZE --data_dir $DATA_DIR"
+TRAIN_FLAGS="--lr 1e-4 --batch_size $LOCAL_BATCH_SIZE --data_dir $DATA_DIR --optimizer $OPTIMIZER"
 
 chmod 755 $IMPROVED_DIFFUSION_DIR/scripts/get_rank_from_slurm.sh
-
-# run_cmd="python image_train.py $MODEL_FLAGS $DIFFUSION_FLAGS $TRAIN_FLAGS"
 
 SCRIPT="python image_train.py $MODEL_FLAGS $DIFFUSION_FLAGS $TRAIN_FLAGS"
 run_cmd="srun -N $NNODES -n $GPUS -c7 --gpus-per-task=1 --gpu-bind=closest $IMPROVED_DIFFUSION_DIR/scripts/get_rank_from_slurm.sh $SCRIPT --log_interval 1"
 
+echo "$OPTIMIZER"
 echo "$run_cmd"
 eval "$run_cmd"
 set +x

@@ -59,3 +59,4 @@ This guide assumes you have read and followed the instructions [here](https://gi
       - set `path/to/dataset1` and `path/to/dataset2` to the test images data path and the sample images data path (order does not matter)
       - If your testing dataset is constant, you can save time by storing a compiled `.npz` version of it, and pass its path as one of the paths. More [here](https://github.com/mseitzer/pytorch-fid/tree/master?tab=readme-ov-file#generating-a-compatible-npz-archive-from-a-dataset)
 3. On an interactive node, run `bash evaluate.sh`. After some time, the FID score should be printed out
+python -m pytorch_fid --device cuda $DATA_DIR $IMPROVED_DIFFUSION_DIR/samples/sample_images

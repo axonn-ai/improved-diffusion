@@ -3,8 +3,8 @@ import numpy as np
 from PIL import Image
 
 def main():
-    npz_path = "/ccs/home/adityatomar/improved-diffusion/samples/samples_1000x64x64x3.npz"
-    output_path = "/ccs/homes/adityatomar/improved-diffusion/samples/sample_images"
+    npz_path = "/ccs/home/adityatomar/improved-diffusion/samples/samples_32x32x32x3.npz"
+    output_path = "/ccs/home/adityatomar/improved-diffusion/samples/sample_images/"
 
     if not os.path.exists(output_path):
         os.makedirs(output_path)

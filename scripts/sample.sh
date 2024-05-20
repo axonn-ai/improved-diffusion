@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH -p batch
 #SBATCH -A CSC569
-#SBATCH -t 00:30:00
+#SBATCH -t 01:00:00
 #SBATCH -N 4
 #SBATCH -C nvme
 
@@ -63,10 +63,10 @@ echo "LOCAL_BATCH_SIZE: $LOCAL_BATCH_SIZE"
 
 export OPENAI_LOGDIR=/ccs/home/adityatomar/improved-diffusion/samples
 
-MODEL_PATH="$IMPROVED_DIFFUSION_DIR/logs/adamw/model001000.pt"
+MODEL_PATH="$IMPROVED_DIFFUSION_DIR/cifar10_uncond_50M_500K.pt"
 
-MODEL_FLAGS="--image_size 64 --num_channels 128 --num_res_blocks 3"
-DIFFUSION_FLAGS="--diffusion_steps 4000 --noise_schedule linear"
+MODEL_FLAGS="--image_size 32 --num_channels 128 --num_res_blocks 3 --learn_sigma True --dropout 0.3"
+DIFFUSION_FLAGS="--diffusion_steps 4000 --noise_schedule cosine"
 SAMPLE_FLAGS="--model_path $MODEL_PATH --batch_size $LOCAL_BATCH_SIZE"
 
 chmod 755 $IMPROVED_DIFFUSION_DIR/scripts/get_rank_from_slurm.sh

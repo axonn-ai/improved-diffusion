@@ -8,5 +8,7 @@ datasets/cifar_train/
 logs/
 old_data/
 scripts/core
-scripts/sample.sh
 *.out
+*.png
+*.pt
+samples

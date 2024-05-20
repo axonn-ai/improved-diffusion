@@ -74,7 +74,6 @@ chmod 755 $IMPROVED_DIFFUSION_DIR/scripts/get_rank_from_slurm.sh
 SCRIPT="python image_sample.py $SAMPLE_FLAGS $MODEL_FLAGS $DIFFUSION_FLAGS" 
 run_cmd="srun -N $NNODES -n $GPUS -c7 --gpus-per-task=1 --gpu-bind=closest $IMPROVED_DIFFUSION_DIR/scripts/get_rank_from_slurm.sh $SCRIPT &> $IMPROVED_DIFFUSION_DIR/sample_progress.out"
 
-echo "$OPTIMIZER"
 echo "$run_cmd"
 eval "$run_cmd"
 set +x

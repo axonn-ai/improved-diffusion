@@ -1,7 +1,6 @@
 """
 Generate a large batch of image samples from a model and save them as a large
-numpy array. This can be used to produce samples for FID evaluation.
-"""
+numpy array. This can be used to produce samples for FID evaluation.  """
 
 import argparse
 import os
@@ -91,7 +90,7 @@ def main():
 def create_argparser():
     defaults = dict(
         clip_denoised=True,
-        num_samples=10000,
+        num_samples=1000,
         batch_size=16,
         use_ddim=False,
         model_path="",

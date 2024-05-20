@@ -51,3 +51,10 @@ This guide assumes you have read and followed the instructions [here](https://gi
      - Some instructions from Training step 4 might also be useful here
 3. Run `sbatch sample.sh` to begin sampling. This will generate a `.npz` file containing NumPy arrays of pixel values of the generated samples
 4. To convert the arrays to actual images, run `load_samples.py`. This will be helpful when calculating FID scores in the next section
+
+## Evaluation
+1. Read and followed install instructions in the [pytorch-fid](https://github.com/mseitzer/pytorch-fid) repo. (For other kinds of evaluations, check out the [guided-diffusion](//github.com/openai/guided-diffusion/tree/main/evaluations) repo)
+2. Setup [evaluate.sh](https://github.com/axonn-ai/improved-diffusion/blob/jorge/scripts/evaluate.sh)
+      - Add any desired flags to `run_cmd`
+      - set `path/to/dataset1` and `path/to/dataset2` to the test images data path and the sample images data path (order does not matter)
+3. On an interactive node, run `bash evaluate.sh`. After some time, the FID score should be printed out

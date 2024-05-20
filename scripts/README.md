@@ -42,4 +42,12 @@ This guide assumes you have read and followed the instructions [here](https://gi
      export OPENAI_LOGDIR=$IMPROVED_DIFFUSION_DIR/logs/jorge
      ...
      ```
-5. Run `sbatch train.sh` to begin training
+5. Run `sbatch train.sh` to begin training. To train with a different optimizer, simply change the `OPTIMIZER` variable in `train.sh`
+
+## Sampling
+1. In [image_sample.py](https://github.com/axonn-ai/improved-diffusion/blob/jorge/scripts/image_sample.py), set `num_samples` in `create_argparser()` to the number of samples you want to generate
+2. In [sample.sh](https://github.com/axonn-ai/improved-diffusion/blob/jorge/scripts/sample.sh), set the `MODEL_PATH` variable to the path to the model from which you want to sample. This model will likely exist in the `logs/<optim>` directory, depending on what env vars you chose to set in step 4 of Training
+     - The repo authors suggest sampling from the EMA models, but depending on the number of iterations you trained your model for, sampling from `model` might be better. More here: https://github.com/openai/improved-diffusion/issues/59
+     - Some instructions from Training step 4 might also be useful here
+3. Run `sbatch sample.sh` to begin sampling. This will generate a `.npz` file containing NumPy arrays of pixel values of the generated samples
+4. To convert the arrays to actual images, run `load_samples.py`. This will be helpful when calculating FID scores in the next section

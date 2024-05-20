@@ -54,9 +54,12 @@ This guide assumes you have read and followed the instructions [here](https://gi
 
 ## Evaluation
 1. Read and followed install instructions in the [pytorch-fid](https://github.com/mseitzer/pytorch-fid) repo. (For other kinds of evaluations, check out the [guided-diffusion](//github.com/openai/guided-diffusion/tree/main/evaluations) repo)
-2. Setup [evaluate.sh](https://github.com/axonn-ai/improved-diffusion/blob/jorge/scripts/evaluate.sh)
-      - Add any desired flags to `run_cmd`
+2. Run this command:
+      
+      ```sh
+      python -m pytorch_fid --device path/to/dataset1 path/to/dataset2
+      ```
+      - Add any desired flags (like `--dims N`)
       - set `path/to/dataset1` and `path/to/dataset2` to the test images data path and the sample images data path (order does not matter)
       - If your testing dataset is constant, you can save time by storing a compiled `.npz` version of it, and pass its path as one of the paths. More [here](https://github.com/mseitzer/pytorch-fid/tree/master?tab=readme-ov-file#generating-a-compatible-npz-archive-from-a-dataset)
-3. On an interactive node, run `bash evaluate.sh`. After some time, the FID score should be printed out
-python -m pytorch_fid --device cuda $DATA_DIR $IMPROVED_DIFFUSION_DIR/samples/sample_images
+4. Some time after running the command, the FID score should be printed out

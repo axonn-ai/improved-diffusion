@@ -57,7 +57,7 @@ This guide assumes you have read and followed the instructions [here](https://gi
 2. Run this command:
       
       ```sh
-      python -m pytorch_fid --device path/to/dataset1 path/to/dataset2
+      python -m pytorch_fid --device cuda path/to/dataset1 path/to/dataset2
       ```
       - Add any desired flags (like `--dims N`)
       - set `path/to/dataset1` and `path/to/dataset2` to the test images data path and the sample images data path (order does not matter)

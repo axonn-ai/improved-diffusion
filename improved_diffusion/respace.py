@@ -1,7 +1,13 @@
 import numpy as np
 import torch as th
 
-from .gaussian_diffusion import GaussianDiffusion
+from .gaussian_diffusion import (
+    GaussianDiffusion,
+    LossType, 
+    ModelMeanType,
+    ModelVarType,
+)
+from .nn import mean_flat
 
 
 def space_timesteps(num_timesteps, section_counts):
@@ -106,6 +112,99 @@ class SpacedDiffusion(GaussianDiffusion):
         # Scaling is done by the wrapped model.
         return t
 
+
+class JorgeSpacedDiffusion(SpacedDiffusion):
+    def __init__(self, use_timesteps, **kwargs):
+        super().__init__(use_timesteps, **kwargs)
+
+    def training_losses(self, model, x_start, t, model_kwargs=None, noise=None, acc_stats=False):
+        """
+        Compute training losses for a single timestep. 
+        
+        NOTE: This implementation is very similar to 
+        GaussianDistribution.training_losses(), but includes loss calculation
+        between model output and model target. This loss is used for a 2nd
+        backward pass by JorgeKFAC optimizer.
+        """
+        # wrap model
+        model = self._wrap_model(model)
+
+        if model_kwargs is None:
+            model_kwargs = {}
+        if noise is None:
+            noise = th.randn_like(x_start)
+        x_t = self.q_sample(x_start, t, noise=noise)
+
+        terms = {}
+
+        if self.loss_type == LossType.KL or self.loss_type == LossType.RESCALED_KL:
+            terms["loss"] = self._vb_terms_bpd(
+                model=model,
+                x_start=x_start,
+                x_t=x_t,
+                t=t,
+                clip_denoised=False,
+                model_kwargs=model_kwargs,
+            )["output"]
+            if self.loss_type == LossType.RESCALED_KL:
+                terms["loss"] *= self.num_timesteps
+        elif self.loss_type == LossType.MSE or self.loss_type == LossType.RESCALED_MSE:
+            model_output = model(x_t, self._scale_timesteps(t), **model_kwargs)
+
+            if acc_stats:
+                with th.no_grad():
+                    # calculate y_sampled (model target)
+                    # calculated by sampling noise from gaussian distribution and adding to model outputs.
+                    gaussian_noise = th.tensor(
+                        np.random.normal(loc=0.0, scale=1.0, size=model_output.shape),
+                        dtype=model_output.dtype,
+                        device=model_output.device
+                    )
+                    y_sampled = model_output + gaussian_noise
+
+            if self.model_var_type in [
+                ModelVarType.LEARNED,
+                ModelVarType.LEARNED_RANGE,
+            ]:
+                B, C = x_t.shape[:2]
+                assert model_output.shape == (B, C * 2, *x_t.shape[2:])
+                model_output, model_var_values = th.split(model_output, C, dim=1)
+                # Learn the variance using the variational bound, but don't let
+                # it affect our mean prediction.
+                frozen_out = th.cat([model_output.detach(), model_var_values], dim=1)
+                terms["vb"] = self._vb_terms_bpd(
+                    model=lambda *args, r=frozen_out: r,
+                    x_start=x_start,
+                    x_t=x_t,
+                    t=t,
+                    clip_denoised=False,
+                )["output"]
+                if self.loss_type == LossType.RESCALED_MSE:
+                    # Divide by 1000 for equivalence with initial implementation.
+                    # Without a factor of 1/1000, the VB term hurts the MSE term.
+                    terms["vb"] *= self.num_timesteps / 1000.0
+
+            target = {
+                ModelMeanType.PREVIOUS_X: self.q_posterior_mean_variance(
+                    x_start=x_start, x_t=x_t, t=t
+                )[0],
+                ModelMeanType.START_X: x_start,
+                ModelMeanType.EPSILON: noise,
+            }[self.model_mean_type]
+            assert model_output.shape == target.shape == x_start.shape
+            terms["mse"] = mean_flat((target - model_output) ** 2)
+            if acc_stats:
+                # calculate sampled loss
+                terms["loss_sampled"] = mean_flat((y_sampled - model_output) ** 2)
+            if "vb" in terms:
+                terms["loss"] = terms["mse"] + terms["vb"]
+                # TODO: Should terms["vb"] be added to terms["loss_sampled"]?
+            else:
+                terms["loss"] = terms["mse"]
+        else:
+            raise NotImplementedError(self.loss_type)
+        
+        return terms
 
 class _WrappedModel:
     def __init__(self, model, timestep_map, rescale_timesteps, original_num_steps):

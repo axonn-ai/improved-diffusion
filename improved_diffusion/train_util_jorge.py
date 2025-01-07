@@ -102,6 +102,13 @@ class TrainLoop:
                 bucket_cap_mb=128,
                 find_unused_parameters=False,
             )
+            
+            ## DDP doesn't work with jorgekfac
+            # it's still useful to declare DDP and then disable it
+            # because DDP ensures identical initialization on all ranks
+            self.use_ddp = False
+            self.model = self.ddp_model.module
+            self.ddp_model = self.ddp_model.module
         else:
             if dist.get_world_size() > 1:
                 logger.warn(
@@ -196,12 +203,14 @@ class TrainLoop:
             last_batch = (i + self.microbatch) >= batch.shape[0]
             t, weights = self.schedule_sampler.sample(micro.shape[0], dist_util.dev())
 
+            self.opt.acc_stats = bool(self.opt.steps % self.opt.TCov == 0)
             compute_losses = functools.partial(
                 self.diffusion.training_losses,
                 self.ddp_model,
                 micro,
                 t,
                 model_kwargs=micro_cond,
+                acc_stats=self.opt.acc_stats,
             )
 
             if last_batch or not self.use_ddp:
@@ -210,6 +219,11 @@ class TrainLoop:
             else:
                 with self.ddp_model.no_sync():
                     losses = compute_losses()
+            if self.opt.acc_stats:
+                loss_sampled = (losses["loss_sampled"] * weights).mean()
+                loss_sampled.backward(retain_graph=True)
+            self.opt.acc_stats = False
+            self.opt.zero_grad() # clear the gradient for computing true-fisher
 
             if isinstance(self.schedule_sampler, LossAwareSampler):
                 self.schedule_sampler.update_with_local_losses(

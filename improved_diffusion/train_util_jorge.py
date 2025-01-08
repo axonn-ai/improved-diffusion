@@ -221,7 +221,11 @@ class TrainLoop:
                     losses = compute_losses()
             if self.opt.acc_stats:
                 loss_sampled = (losses["loss_sampled"] * weights).mean()
-                loss_sampled.backward(retain_graph=True)
+                if self.use_fp16:
+                    loss_scale = 2 ** self.lg_loss_scale
+                    (loss_sampled * loss_scale).backward(retain_graph=True)
+                else:
+                    loss_sampled.backward(retain_graph=True)
             self.opt.acc_stats = False
             self.opt.zero_grad() # clear the gradient for computing true-fisher
 

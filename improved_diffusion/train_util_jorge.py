@@ -45,6 +45,7 @@ class TrainLoop:
         schedule_sampler=None,
         weight_decay=0.0,
         lr_anneal_steps=0,
+        sigma_kfac=1,
     ):
         self.model = model
         self.diffusion = diffusion
@@ -52,6 +53,7 @@ class TrainLoop:
         self.batch_size = batch_size
         self.microbatch = microbatch if microbatch > 0 else batch_size
         self.lr = lr
+        self.sigma_kfac = sigma_kfac
         self.ema_rate = (
             [ema_rate]
             if isinstance(ema_rate, float)
@@ -211,6 +213,7 @@ class TrainLoop:
                 t,
                 model_kwargs=micro_cond,
                 acc_stats=self.opt.acc_stats,
+                sigma_kfac=self.sigma_kfac,
             )
 
             if last_batch or not self.use_ddp:

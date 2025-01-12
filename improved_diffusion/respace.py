@@ -117,7 +117,7 @@ class JorgeSpacedDiffusion(SpacedDiffusion):
     def __init__(self, use_timesteps, **kwargs):
         super().__init__(use_timesteps, **kwargs)
 
-    def training_losses(self, model, x_start, t, model_kwargs=None, noise=None, acc_stats=False):
+    def training_losses(self, model, x_start, t, model_kwargs=None, noise=None, acc_stats=False, sigma_kfac=1):
         """
         Compute training losses for a single timestep. 
         
@@ -156,7 +156,7 @@ class JorgeSpacedDiffusion(SpacedDiffusion):
                     # calculate y_sampled (model target)
                     # calculated by sampling noise from gaussian distribution and adding to model outputs.
                     gaussian_noise = th.tensor(
-                        np.random.normal(loc=0.0, scale=1.0, size=model_output.shape),
+                        np.random.normal(loc=0.0, scale=sigma_kfac, size=model_output.shape),
                         dtype=model_output.dtype,
                         device=model_output.device
                     )
@@ -195,10 +195,9 @@ class JorgeSpacedDiffusion(SpacedDiffusion):
             terms["mse"] = mean_flat((target - model_output) ** 2)
             if acc_stats:
                 # calculate sampled loss
-                terms["loss_sampled"] = mean_flat((y_sampled - model_output) ** 2)
+                terms["loss_sampled"] = mean_flat((y_sampled - model_output) ** 2) / (sigma_kfac ** 2)
             if "vb" in terms:
                 terms["loss"] = terms["mse"] + terms["vb"]
-                # TODO: Should terms["vb"] be added to terms["loss_sampled"]?
             else:
                 terms["loss"] = terms["mse"]
         else:

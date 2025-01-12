@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH -p batch
 #SBATCH -A CSC569
-#SBATCH -t 00:10:00
-#SBATCH -N 2
+#SBATCH -t 01:00:00
+#SBATCH -N 8
 #SBATCH -C nvme
 
 # calculating the number of nodes and GPUs
@@ -10,17 +10,23 @@ NNODES=$SLURM_JOB_NUM_NODES
 GPUS_PER_NODE=8
 GPUS=$(( NNODES * GPUS_PER_NODE )) 
 
+WRKSPC="/lustre/orion/csc569/scratch/keshprad/jorge"
+IMPROVED_DIFFUSION_DIR="${WRKSPC}/improved-diffusion"
+DATA_DIR="${IMPROVED_DIFFUSION_DIR}/datasets/cifar_train"
+
 # Make LD_LIBRARY_PATH point to wherever your plugin is installed
 # this enables the slingshot-11 plugin for RCCL (crucial for inter-node bw)
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/ccs/home/adityatomar/aws-ofi-rccl/build/lib"
+export LD_LIBRARY_PATH="${WRKSPC}/repos/aws-ofi-rccl/lib:$LD_LIBRARY_PATH"
 
+module reset
+rocm_version=6.1.3
 module load PrgEnv-cray
-module load cray-python
-module load amd-mixed/5.6.0 
-module load libfabric
+module load rocm/${rocm_version}
 module load craype-accel-amd-gfx90a
+module load cray-python/3.9.13.1
+module load cray-mpich/8.1.30
 export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${CRAY_MPICH_ROOTDIR}/gtl/lib"
-source /ccs/home/adityatomar/ast-venv/bin/activate
+source $WRKSPC/.venv/bin/activate
 
 export MPICH_GPU_SUPPORT_ENABLED=0
 
@@ -41,14 +47,7 @@ export MIOPEN_CUSTOM_CACHE_DIR=$MIOPEN_USER_DB_PATH
 rm -rf $MIOPEN_USER_DB_PATH
 mkdir -p $MIOPEN_USER_DB_PATH
 
-export OMP_NUM_THREADS=7 
-
-IMPROVED_DIFFUSION_DIR="/ccs/home/adityatomar/improved-diffusion"
-DATA_DIR="$IMPROVED_DIFFUSION_DIR/datasets/cifar_train"
-
-echo "$DATA_DIR"
-
-# set env variable to store logs and saved model
+export OMP_NUM_THREADS=7
 
 export PYTHONPATH="$PYTHONPATH:$IMPROVED_DIFFUSION_DIR"
 
@@ -57,12 +56,15 @@ cd $IMPROVED_DIFFUSION_DIR/scripts
 GLOBAL_BATCH_SIZE=128
 LOCAL_BATCH_SIZE=$(( GLOBAL_BATCH_SIZE / GPUS))
 
+echo "DATA_DIR: $DATA_DIR"
 echo "GCDs: $GPUS"
 echo "GLOBAL_BATCH_SIZE: $GLOBAL_BATCH_SIZE"
 echo "LOCAL_BATCH_SIZE: $LOCAL_BATCH_SIZE"
 
-OPTIMIZER="AdamW"
+# set optimizer
+OPTIMIZER="Jorge"
 
+# set env variable to store logs and saved model
 if [ $OPTIMIZER == "AdamW" ]; then
 export OPENAI_LOGDIR=$IMPROVED_DIFFUSION_DIR/logs/adamw
 elif [ $OPTIMIZER == "Jorge" ]; then
@@ -73,14 +75,13 @@ fi
 
 MODEL_FLAGS="--image_size 64 --num_channels 128 --num_res_blocks 3"
 DIFFUSION_FLAGS="--diffusion_steps 4000 --noise_schedule linear"
-TRAIN_FLAGS="--lr 1e-4 --batch_size $LOCAL_BATCH_SIZE --data_dir $DATA_DIR --optimizer $OPTIMIZER"
+TRAIN_FLAGS="--lr 1e-4 --lr_anneal_steps 5000 --batch_size --sigma_kfac 1 $LOCAL_BATCH_SIZE --data_dir $DATA_DIR --optimizer $OPTIMIZER --log_interval 1"
 
 chmod 755 $IMPROVED_DIFFUSION_DIR/scripts/get_rank_from_slurm.sh
 
 SCRIPT="python image_train.py $MODEL_FLAGS $DIFFUSION_FLAGS $TRAIN_FLAGS"
-run_cmd="srun -N $NNODES -n $GPUS -c7 --gpus-per-task=1 --gpu-bind=closest $IMPROVED_DIFFUSION_DIR/scripts/get_rank_from_slurm.sh $SCRIPT --log_interval 1"
+run_cmd="srun -N $NNODES -n $GPUS -c7 --gpus-per-task=1 --gpu-bind=closest $IMPROVED_DIFFUSION_DIR/scripts/get_rank_from_slurm.sh $SCRIPT"
 
-echo "$OPTIMIZER"
 echo "$run_cmd"
 eval "$run_cmd"
 set +x

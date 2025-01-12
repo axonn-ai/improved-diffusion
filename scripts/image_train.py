@@ -74,6 +74,7 @@ def main():
             schedule_sampler=schedule_sampler,
             weight_decay=args.weight_decay,
             lr_anneal_steps=args.lr_anneal_steps,
+            sigma_kfac=args.sigma_kfac,
         ).run_loop()
     else:
         print("INVALID OPTIMIZER CHOSEN")
@@ -95,6 +96,7 @@ def create_argparser():
         use_fp16=False,
         fp16_scale_growth=1e-3,
         optimizer="AdamW",
+        sigma_kfac=1,
     )
     defaults.update(model_and_diffusion_defaults())
     parser = argparse.ArgumentParser()

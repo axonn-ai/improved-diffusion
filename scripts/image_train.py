@@ -96,7 +96,7 @@ def create_argparser():
         use_fp16=False,
         fp16_scale_growth=1e-3,
         optimizer="AdamW",
-        sigma_kfac=1,
+        sigma_kfac=1.0,
     )
     defaults.update(model_and_diffusion_defaults())
     parser = argparse.ArgumentParser()

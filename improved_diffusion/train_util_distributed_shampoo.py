@@ -7,7 +7,7 @@ import numpy as np
 import torch as th
 import torch.distributed as dist
 from torch.nn.parallel.distributed import DistributedDataParallel as DDP
-from jorge import JorgeKFAC
+from distributed_shampoo import DistributedShampoo, SGDGraftingConfig
 
 from . import dist_util, logger
 from .fp16_util import (
@@ -45,7 +45,12 @@ class TrainLoop:
         schedule_sampler=None,
         weight_decay=0.0,
         lr_anneal_steps=0,
-        sigma_kfac=1,
+        betas=(0, 0.999),
+        epsilon=1e-12,
+        momentum=0.9,
+        max_preconditioner_dim=8192,
+        precondition_frequency=100,
+        grafting_config=None,
     ):
         self.model = model
         self.diffusion = diffusion
@@ -53,7 +58,6 @@ class TrainLoop:
         self.batch_size = batch_size
         self.microbatch = microbatch if microbatch > 0 else batch_size
         self.lr = lr
-        self.sigma_kfac = sigma_kfac
         self.ema_rate = (
             [ema_rate]
             if isinstance(ema_rate, float)
@@ -81,7 +85,25 @@ class TrainLoop:
         if self.use_fp16:
             self._setup_fp16()
 
-        self.opt = JorgeKFAC(self.model, lr=self.lr, weight_decay=self.weight_decay)
+        self.betas=betas
+        self.epsilon=epsilon
+        self.momentum=momentum
+        self.max_preconditioner_dim = max_preconditioner_dim
+        self.precondition_frequency = precondition_frequency
+        self.grafting_config = grafting_config
+        if self.grafting_config is None:
+            self.grafting_config = SGDGraftingConfig()
+        self.opt = DistributedShampoo(
+            self.model.parameters(),
+            lr=self.lr,
+            betas=self.betas,
+            epsilon=self.epsilon,
+            momentum=self.momentum,
+            weight_decay=self.weight_decay,
+            max_preconditioner_dim=self.max_preconditioner_dim,
+            precondition_frequency=self.precondition_frequency,
+            grafting_config=self.grafting_config
+        )
         if self.resume_step:
             self._load_optimizer_state()
             # Model was resumed, either due to a restart or a checkpoint
@@ -104,13 +126,6 @@ class TrainLoop:
                 bucket_cap_mb=128,
                 find_unused_parameters=False,
             )
-            
-            ## DDP doesn't work with jorgekfac
-            # it's still useful to declare DDP and then disable it
-            # because DDP ensures identical initialization on all ranks
-            self.use_ddp = False
-            self.model = self.ddp_model.module
-            self.ddp_model = self.ddp_model.module
         else:
             if dist.get_world_size() > 1:
                 logger.warn(
@@ -161,7 +176,7 @@ class TrainLoop:
             state_dict = dist_util.load_state_dict(
                 opt_checkpoint, map_location=dist_util.dev()
             )
-            self.opt.load_state_dict(state_dict)
+            self.opt.load_distributed_state_dict(state_dict, key_to_param=self.model.named_parameters())
 
     def _setup_fp16(self):
         self.master_params = make_master_params(self.model_params)
@@ -205,15 +220,12 @@ class TrainLoop:
             last_batch = (i + self.microbatch) >= batch.shape[0]
             t, weights = self.schedule_sampler.sample(micro.shape[0], dist_util.dev())
 
-            self.opt.acc_stats = bool(self.opt.steps % self.opt.TCov == 0)
             compute_losses = functools.partial(
                 self.diffusion.training_losses,
                 self.ddp_model,
                 micro,
                 t,
                 model_kwargs=micro_cond,
-                acc_stats=self.opt.acc_stats,
-                sigma_kfac=self.sigma_kfac,
             )
 
             if last_batch or not self.use_ddp:
@@ -222,15 +234,6 @@ class TrainLoop:
             else:
                 with self.ddp_model.no_sync():
                     losses = compute_losses()
-            if self.opt.acc_stats:
-                loss_sampled = (losses["loss_sampled"] * weights).mean()
-                if self.use_fp16:
-                    loss_scale = 2 ** self.lg_loss_scale
-                    (loss_sampled * loss_scale).backward(retain_graph=True)
-                else:
-                    loss_sampled.backward(retain_graph=True)
-            self.opt.acc_stats = False
-            self.opt.zero_grad() # clear the gradient for computing true-fisher
 
             if isinstance(self.schedule_sampler, LossAwareSampler):
                 self.schedule_sampler.update_with_local_losses(
@@ -311,7 +314,7 @@ class TrainLoop:
                 bf.join(get_blob_logdir(), f"opt{(self.step+self.resume_step):06d}.pt"),
                 "wb",
             ) as f:
-                th.save(self.opt.state_dict(), f)
+                th.save(self.opt.distributed_state_dict(key_to_param=self.model.named_parameters()), f)
 
         dist.barrier()
 

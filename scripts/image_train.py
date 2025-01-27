@@ -15,6 +15,8 @@ from improved_diffusion.script_util import (
 )
 from improved_diffusion.train_util import TrainLoop as TrainLoopAdamW
 from improved_diffusion.train_util_jorge import TrainLoop as TrainLoopJorge
+from improved_diffusion.train_util_distributed_shampoo import TrainLoop as TrainLoopDistributedShampoo
+from distributed_shampoo import SGDGraftingConfig
 
 
 def main():
@@ -56,6 +58,31 @@ def main():
             schedule_sampler=schedule_sampler,
             weight_decay=args.weight_decay,
             lr_anneal_steps=args.lr_anneal_steps,
+        ).run_loop()
+    elif args.optimizer == "DistributedShampoo":
+        TrainLoopDistributedShampoo(
+            model=model,
+            diffusion=diffusion,
+            data=data,
+            batch_size=args.batch_size,
+            microbatch=args.microbatch,
+            lr=args.lr,
+            ema_rate=args.ema_rate,
+            log_interval=args.log_interval,
+            save_interval=args.save_interval,
+            resume_checkpoint=args.resume_checkpoint,
+            use_fp16=args.use_fp16,
+            fp16_scale_growth=args.fp16_scale_growth,
+            schedule_sampler=schedule_sampler,
+            weight_decay=args.weight_decay,
+            lr_anneal_steps=args.lr_anneal_steps,
+            # TODO: expose as args
+            betas=(0, 0.999),
+            epsilon=1e-12,
+            momentum=0.9,
+            max_preconditioner_dim=8192,
+            precondition_frequency=100,
+            grafting_config=SGDGraftingConfig(),
         ).run_loop()
     elif args.optimizer == "Jorge":
         TrainLoopJorge(

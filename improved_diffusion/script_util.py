@@ -71,7 +71,7 @@ def create_model_and_diffusion(
         use_scale_shift_norm=use_scale_shift_norm,
         dropout=dropout,
     )
-    if optimizer == "AdamW":
+    if optimizer == "AdamW" or optimizer == "DistributedShampoo":
         diffusion = create_gaussian_diffusion(
             steps=diffusion_steps,
             learn_sigma=learn_sigma,
